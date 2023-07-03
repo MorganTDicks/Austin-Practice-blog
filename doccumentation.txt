@@ -1,0 +1,29 @@
+# Doccumentation: 
+
+## Initialised the repository using the following git commands: 
+//  Navigated to the project folder
+git init
+git remote add origin https://github.com/Austin-ALIT/Austin-Practice-blog.git
+git flow init (Replied yes to everything)
+// Git flow created a few extra branches that may not be used. If unused, will delete them at the end. 
+
+## Creating the base next app
+// renamed the project folder to all lower case
+npx create-next-app --typescript .
+// Selected no to all addons -- THIS MAKES THE PROGRAM SHOW A BLANK PAGE WHEN RUNNING
+// Instead, i said yes to evverything except using the app router, and I left the import alias default. 
+
+## First develop branch
+// Changed to branch: Develop
+// Added: 
+	// Basic Home Page layout
+	// Basic Styling & Banner Image
+	// Navigation bar Component
+	// Header Banner Component
+	// Comments about future plans (Will move these to doccumentation at a later stage)
+
+## Currently working on:
+Now, Switching to feature branch to work on Pages feature. 
+// Will use an array to store page data, and import it using dynamic pages
+// This array will later fetch from an external data source (like a database)
+// Page additions (such as comments) are still being decided on how to be implimented. 

@@ -2,17 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Changing this doesn't seem to make a difference.  */
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  --background-start-rgb: 214, 219, 220; 
   --background-end-rgb: 255, 255, 255;
+ 
 }
 
+/* Edit this to change global css */
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: 234, 229, 246; /* Text Colour */
+    --background-start-rgb: 28, 28, 28; /* Gradient top */
+    --background-end-rgb: 28, 28, 28; /* Gradient bottom */
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
   }
 }
 
