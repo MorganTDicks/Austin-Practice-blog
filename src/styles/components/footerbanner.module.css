@@ -2,9 +2,12 @@
     background-image: url(../../Images/Banner.jpg);
     background-color: gray;
     background-blend-mode: darken;
-    height: 220px;
+    /* height: 220px; */
+    height: 520px;
+
     width: auto;
-    background-position: center -330px;
+    background-position: center 352px;
+    
     
     text-align: center;
     line-height: 200px;

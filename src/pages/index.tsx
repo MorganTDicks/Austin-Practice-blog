@@ -1,12 +1,14 @@
 // Landing Page
 
 // import React from "react";
-import NavBar from "@/components/navbar/navbar"; // Changed Components to components, updated the link. Ignore the error. 
+import NavBar from "@/Components/navbar/navbar"; // Changed Components to components, updated the link. Ignore the error. 
 import TopBanner from "@/Components/banner/topbanner";
 import Link from "next/link";
 // import styles from "../styles/globals.css"; -- Global CSS cannot be imported from files other than your Custom <App>. Due to the Global nature of stylesheets, and to avoid conflicts
+import BottomBanner from "@/Components/banner/bottombanner";
 
 export default function Home(){
+  
   return(
       <div>
           <TopBanner pagename="Home"/>
@@ -18,7 +20,7 @@ export default function Home(){
           <p> Latest 5 posts carousel </p>
           <p> See all posts (link) </p>
           <br/><br/>
-          <p> Footer Banner Here </p>
+          <BottomBanner/>
           <p> Useful Links </p>
       </div>
   );
@@ -54,7 +56,7 @@ export default function Home(){
   3. apply basic styling to navbar - done
   4. find out how to apply global styling -- Done
   4.5 Find out how to do justified passing on navbar? 
-  5. Commit basic page layout --TODO
+  5. Commit basic page layout --Done
 
 Expected home layout: 
 
@@ -75,7 +77,10 @@ Useful Links and info
 Adding a smooth collapsing animation to the header banner when user scrolls down
 making 'show topics' and 'contact me' collapsable side bars instead of their own pages
 Allowing each page to have its own banner image (dynamic css background images)
-
+Making an image carousel for the recent posts section
+Search comparing input to all existing posts as the user types. Search just takes in the theme and what they types, then returns it (as a prop for a master module, maybe?)
+Allowing each post to have a unique banner, or just default if no banner is present. (Set default bannerpath and default topic)
+Logging in and creating an account functionality
 
 */
 

@@ -27,3 +27,22 @@ Now, Switching to feature branch to work on Pages feature.
 // Will use an array to store page data, and import it using dynamic pages
 // This array will later fetch from an external data source (like a database)
 // Page additions (such as comments) are still being decided on how to be implimented. 
+
+### Feature Commit 1: 
+// Added posts page, listing all the posts.
+// Added dynamic posts page, listing post content.  
+// Added data importer, which will be used to fetch data from the database. 
+	// Currently just returns the posts array, this will change in future
+
+// For the main page: 
+// Made the navigation Bar sticky
+// Added Basic footer
+// Adjusted header banner dimentions sligtly. 
+// Put in plan a toolbar which will be on the top banner, with icons for home on the left and user info on the right. 
+
+### ToDO: 
+// Change DataImporter to have internal functions rather than just return posts. 
+// Order Posts page by recent activity
+// Create User Type declaration
+// Add styling to Posts Page
+// Create Search Bar Component (Separate Feature Branch)?
