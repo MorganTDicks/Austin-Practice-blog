@@ -37,12 +37,60 @@ Now, Switching to feature branch to work on Pages feature.
 // For the main page: 
 // Made the navigation Bar sticky
 // Added Basic footer
-// Adjusted header banner dimentions sligtly. 
+// Adjusted header banner dimentions slightly. 
 // Put in plan a toolbar which will be on the top banner, with icons for home on the left and user info on the right. 
+
+### Feature Commit 2: 
+// Create User Type declaration - done
+// Applied basic CSS styling to the view posts page
+// Sending link to Morgan to investigate how to combine dataimporters. 
 
 ### ToDO: 
 // Change DataImporter to have internal functions rather than just return posts. 
+	// Could not get this to work. Mde sseprte dt importers for now.
+	// merge dt importers.  
+
 // Order Posts page by recent activity
-// Create User Type declaration
-// Add styling to Posts Page
 // Create Search Bar Component (Separate Feature Branch)?
+
+
+Skipped: 
+// Find out how to use props with React.FC type function - skipped as react cn ssume function types utomaticlly. 
+// Find out how to do justified passing on navbar? - skipped, found n lterntive.
+
+Stuff that will bankrupt me: 
+Adding a smooth collapsing animation to the header banner when user scrolls down - (1/2) got the bnner working so fr
+making 'show topics' and 'contact me' collapsable side bars instead of their own pages
+Allowing each page to have its own banner image (dynamic css background images)
+	Allowing each post to have a unique banner, or just default if no banner is present. (Set default bannerpath and default topic)
+Making an image carousel for the recent posts section
+Search comparing input to all existing posts as the user types. Search just takes in the theme and what they types, then returns it (as a prop for a master module, maybe?)
+Logging in and creating an account functionality
+
+
+/* Figured out how to run the app to test it. - Seemed to be an issue with typescript and react.
+  Troubleshooting steps: 
+
+  ran npm run dev, got a blank page. 
+  # restarted the program
+  ran 'npm start' got an error saying .next is empty, run next build
+  ran next build, command not recodnised
+  ran npm next build, next not recodnised
+  ran npx next build, worked. installed build and built the project. 
+  ran 'npm start' finished with an error that some dependancies are missing
+  ran npx tsc --watch, found zero errors
+  ran npx next build, > Export encountered errors on following paths:
+        /
+        /_error: /404
+        /_error: /500
+  ran npm start, encountered same error as last time: 
+        type: 'Error',
+        code: 'MODULE_NOT_FOUND',
+        requireStack: [
+          'C:\\Users\\User\\Projects\\austin-practice-blog\\node_modules\\next\\dist\\server\\next-server.js',
+          'C:\\Users\\User\\Projects\\austin-practice-blog\\node_modules\\next\\dist\\server\\next.js',
+          'C:\\Users\\User\\Projects\\austin-practice-blog\\node_modules\\next\\dist\\server\\lib\\render-server.js',
+          'C:\\Users\\User\\Projects\\austin-practice-blog\\node_modules\\next\\dist\\compiled\\jest-worker\\processChild.js'
+  // FIXED: Use Src/ directory format for typescript when installing nextjs. 
+
+*/

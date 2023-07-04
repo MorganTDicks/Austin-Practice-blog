@@ -1,4 +1,5 @@
 // Top Banner
+// TODO: Add second parameter to change background image. The image is a CSS: background-image so will have to look it up. 
 import Link from "next/link";
 import styles from "../../styles/components/headerbanner.module.css";
 

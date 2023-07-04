@@ -1,0 +1,54 @@
+
+.TableStuff{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.viewPost{
+    color: lightblue;
+    text-align: center;
+}
+
+.PostList{
+    margin: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    background: #424242;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    padding: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+.Posts{
+    margin: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    background-image: url(../../Images/item.jpg);
+    background-color: gray;
+    background-blend-mode: darken;
+    background-position: top left;
+
+    color: white;
+    padding: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    border: black;
+    border-width: 10px;
+    border-style: ridge;
+    text-align: left;
+}
+
+
+.viewPost:hover{
+    color: lightblue;
+}
+
+.Posts:hover{
+    background-color: #3e4660;
+    background-blend-mode: lighten;
+}
+

@@ -1,7 +1,10 @@
+import Link from "next/link";
+import styles from '@/styles/components/posts.module.css';
+import DataImporter from "@/Components/dataimporter";
+
+// Component Imports
 import TopBanner from "@/Components/banner/topbanner";
 import NavBar from "@/Components/navbar/navbar";
-import DataImporter from "@/Components/dataimporter";
-import Link from "next/link";
 import BottomBanner from "@/Components/banner/bottombanner";
 
 export default function AllPosts(){
@@ -18,12 +21,23 @@ export default function AllPosts(){
             <p> Search and Filter </p> 
             <p> This give you an idea? Suggest a post! (On the right)</p>
             <br/><br/>
-            <ul>
+            <ul className={styles.PostList}>
                 {arrPosts.map((post) => {
                 return(
-                    <li>
-                        <p>{post.header}</p>
-                        <Link href = {`../Posts/${post.id}`}> View Post </Link>
+                    <li className={styles.Posts}>
+                        {/* make a table */}
+                        <table className={styles.TableStuff}>
+                            <tr>
+                                <td> (Post Image) </td> 
+                                <td> 
+                                    <h1> Title: {post.header} </h1>
+                                    <div className={styles.viewPost}> 
+                                        <Link href = {`../Posts/${post.id}`} > View Post </Link>
+                                    </div> 
+                                </td>
+                                <td> post Commenter info </td>
+                            </tr>
+                        </table>
                     </li>
                     );
                 })}

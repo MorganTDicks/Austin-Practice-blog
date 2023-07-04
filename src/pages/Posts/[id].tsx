@@ -8,7 +8,7 @@ export default function Posting(){
     const { id } = router.query;
 
     let allData = DataImporter();
-    let myData: Post = {id: "null", topic: "null", header: "null", body: "null"};
+    let myData: Post = {id: '', topic: '', postdate: '', activitydate: '', suggester: '',  header: '', body: ``, bannerpath: ''};
 
     for (let i of allData){
         if (i.id == id){
