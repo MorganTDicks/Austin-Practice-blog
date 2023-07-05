@@ -1,39 +1,44 @@
 import { useRouter } from "next/router";
-import NavBar from "@/Components/navbar/navbar";
-import TopBanner from "@/Components/banner/topbanner";
+import Link from "next/link";
+
+import Housing from "@/Components/housing/housing";
 import DataImporter from "@/Components/dataimporter";
+import PrevNext from "@/Components/Posts/prevnext";
 
 export default function Posting(){
     const router = useRouter();
     const { id } = router.query;
 
-    let allData = DataImporter();
-    let myData: Post = {id: '', topic: '', postdate: '', activitydate: '', suggester: '',  header: '', body: ``, bannerpath: ''};
+    let allData = DataImporter.importPosts;
+    let myData: Post = {id: '', topic: '', postdate: '', suggester: '',  header: '', body: ``, bannerpath: ''};
+    let prevPost: Post = {id: '', topic: '', postdate: '', suggester: '',  header: '', body: ``, bannerpath: ''};
+    let nextPost: Post = {id: '', topic: '', postdate: '', suggester: '',  header: '', body: ``, bannerpath: ''};
 
     for (let i of allData){
         if (i.id == id){
-           myData = i;
+           let dIndex = allData.indexOf(i);
+            myData = i;
            // Previous post = i-1 header, next post = i+1 header. 
-           break; 
+           if (dIndex >= 1)
+                prevPost = allData[dIndex-1];
+           
+           if (dIndex < (allData.length-1))
+                nextPost = allData[dIndex+1];
+        break; 
         }
     }
 
-
-    // Import the posts array
-    // Return post information using matching id in post array (Just use the variable id, as it was assigned above)
-
-    // Return the router page
     return(
         <div>
-            <TopBanner pagename= {myData.header}/>
-            <NavBar/> 
+            <Housing pagename= {myData.header}> 
             <p> back to browse posts (allign Left) </p>
             <h1> {myData.header} </h1>
             <p> Suggester Info (On the left) </p>
             <p> {myData.body} </p>
             <p> prev / next post </p>
-            <p> Comments or Suggest a post!</p>
-            <p> Footer Stuffs </p> 
+            <PrevNext prevPost = {prevPost} nextPost = {nextPost} />
+            <p> Comments or Suggest a post! </p>
+            </Housing> 
         </div> 
     );
 }

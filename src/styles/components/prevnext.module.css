@@ -1,0 +1,18 @@
+.ulStuff{
+    display: block;
+    list-style-type: none;
+}
+
+.button{
+    background-color: #424242;
+    width: 20%;
+    margin: auto;
+    border-radius: 10px;
+    float: var(--displayDirection);
+}
+
+.nameDisplay{
+    color: silver;
+    overflow: hidden;
+    height: 20pt;
+}
