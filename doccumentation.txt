@@ -41,22 +41,42 @@ Now, Switching to feature branch to work on Pages feature.
 // Put in plan a toolbar which will be on the top banner, with icons for home on the left and user info on the right. 
 
 ### Feature Commit 2: 
-// Create User Type declaration - done
+// Create User Type declaration
 // Applied basic CSS styling to the view posts page
 // Sending link to Morgan to investigate how to combine dataimporters. 
 
+###Feature Commit 3: 
+// Fixed DataImporter using a dictionary (thanks to Morgan)
+// Changed post list from unordered list to table.
+// Fixed Styling on Table
+// Changed layout of tabletoshow more info on Commenter
+// Added comments type
+// Added comments module to posts page
+
 ### ToDO: 
-// Change DataImporter to have internal functions rather than just return posts. 
-	// Could not get this to work. Mde sseprte dt importers for now.
-	// merge dt importers.  
+// add comments to dynamic post page
+// add styling to dynamic post page
 
 // Order Posts page by recent activity
+
+Other Features:
+// Finish Home Page
+// Top Toolbar (Home on the left, account info & settings on the right)
+
 // Create Search Bar Component (Separate Feature Branch)?
+// Users profile Page
+// Topics 
+// Suggesting & Adding Posts
+// Deleting Posts
 
 
 Skipped: 
 // Find out how to use props with React.FC type function - skipped as react cn ssume function types utomaticlly. 
 // Find out how to do justified passing on navbar? - skipped, found n lterntive.
+// Change DataImporter to have internal functions rather than just return posts. 
+	// Could not get this to work. Mde sseprte dt importers for now.
+	// merge dt importers.  
+// Fixed, using a dictionry 
 
 Stuff that will bankrupt me: 
 Adding a smooth collapsing animation to the header banner when user scrolls down - (1/2) got the bnner working so fr
@@ -66,7 +86,10 @@ Allowing each page to have its own banner image (dynamic css background images)
 Making an image carousel for the recent posts section
 Search comparing input to all existing posts as the user types. Search just takes in the theme and what they types, then returns it (as a prop for a master module, maybe?)
 Logging in and creating an account functionality
-
+Adding a Star / Subscribe system for posts the user follows. 
+Adding tags
+Counting number of page views
+Making page browser when above 10 pages.
 
 /* Figured out how to run the app to test it. - Seemed to be an issue with typescript and react.
   Troubleshooting steps: 

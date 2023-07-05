@@ -6,10 +6,11 @@ import DataImporter from "@/Components/dataimporter";
 import TopBanner from "@/Components/banner/topbanner";
 import NavBar from "@/Components/navbar/navbar";
 import BottomBanner from "@/Components/banner/bottombanner";
+import UserInfo from "@/Components/Posts/UserInfo";
 
 export default function AllPosts(){
     // Importing the List of Posts from the object
-    let arrPosts = DataImporter();
+    let arrPosts: Post[] = DataImporter.importPosts;
 
     // TODO: Order Posts by Most Recent Activity
 
@@ -21,28 +22,29 @@ export default function AllPosts(){
             <p> Search and Filter </p> 
             <p> This give you an idea? Suggest a post! (On the right)</p>
             <br/><br/>
-            <ul className={styles.PostList}>
+            <div className={styles.PostList}>
+            <table className={styles.TableStuff}>
                 {arrPosts.map((post) => {
-                return(
-                    <li className={styles.Posts}>
-                        {/* make a table */}
-                        <table className={styles.TableStuff}>
-                            <tr>
-                                <td> (Post Image) </td> 
-                                <td> 
-                                    <h1> Title: {post.header} </h1>
-                                    <div className={styles.viewPost}> 
-                                        <Link href = {`../Posts/${post.id}`} > View Post </Link>
-                                    </div> 
-                                </td>
-                                <td> post Commenter info </td>
-                            </tr>
-                        </table>
-                    </li>
+                return( 
+                    <tr className={styles.Posts} style={{['--mycolour' as any]: '#3e4660'}}>
+                            <td className={styles.TableDatal}> 
+                                <div className={styles.titleText}> 
+                                    <Link href = {`../Posts/${post.id}`} > {post.header} </Link>
+                                </div> 
+                                {/* Link to topics page */}
+                                <p> [{post.topic}] </p>
+                            </td>
+                            <td className={styles.TableData}> Post Image / Preview </td> 
+                            <td className={styles.TableDatar}> 
+                                <UserInfo postID={post}/>
+                            </td>
+                    </tr>
                     );
                 })}
-            </ul>
+            </table>
+            </div>
             <BottomBanner/>
         </div>
     )
 }
+

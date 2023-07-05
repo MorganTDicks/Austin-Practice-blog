@@ -3,7 +3,6 @@ type Post = {
     id: string, 
     topic:string, 
     postdate: string,
-    activitydate: string, // TODO: Get Date type to work
     suggester: string, //Just need the user ID, not the whole user object 
 
     // Content

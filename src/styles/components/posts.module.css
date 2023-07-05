@@ -1,14 +1,35 @@
-
-.TableStuff{
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    width: 100%;
+.titleText{
+    font-size: large;
+    font-weight: bold;
+}
+.titleText:hover{
+    color: lightblue;
 }
 
-.viewPost{
-    color: lightblue;
+
+.TableStuff{
     text-align: center;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.TableData{
+    width: 33.33%;
+    overflow: hidden;
+    padding: 10px;
+    text-align: center;
+}
+.TableDatal{
+    width: 33.33%;
+    overflow: hidden;
+    padding: 10px;
+    text-align: left;
+}
+.TableDatar{
+    width: 33.33%;
+    overflow: hidden;
+    padding: 10px;
+    text-align: right;
 }
 
 .PostList{
@@ -27,6 +48,7 @@
     margin-left: 50px;
     margin-right: 50px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    /* background-image: var(--bglink); Did notwantto work with the url element :/ */
     background-image: url(../../Images/item.jpg);
     background-color: gray;
     background-blend-mode: darken;
@@ -34,12 +56,10 @@
 
     color: white;
     padding: 10px;
-    padding-right: 10px;
     border-radius: 10px;
-    border: black;
+    border: #424242;
     border-width: 10px;
-    border-style: ridge;
-    text-align: left;
+    border-style: solid;
 }
 
 
@@ -48,7 +68,7 @@
 }
 
 .Posts:hover{
-    background-color: #3e4660;
+    background-color: var(--mycolour);
     background-blend-mode: lighten;
 }
 
