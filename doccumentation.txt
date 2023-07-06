@@ -22,11 +22,8 @@ npx create-next-app --typescript .
 	// Header Banner Component
 	// Comments about future plans (Will move these to doccumentation at a later stage)
 
-## Currently working on:
-Now, Switching to feature branch to work on Pages feature. 
-// Will use an array to store page data, and import it using dynamic pages
-// This array will later fetch from an external data source (like a database)
-// Page additions (such as comments) are still being decided on how to be implimented. 
+
+## Feature Commits: 
 
 ### Feature Commit 1: 
 // Added posts page, listing all the posts.
@@ -62,21 +59,31 @@ Now, Switching to feature branch to work on Pages feature.
 // Fleshed out the home page flavour text a bit
 // Fleshed out the Post suggestion page a bit
 
-### ToDO: 
-// add comments to dynamic post page
-// add styling to dynamic post page
+### Feature Commit 5: 
+// Dexcovered how to use optional props. 
+// Added Comments to Dynamic Pages
+// Added Basic toolbar (Home, settings). Will replace the text with icons later. 
+// Adjusted homepage text order. 
 
+## Currently working on:
+// Switch to home page feature branch
+// Finish Home Page
+
+
+### ToDO: 
+
+// Replace toolbar text with icons. 
+// adding styling to dynamic post page
+// Replace the page-not-found page. 
 
 Other Features:
-// Finish Home Page
-// Top Toolbar (Home on the left, account info & settings on the right)
 
 // Create Search Bar Component (Separate Feature Branch)?
 // Users profile Page
 // Topics 
 // Suggesting & Adding Posts
 // Deleting Posts
-
+// Adding, editing and deleting comments. 
 
 Skipped: 
 // Find out how to use props with React.FC type function - skipped as react cn ssume function types utomaticlly. 
@@ -86,7 +93,7 @@ Skipped:
 	// merge dt importers.  
   // Fixed, using a dictionry 
 
-Stuff that will bankrupt me: 
+### Stuff that will bankrupt me: 
 // Order Posts page by recent activity
 // Adding a smooth collapsing animation to the header banner when user scrolls down - (1/2) got the bnner working so fr
 // making 'show topics' and 'contact me' collapsable side bars instead of their own pages

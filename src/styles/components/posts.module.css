@@ -52,7 +52,7 @@
     background-image: url(../../Images/item.jpg);
     background-color: gray;
     background-blend-mode: darken;
-    background-position: top left;
+    background-position: left top;
 
     color: white;
     padding: 10px;

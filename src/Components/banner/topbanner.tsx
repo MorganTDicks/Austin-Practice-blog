@@ -8,8 +8,12 @@ import styles from "../../styles/components/headerbanner.module.css";
 const TopBanner = (props: any) =>{
     const pName = props.pagename;
     return(
-        <div className={styles.bannerimg}>
-            <h1> {pName} </h1>
+        <div className={styles.bannerbacking}>
+            <p className={styles.toolbarl}> <Link className={styles.lical} href="/"> Home </Link></p>
+            <p className={styles.toolbarr}> <Link className={styles.licar} href="/settings"> User </Link></p>
+            <div className={styles.bannermain}>
+                <h1> {pName} </h1>
+            </div>
         </div>
     )
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import Housing from "@/Components/housing/housing";
 import DataImporter from "@/Components/dataimporter";
 import PrevNext from "@/Components/Posts/prevnext";
+import UserInfo from "@/Components/Posts/UserInfo";
 
 export default function Posting(){
     const router = useRouter();
@@ -36,8 +37,13 @@ export default function Posting(){
             <p> Suggester Info (On the left) </p>
             <p> {myData.body} </p>
             <p> prev / next post </p>
+            <br/>
             <PrevNext prevPost = {prevPost} nextPost = {nextPost} />
-            <p> Comments or Suggest a post! </p>
+            <br/>
+            <br/>
+            <br/>
+            <p> Add a comment or Suggest a post! </p>
+            <UserInfo extrainfo={true} postID={myData}/>
             </Housing> 
         </div> 
     );

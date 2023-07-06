@@ -14,7 +14,7 @@ function PostImporter(): Array<Post>{
         postdate: '2022-10-02',
         suggester: 'AA000000',
         header: 'My First Project Car',
-        body: `Ah Yes, my first project car. I remember it like it was yesturday... probably because it was.  
+        body: `Ah Yes, my first project car. I remember it like it was yesterday... probably because it was.  
         I have this old RV i am working on. Got it from my grandfather. It was subject to a bit of neglect over the years, but now that i will have it in my name soon, it is up to me to fix it up. Post down below any tips or comments you may have, this will be quite the journey for all of us. `,
         bannerpath: '../../Images/Banner.jpg'},
         
