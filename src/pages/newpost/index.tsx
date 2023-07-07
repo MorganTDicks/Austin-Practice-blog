@@ -1,11 +1,18 @@
-import NavBar from "@/Components/navbar/navbar";
-import TopBanner from "@/Components/banner/topbanner";
+import Housing from "@/Components/housing/housing";
 
 export default function NewPost(){
     return (
         <>
-        <TopBanner pagename="Suggest a Post"/>
-        <NavBar/>
+        <Housing pagename="Suggest a Post">
+            <p> (Maybe integrate this with google docs?) </p>
+            <p> Log  In </p>
+            <p> Name & Choose topic </p>
+            <p> Body </p>
+            <p> Terms and Conditions </p>
+            <p> Submit button </p>
+            <p> On to  approval... </p>
+
+        </Housing>
         </>
     )
 }

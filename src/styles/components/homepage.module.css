@@ -1,0 +1,34 @@
+.homepage{
+    font-size: 14pt;
+
+}
+
+.linkstuff{
+    text-decoration-line: underline;
+    color: lightblue;
+}
+
+.headerstuff{
+    background-image: url(../../Images/Banner.jpg);
+    background-color: gray;
+    background-blend-mode: darken;
+    background-position: center 195pt;
+    margin-right: 30%;
+    margin-left: 30%;
+    background-size: 200%;
+    border-radius: 25pt;
+}
+
+.headertext{
+    /* font-weight: bold; */
+    font-size: 25pt;
+    color: white;
+    font-family: cursive;
+    text-shadow: black;
+}
+
+.homepageDialogue{
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: justify;
+}

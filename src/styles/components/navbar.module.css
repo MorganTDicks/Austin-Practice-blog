@@ -2,8 +2,15 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
+    padding-left: 60px;
+    padding-right: 60px;
     overflow: hidden;
     background-color: #424242;
+    
+    position: -webkit-sticky; 
+    position: sticky; 
+    top: 0px; 
+    z-index: 1020;
 }
   
 .licl {
@@ -40,22 +47,7 @@
   
 .lica:hover {
     background-color: #1c1c1c;
-    color: #eae5f6;
+    color: lightblue;
     border-radius: 10px;
-    
-}
-
-.lical:hover {
-    background-color: #1c1c1c;
-    color: #eae5f6;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    
-}
-.licar:hover {
-    background-color: #1c1c1c;
-    color: #eae5f6;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
     
 }

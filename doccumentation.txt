@@ -22,8 +22,121 @@ npx create-next-app --typescript .
 	// Header Banner Component
 	// Comments about future plans (Will move these to doccumentation at a later stage)
 
+
+## Feature Commits: 
+
+### Feature Commit 1: 
+// Added posts page, listing all the posts.
+// Added dynamic posts page, listing post content.  
+// Added data importer, which will be used to fetch data from the database. 
+	// Currently just returns the posts array, this will change in future
+
+// For the main page: 
+// Made the navigation Bar sticky
+// Added Basic footer
+// Adjusted header banner dimentions slightly. 
+// Put in plan a toolbar which will be on the top banner, with icons for home on the left and user info on the right. 
+
+### Feature Commit 2: 
+// Create User Type declaration
+// Applied basic CSS styling to the view posts page
+// Sending link to Morgan to investigate how to combine dataimporters. 
+
+###Feature Commit 3: 
+// Fixed DataImporter using a dictionary (thanks to Morgan)
+// Changed post list from unordered list to table.
+// Fixed Styling on Table
+// Changed layout of table to show more info on Commenter
+// Added comments type
+// Added comments module to posts page
+
+### Feature Commit 4: 
+// Added next & previous post navigation to dynamic post page
+// Experimented with CSS variables to get dynamic backgrounds working. 
+  // Descovered how to pass variables in jsx to css. 
+  // Descovered that url() element in CSS does not allow internal variables. Will need an alternative.
+// Added Housing module around each component to contain the header, nav bar and footer. 
+// Fleshed out the home page flavour text a bit
+// Fleshed out the Post suggestion page a bit
+
+### Feature Commit 5: 
+// Dexcovered how to use optional props. 
+// Added Comments to Dynamic Pages
+// Added Basic toolbar (Home, settings). Will replace the text with icons later. 
+// Adjusted homepage text order. 
+
+### Feature Commit 6:
+// descovered the basics of states
+// Adjusted Home Page Layout Slightly
+// Finished Post carousel
+// Finished Home-page Styling. 
+
 ## Currently working on:
-Now, Switching to feature branch to work on Pages feature. 
-// Will use an array to store page data, and import it using dynamic pages
-// This array will later fetch from an external data source (like a database)
-// Page additions (such as comments) are still being decided on how to be implimented. 
+// Switch to home page feature branch
+// Finish Home Page
+
+
+### ToDO: 
+
+// Move previewContent & fetchUser functions to be publically accessible.
+// Replace toolbar text with icons. 
+// adding styling to dynamic post page
+// Replace the page-not-found page. 
+
+Other Features:
+
+// Create Search Bar Component (Separate Feature Branch)?
+// Users profile Page
+// Topics 
+// Suggesting & Adding Posts
+// Deleting Posts
+// Adding, editing and deleting comments. 
+
+Skipped: 
+// Find out how to use props with React.FC type function - skipped as react cn ssume function types utomaticlly. 
+// Find out how to do justified passing on navbar? - skipped, found n lterntive.
+// Change DataImporter to have internal functions rather than just return posts. 
+	// Could not get this to work. Mde sseprte dt importers for now.
+	// merge dt importers.  
+  // Fixed, using a dictionry 
+
+### Stuff that will bankrupt me: 
+// Order Posts page by recent activity
+// Adding a smooth collapsing animation to the header banner when user scrolls down - (1/2) got the bnner working so fr
+// making 'show topics' and 'contact me' collapsable side bars instead of their own pages
+// Allowing each page to have its own banner image (dynamic css background images)
+	// Allowing each post to have a unique banner, or just default if no banner is present. (Set default bannerpath and default topic)
+// Making an image carousel for the recent posts section
+// Search comparing input to all existing posts as the user types. Search just takes in the theme and what they types, then returns it (as a prop for a master module, maybe?)
+// Logging in and creating an account functionality
+// Adding a Star / Subscribe system for posts the user follows. 
+// Adding tags
+// Counting number of page views
+// Making page browser when above 10 pages.
+
+/* Figured out how to run the app to test it. - Seemed to be an issue with typescript and react.
+  Troubleshooting steps: 
+
+  ran npm run dev, got a blank page. 
+  # restarted the program
+  ran 'npm start' got an error saying .next is empty, run next build
+  ran next build, command not recodnised
+  ran npm next build, next not recodnised
+  ran npx next build, worked. installed build and built the project. 
+  ran 'npm start' finished with an error that some dependancies are missing
+  ran npx tsc --watch, found zero errors
+  ran npx next build, > Export encountered errors on following paths:
+        /
+        /_error: /404
+        /_error: /500
+  ran npm start, encountered same error as last time: 
+        type: 'Error',
+        code: 'MODULE_NOT_FOUND',
+        requireStack: [
+          'C:\\Users\\User\\Projects\\austin-practice-blog\\node_modules\\next\\dist\\server\\next-server.js',
+          'C:\\Users\\User\\Projects\\austin-practice-blog\\node_modules\\next\\dist\\server\\next.js',
+          'C:\\Users\\User\\Projects\\austin-practice-blog\\node_modules\\next\\dist\\server\\lib\\render-server.js',
+          'C:\\Users\\User\\Projects\\austin-practice-blog\\node_modules\\next\\dist\\compiled\\jest-worker\\processChild.js'
+  // FIXED: Use Src/ directory format for typescript when installing nextjs. 
+
+*/

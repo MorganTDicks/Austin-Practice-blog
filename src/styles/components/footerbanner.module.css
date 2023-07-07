@@ -1,0 +1,14 @@
+.bannerimg{
+    background-image: url(../../Images/Banner.jpg);
+    background-color: gray;
+    background-blend-mode: darken;
+    height: 250px;
+
+    width: auto;
+    background-position: center 352px;
+    
+    
+    text-align: center;
+    line-height: 200px;
+    font-size: 100px;
+}

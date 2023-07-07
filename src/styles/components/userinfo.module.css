@@ -1,0 +1,27 @@
+.tableStuff{
+    text-align: Center;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.topStuff{
+    padding: 10;
+    font-weight: bold;
+}
+
+.bottomStuff{
+    color: silver;
+}
+
+.leftStuff{
+    text-align: right;
+}
+
+.rightStuff{
+    text-align: left;
+}
+
+.middleStuff{
+    width: 5%;
+    text-align: center;
+}
