@@ -65,6 +65,12 @@ npx create-next-app --typescript .
 // Added Basic toolbar (Home, settings). Will replace the text with icons later. 
 // Adjusted homepage text order. 
 
+### Feature Commit 6:
+// descovered the basics of states
+// Adjusted Home Page Layout Slightly
+// Finished Post carousel
+// Finished Home-page Styling. 
+
 ## Currently working on:
 // Switch to home page feature branch
 // Finish Home Page
@@ -72,6 +78,7 @@ npx create-next-app --typescript .
 
 ### ToDO: 
 
+// Move previewContent & fetchUser functions to be publically accessible.
 // Replace toolbar text with icons. 
 // adding styling to dynamic post page
 // Replace the page-not-found page. 

@@ -2,8 +2,7 @@
     background-image: url(../../Images/Banner.jpg);
     background-color: gray;
     background-blend-mode: darken;
-    /* height: 220px; */
-    height: 520px;
+    height: 250px;
 
     width: auto;
     background-position: center 352px;
