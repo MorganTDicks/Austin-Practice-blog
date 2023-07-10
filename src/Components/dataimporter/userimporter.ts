@@ -1,6 +1,4 @@
-function UserImporter(){
-            // TODO: Combine this with dataimporter/index.ts
-        
+function UserImporter(){      
             let arrUsers: Array<User> = [
                 {id: "AA000000",
                 username: "A_Acker", 
@@ -10,7 +8,6 @@ function UserImporter(){
             ];
                 
             return(arrUsers);  
-    // }
 }
 
 export default UserImporter;

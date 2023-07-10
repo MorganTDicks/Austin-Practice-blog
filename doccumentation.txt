@@ -1,5 +1,8 @@
 # Doccumentation: 
 
+# Sprint 1
+// Focus: Creating home page, initialising git & git flow, initialising the next.ts app. 
+
 ## Initialised the repository using the following git commands: 
 //  Navigated to the project folder
 git init
@@ -11,7 +14,7 @@ git flow init (Replied yes to everything)
 // renamed the project folder to all lower case
 npx create-next-app --typescript .
 // Selected no to all addons -- THIS MAKES THE PROGRAM SHOW A BLANK PAGE WHEN RUNNING
-// Instead, i said yes to evverything except using the app router, and I left the import alias default. 
+// Instead, i said yes to everything except using the app router, and I left the import alias default. 
 
 ## First develop branch
 // Changed to branch: Develop
@@ -71,14 +74,33 @@ npx create-next-app --typescript .
 // Finished Post carousel
 // Finished Home-page Styling. 
 
-## Currently working on:
-// Switch to home page feature branch
-// Finish Home Page
+# Sprint 2: 
+Focus: Loging in, profile dashboard, Context & Cross-page states (Reaction)
 
+## Commits
+
+### FilterSearch Stash 1: 
+// Changes stashed. 
+// Searchfilter component must fetch user input and filter, then use context to compile & display in another module. 
+
+### Develop Commit: 
+// Changed Type Declarations to no longer be global (Thanks to Morgan)
+// Allowed previewContent & fetchUser functions to be exported and therefore globally accessible.
+// Cleaned up a bit of messy comments here and there.  
+
+
+## Currently working on:
+// Logging in and creating an account functionality
+// Linking home page to !(logged in)? Login : User dashboard;
+// Creating Profile Dashboard
+// Investigating context usage to keep user info across pages.
 
 ### ToDO: 
 
-// Move previewContent & fetchUser functions to be publically accessible.
+// Editing User type to allow for followed users, followed posts, followed topics?  
+
+// Hide postcarousel buttons when at end. 
+// Fix post title overlapping (see post: bike driver's in the dev preview to understand)
 // Replace toolbar text with icons. 
 // adding styling to dynamic post page
 // Replace the page-not-found page. 
@@ -108,7 +130,6 @@ Skipped:
 	// Allowing each post to have a unique banner, or just default if no banner is present. (Set default bannerpath and default topic)
 // Making an image carousel for the recent posts section
 // Search comparing input to all existing posts as the user types. Search just takes in the theme and what they types, then returns it (as a prop for a master module, maybe?)
-// Logging in and creating an account functionality
 // Adding a Star / Subscribe system for posts the user follows. 
 // Adding tags
 // Counting number of page views

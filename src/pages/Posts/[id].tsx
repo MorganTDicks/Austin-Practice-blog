@@ -43,7 +43,7 @@ export default function Posting(){
             <br/>
             <br/>
             <p> Add a comment or Suggest a post! </p>
-            <UserInfo extrainfo={true} postID={myData}/>
+            <UserInfo extrainfo={true} workingPost={myData}/>
             </Housing> 
         </div> 
     );

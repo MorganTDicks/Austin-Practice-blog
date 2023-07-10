@@ -1,19 +1,17 @@
 import DataImporter from "../dataimporter";
 import styles from "@/styles/components/userinfo.module.css";
+import type { Post } from "@/Declarations/PostTypes";
+import type { Comments } from "@/Declarations/PostTypes";
 
 interface UserProps{
-    postID: Post;
+    workingPost: Post;
     extrainfo?: boolean;
 };
 
-export default function UserInfo({postID, extrainfo = false}: UserProps){
-    // Importing the List of Posts from the object
-    let post = postID;
+export default function UserInfo({workingPost: post, extrainfo = false}: UserProps){
     let arrComments: Array<Comments> = DataImporter.importComments;
     let arrUsers: Array<User> = DataImporter.importUsers;
 
-    // Find Comments of the post, show most recent comment info
-    // postComments: Array<Comment> = getPostComments(postID)
     let postComments:Array<Comments> = [];
     for (let c of arrComments){
         if (c.pid == post.id){
@@ -22,7 +20,7 @@ export default function UserInfo({postID, extrainfo = false}: UserProps){
     }
     
     let noReplies = postComments.length;
-    if (noReplies == 0){ // If no comments on post, then there can't be a most recent post now can there?
+    if (noReplies == 0){ // If no comments on post, then there can't be a most recent post.
         return(
             <table className={styles.tableStuff}> <tr> <td> No replies yet </td> </tr> </table>
         )
@@ -30,7 +28,7 @@ export default function UserInfo({postID, extrainfo = false}: UserProps){
     
     if (extrainfo === false){
         let recentComment  = findRecentComment(postComments);
-        let recentUser:  User = getUser(arrUsers, recentComment);
+        let recentUser:  User = getUser(arrUsers, recentComment.uid);
         
         return(
             <table className={styles.tableStuff}>
@@ -47,11 +45,12 @@ export default function UserInfo({postID, extrainfo = false}: UserProps){
             </table>
         )
     }
+
     // else
     
     return(
         postComments.map((p: Comments) => {
-            let commentUser = getUser(arrUsers, p)
+            let commentUser = getUser(arrUsers, p.uid)
             
             return(
             <table className={styles.tableStuff}>
@@ -72,7 +71,7 @@ export default function UserInfo({postID, extrainfo = false}: UserProps){
     )
 }
 
-function timeSince(date: string){
+export function timeSince(date: string): number{
     const dt = new Date();
     let y = date.slice(0,4) // -> Expected: 'yyyy'
     let currentyear = dt.getFullYear(); // -> Expected: yyyy
@@ -106,11 +105,17 @@ function findRecentComment(postComments: Array<Comments>): Comments{
     return(bigIndex);
 }
 
-function getUser(arrUsers: User[], recentComment: Comments): User{
+export function getUser(arrUsers: User[], inpIdentifier: string): User{
+    // Option 1: Check type of inpObject and action accordingly
+    // Option 2: have two optional paramiters, one for Comments and one for Post
+    // Option 3: have two separate functions, one for Comments one for Post
+    // Option 4: Take just the identifier instead of the whole object. I chose this one. 
+    
     for (let u of arrUsers){
-        if (u.id == recentComment.uid){
-           return(u);
+        if (u.id == inpIdentifier){
+        return(u);
         }
     }
     return {id: '', username: 'No replies yet', name: '', surname: '', email: ''};
+
 }

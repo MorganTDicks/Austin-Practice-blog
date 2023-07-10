@@ -1,3 +1,5 @@
+import type { Post } from "@/Declarations/PostTypes";
+
 function PostImporter(): Array<Post>{
     let arrPosts: Array<Post> = [
         {id: 'hello-world', 

@@ -1,12 +1,16 @@
 import { useState } from "react";
 import Link from "next/link";
 
-import styles from "../../styles/components/postcarousel.module.css";
 import DataImporter from "../dataimporter";
+import styles from "../../styles/components/postcarousel.module.css";
+import type { Post } from "@/Declarations/PostTypes";
+import { getUser } from "./UserInfo";
+import { previewContent } from "../dataimporter/dataitools";
 
 export default function PostCarousel(){
     let arrPosts = DataImporter.importPosts;
     const [currPost, setCurrPost] = useState<Post>(arrPosts[0]);
+    let arrUsers = DataImporter.importUsers;
     
     const prev = () => {
         let postIndex = arrPosts.indexOf(currPost);
@@ -14,8 +18,8 @@ export default function PostCarousel(){
             setCurrPost(arrPosts[postIndex - 1]);
             // Reappear
             return;
-        // Dissapear
-    }
+            // Dissapear
+        }
 
     const next = () => {
         let postIndex = arrPosts.indexOf(currPost);
@@ -23,17 +27,12 @@ export default function PostCarousel(){
             setCurrPost(arrPosts[postIndex + 1]);
             //Set button to re-appear if currently dissapeared
             return;
-        // Set button to dissapear
-    }
-
-    //  TODO: See DataiTools
-    function previewContent(msg: string, numchar: number): string {
-        return(`${msg.substring(0,numchar-3)}...`);
-    }
-
+            // Set button to dissapear
+        }
+        
+        
     return(
         <div className={styles.sorroundstuff}>
-            {/* <h1> {arrPosts.indexOf(currPost)} </h1> */}
             <table className={styles.uls}>
                 <tr>
                 <td className={styles.tablesides}> 
@@ -47,8 +46,7 @@ export default function PostCarousel(){
                         <tr> 
                             <td className={styles.datesuggester}> 
                                 <p> 
-                                    {/* TODO: Move fetchuser function in userinfo module to be publically accessible  */}
-                                    By: {currPost.suggester}
+                                    {getUser(arrUsers, currPost.suggester).username}
                                 </p>
                                 <p> {currPost.postdate} </p>
                             </td>

@@ -5,6 +5,8 @@ import DataImporter from "@/Components/dataimporter";
 // Component Imports
 import Housing from "@/Components/housing/housing";
 import UserInfo from "@/Components/Posts/UserInfo";
+// import SearchFilter from "@/Components/SearchFilter/searchfilter";
+import type { Post } from "@/Declarations/PostTypes";
 
 export default function AllPosts(){
     // Importing the List of Posts from the object
@@ -16,7 +18,7 @@ export default function AllPosts(){
         <div>
             <Housing pagename="All Posts">
             <p> View All posts: </p>
-            <p> Search and Filter </p> 
+            {/* <SearchFilter /> */}
             <p> This give you an idea? Suggest a post! (On the right)</p>
             <br/><br/>
             <div className={styles.PostList}>
@@ -33,7 +35,7 @@ export default function AllPosts(){
                                 </td>
                                 <td className={styles.TableData}> Post Image / Preview </td> 
                                 <td className={styles.TableDatar}> 
-                                    <UserInfo postID={post}/>
+                                    <UserInfo workingPost={post}/>
                                 </td>
                         </tr>
                         );

@@ -1,3 +1,5 @@
+import type { Comments } from "@/Declarations/PostTypes";
+
 function CommentImporter(): Array<Comments>{
     let arrCommy: Array<Comments> = [
         {pid: 'my-first-project-car', 
