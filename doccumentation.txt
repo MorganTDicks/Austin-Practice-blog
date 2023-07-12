@@ -89,6 +89,13 @@ Focus: Loging in, profile dashboard, Context & Cross-page states (Reaction)
 // Cleaned up a bit of messy comments here and there.  
 
 
+### User Feature Commit 1: 
+// Created skeleton for login, dashboard & create account. 
+// Created navigation between login, dashboard & create account. 
+// Investigated why it shows errors when initially starting.
+  // Fixed. Is an issue with Nextjs and tables when table does not contain <tbody>. credit: https://stackoverflow.com/questions/73890509/why-is-using-a-table-in-next-js-throwing-a-hydration-error
+
+
 ## Currently working on:
 // Logging in and creating an account functionality
 // Linking home page to !(logged in)? Login : User dashboard;
@@ -98,6 +105,7 @@ Focus: Loging in, profile dashboard, Context & Cross-page states (Reaction)
 ### ToDO: 
 
 // Editing User type to allow for followed users, followed posts, followed topics?  
+
 
 // Hide postcarousel buttons when at end. 
 // Fix post title overlapping (see post: bike driver's in the dev preview to understand)
@@ -134,6 +142,7 @@ Skipped:
 // Adding tags
 // Counting number of page views
 // Making page browser when above 10 pages.
+// Allowing users to upload an image when creating an account / post. 
 
 /* Figured out how to run the app to test it. - Seemed to be an issue with typescript and react.
   Troubleshooting steps: 
