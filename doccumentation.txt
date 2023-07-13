@@ -95,8 +95,17 @@ Focus: Loging in, profile dashboard, Context & Cross-page states (Reaction)
 // Investigated why it shows errors when initially starting.
   // Fixed. Is an issue with Nextjs and tables when table does not contain <tbody>. credit: https://stackoverflow.com/questions/73890509/why-is-using-a-table-in-next-js-throwing-a-hydration-error
 
+### User Feature Commit 2: 
+// Implimented basic Login functionality. 
+// Implimented basic create account functionality 
+// Added intitialisePost & ~user to make future changes to types easier to impliment
+// Tried to store posts in states in dataimporter, but states need to be in a react component. 
 
-## Currently working on:
+
+
+## Currently working on: 
+// Investigating how to keep Posts & Users in states once initialised
+  
 // Logging in and creating an account functionality
 // Linking home page to !(logged in)? Login : User dashboard;
 // Creating Profile Dashboard

@@ -2,6 +2,8 @@ import DataImporter from "../dataimporter";
 import styles from "@/styles/components/userinfo.module.css";
 import type { Post } from "@/Declarations/PostTypes";
 import type { Comments } from "@/Declarations/PostTypes";
+import type { User } from "@/Declarations/UserTypes";
+
 
 interface UserProps{
     workingPost: Post;
@@ -116,6 +118,6 @@ export function getUser(arrUsers: User[], inpIdentifier: string): User{
         return(u);
         }
     }
-    return {id: '', username: 'No replies yet', name: '', surname: '', email: ''};
+    return({...(DataImporter.initialUser), username: 'No replies yet'});
 
 }
