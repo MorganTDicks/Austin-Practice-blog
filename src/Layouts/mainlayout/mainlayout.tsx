@@ -1,10 +1,10 @@
 import styles from '../../styles/components/housing.module.css';
 
-import TopBanner from "../banner/topbanner";
-import NavBar from "../navbar/navbar";
-import BottomBanner from "../banner/bottombanner";
+import TopBanner from "../../Components/banner/topbanner";
+import NavBar from "../../Components/navbar/navbar";
+import BottomBanner from "../../Components/banner/bottombanner";
 
-export default function Housing(props:any){
+export default function MainLayout(props:any){
     return(
         <>
             <TopBanner pagename={props.pagename} backgroundpath={props.backgroundpath}/>

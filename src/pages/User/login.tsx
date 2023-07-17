@@ -1,7 +1,7 @@
 // Login
 
-import DataImporter from "@/Components/dataimporter";
-import Housing from "@/Components/housing/housing"
+import DataImporter from "@/Utilities/dataimporter";
+import MainLayout from "@/Layouts/mainlayout/mainlayout"
 import { User } from "@/Declarations/UserTypes";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
@@ -50,7 +50,7 @@ export default function LogIn(){
     
     return(
         <>
-            <Housing pagename="Log In">
+            <MainLayout pagename="Log In">
 
                 {/* Log In  */}
                 <p> Log In Page </p>
@@ -71,7 +71,7 @@ export default function LogIn(){
                     or <Link href="./create"> Create an account</Link>.
                 </p>
 
-            </Housing>
+            </MainLayout>
         </>
     )
 }

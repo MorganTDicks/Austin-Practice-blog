@@ -1,9 +1,9 @@
-import Housing from "@/Components/housing/housing";
+import MainLayout from "@/Layouts/mainlayout/mainlayout";
 
 export default function NewPost(){
     return (
         <>
-        <Housing pagename="Suggest a Post">
+        <MainLayout pagename="Suggest a Post">
             <p> (Maybe integrate this with google docs?) </p>
             <p> Log  In </p>
             <p> Name & Choose topic </p>
@@ -12,7 +12,7 @@ export default function NewPost(){
             <p> Submit button </p>
             <p> On to  approval... </p>
 
-        </Housing>
+        </MainLayout>
         </>
     )
 }

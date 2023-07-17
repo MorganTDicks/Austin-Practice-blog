@@ -1,8 +1,8 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-import Housing from "@/Components/housing/housing";
-import DataImporter from "@/Components/dataimporter";
+import MainLayout from "@/Layouts/mainlayout/mainlayout";
+import DataImporter from "@/Utilities/dataimporter";
 import PrevNext from "@/Components/Posts/prevnext";
 import UserInfo from "@/Components/Posts/UserInfo";
 
@@ -31,7 +31,7 @@ export default function Posting(){
 
     return(
         <div>
-            <Housing pagename= {myData.header}> 
+            <MainLayout pagename= {myData.header}> 
             <p> back to browse posts (allign Left) </p>
             <h1> {myData.header} </h1>
             <p> Suggester Info (On the left) </p>
@@ -44,7 +44,7 @@ export default function Posting(){
             <br/>
             <p> Add a comment or Suggest a post! </p>
             <UserInfo extrainfo={true} workingPost={myData}/>
-            </Housing> 
+            </MainLayout> 
         </div> 
     );
 }

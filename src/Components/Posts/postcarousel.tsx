@@ -1,11 +1,11 @@
 import { useState } from "react";
 import Link from "next/link";
 
-import DataImporter from "../dataimporter";
+import DataImporter from "../../Utilities/dataimporter";
 import styles from "../../styles/components/postcarousel.module.css";
 import type { Post } from "@/Declarations/PostTypes";
-import { getUser } from "./UserInfo";
-import { previewContent } from "../dataimporter/dataitools";
+import { getUser } from "../../Utilities/datatools/dataitools";
+import { previewContent } from "../../Utilities/datatools/dataitools";
 
 export default function PostCarousel(){
     let arrPosts = DataImporter.importPosts;

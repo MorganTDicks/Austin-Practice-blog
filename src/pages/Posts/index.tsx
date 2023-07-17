@@ -1,9 +1,9 @@
 import Link from "next/link";
 import styles from '@/styles/components/posts.module.css';
-import DataImporter from "@/Components/dataimporter";
+import DataImporter from "@/Utilities/dataimporter";
 
 // Component Imports
-import Housing from "@/Components/housing/housing";
+import MainLayout from "@/Layouts/mainlayout/mainlayout";
 import UserInfo from "@/Components/Posts/UserInfo";
 // import SearchFilter from "@/Components/SearchFilter/searchfilter";
 import type { Post } from "@/Declarations/PostTypes";
@@ -16,7 +16,7 @@ export default function AllPosts(){
 
     return(
         <div>
-            <Housing backgroundpath = "/Item.jpg" pagename="All Posts">
+            <MainLayout backgroundpath = "/Item.jpg" pagename="All Posts">
             <p> View All posts: </p>
             {/* <SearchFilter /> */}
             <p> This give you an idea? Suggest a post! (On the right)</p>
@@ -42,7 +42,7 @@ export default function AllPosts(){
                     })}
                 </table>
             </div>
-            </Housing>
+            </MainLayout>
         </div>
     )
 }

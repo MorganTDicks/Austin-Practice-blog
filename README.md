@@ -2,9 +2,12 @@
 
 ## Description
 This project uses Next.JS with React & TypeScript to create a blogging website currently consisting of my own dummy blogs. 
+
 The current scope is to display the posts on the blog, whilst also allowing visitors to log in. 
+
 Once a visitor is logged in, they must then be able to add comments to posts, or suggest new posts of their own. 
-myself to post new posts, edit existing posts, approve of suggested posts & comment / reply to comments. 
+
+Allow myself to post new posts, edit existing posts, approve of suggested posts & comment / reply to comments. 
 
 ## History
 For full history, see <a href="./doccumentation.md"> doccumentation.md </a>

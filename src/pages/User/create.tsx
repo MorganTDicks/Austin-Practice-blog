@@ -4,11 +4,11 @@
 // maybe even for adding / editing a post? but maybe that's too far. 
 
 
-import Housing from "@/Components/housing/housing";
+import MainLayout from "@/Layouts/mainlayout/mainlayout";
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { User } from "@/Declarations/UserTypes";
-import DataImporter from "@/Components/dataimporter";
+import DataImporter from "@/Utilities/dataimporter";
 
 // Redirect to dashboard once account created
 
@@ -57,7 +57,7 @@ export default function CreateAccount(){
 
     return(
         <>
-            <Housing pagename ="Create Account">
+            <MainLayout pagename ="Create Account">
                 {/* Log In  */}
                 <Link href="./login"> {`<-`} Back to Login </Link>
                 <p> Create Account </p>
@@ -88,7 +88,7 @@ export default function CreateAccount(){
                     </table>
                     <button type="submit"> Register </button>
                 </form>
-            </Housing>
+            </MainLayout>
         </>
     )
 }
