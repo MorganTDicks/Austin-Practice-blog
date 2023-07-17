@@ -7,7 +7,7 @@ import BottomBanner from "../banner/bottombanner";
 export default function Housing(props:any){
     return(
         <>
-            <TopBanner pagename={props.pagename}/>
+            <TopBanner pagename={props.pagename} backgroundpath={props.backgroundpath}/>
             <NavBar/>
             <div className={styles.defaultStuffs}>
                 {props.children}

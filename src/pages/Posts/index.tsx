@@ -16,7 +16,7 @@ export default function AllPosts(){
 
     return(
         <div>
-            <Housing pagename="All Posts">
+            <Housing backgroundpath = "/Item.jpg" pagename="All Posts">
             <p> View All posts: </p>
             {/* <SearchFilter /> */}
             <p> This give you an idea? Suggest a post! (On the right)</p>

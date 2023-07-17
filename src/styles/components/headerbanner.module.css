@@ -1,5 +1,4 @@
 .bannerbacking{
-    background-image: url(../../Images/Banner.jpg);
     background-color: gray;
     background-blend-mode: darken;
     height: 220px;
@@ -7,18 +6,9 @@
     background-position: center -330px;
 }
 
-.toolbarl{
+.toolbar{
     top: 0;
     z-index: 1021;
-    position: fixed;
-
-}
-
-.toolbarr{
-    top: 0;
-    z-index: 1021;
-    position: fixed;
-    right: 0;
 }
 
 .bannermain{
@@ -28,15 +18,7 @@
     font-size: 100px;
 }
 
-.lical {
-    display: block;
-    color:  #eae5f6;
-    text-align: center;
-    padding: 10px;
-    text-decoration: none;
-}
-
-.licar {
+.lica {
     display: block;
     color: #eae5f6;
     text-align: center;
@@ -44,19 +26,13 @@
     text-decoration: none;
 }
 
-.lical:hover {
+.lica:hover {
     background-color: #1c1c1c;
     color: lightblue;
     padding: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    
-}
-.licar:hover {
-    background-color: #1c1c1c;
-    color: lightblue;
-    padding: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+    border-top-left-radius: var(--leftstyle);
+    border-bottom-left-radius: var(--leftstyle);
+    border-top-right-radius: var(--rightstyle);
+    border-bottom-right-radius: var(--rightstyle);
     
 }

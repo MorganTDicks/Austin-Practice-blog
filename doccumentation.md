@@ -79,32 +79,39 @@ Focus: Loging in, profile dashboard, Context & Cross-page states (Reaction)
 
 ## Commits
 
-### FilterSearch Stash 1: 
+### Stash 1 (filtersearch): 
 // Changes stashed. 
 // Searchfilter component must fetch user input and filter, then use context to compile & display in another module. 
 
-### Develop Commit: 
+### S2 - Commit 0 (Develop): 
 // Changed Type Declarations to no longer be global (Thanks to Morgan)
 // Allowed previewContent & fetchUser functions to be exported and therefore globally accessible.
 // Cleaned up a bit of messy comments here and there.  
 
-
-### User Feature Commit 1: 
+### S2 - Commit 1 (feature/user): 
 // Created skeleton for login, dashboard & create account. 
 // Created navigation between login, dashboard & create account. 
 // Investigated why it shows errors when initially starting.
-  // Fixed. Is an issue with Nextjs and tables when table does not contain <tbody>. credit: https://stackoverflow.com/questions/73890509/why-is-using-a-table-in-next-js-throwing-a-hydration-error
+  // Fixed. Is an issue with Nextjs and tables when table does not contain <p> `<tbody> </tbody>` </p>. credit: https://stackoverflow.com/questions/73890509/why-is-using-a-table-in-next-js-throwing-a-hydration-error
 
-### User Feature Commit 2: 
+### S2 - Commit 2 (feature/user): 
 // Implimented basic Login functionality. 
 // Implimented basic create account functionality 
 // Added intitialisePost & ~user to make future changes to types easier to impliment
 // Tried to store posts in states in dataimporter, but states need to be in a react component. 
 
-
+### S2 - Commit 3 (feature/user instead of develop): 
+-- NOTE TO SELF: Change branches before making your changes for said branch. --
+// implimented some dynamic styling in the header banner module to make the css cleaner. 
+// Got dynamic background images working by using public folder url rather than internal pathing. 
+  // Now** Allows each page to have its own banner image (dynamic css background images)
+	// allows each post to have a unique banner via prop 'backgroundpath', or just default if no banner is present. (Set default bannerpath and default topic)
+// Added Morgan's suggestions to doccumentation
+// Changed doccumentation to doccumentation.md
+// Edited readme.md to correctly reflect the readme. 
 
 ## Currently working on: 
-// Investigating how to keep Posts & Users in states once initialised
+// Investigating how to keep Posts & Users in states once initialised (Context?) 
   
 // Logging in and creating an account functionality
 // Linking home page to !(logged in)? Login : User dashboard;
@@ -113,14 +120,26 @@ Focus: Loging in, profile dashboard, Context & Cross-page states (Reaction)
 
 ### ToDO: 
 
+// Clean up repetitive CSS by using dynamic styling. 
 // Editing User type to allow for followed users, followed posts, followed topics?  
-
 
 // Hide postcarousel buttons when at end. 
 // Fix post title overlapping (see post: bike driver's in the dev preview to understand)
 // Replace toolbar text with icons. 
 // adding styling to dynamic post page
 // Replace the page-not-found page. 
+
+** Suggestions from Morgan 17/07/2023
+
+styling: SCSS styling (look into it. ALso, tailwind.css)
+(material.ui?) - don't use yet. 
+Page not found -- rename to 404 (refer to next.js doccumentation) https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts#layout-pattern
+move housing module into its own layouts folder, and change its name. 
+user passwords -- instead store a jwt token in the future. for now, remove from user type, use an interface on the login page? 
+userinfo -- bulky. Use conditional rendering.  
+dataimporter - move to utilities. 
+dataimporter is just to fetch data. store the context on the homepage? 
+Change doccumentation to doccumentation.md 
 
 Other Features:
 
@@ -138,13 +157,13 @@ Skipped:
 	// Could not get this to work. Mde sseprte dt importers for now.
 	// merge dt importers.  
   // Fixed, using a dictionry 
+// Adding a smooth collapsing animation to the header banner when user scrolls down 
+  //got it working to a point where i am satisfied with how it looks for now.
+
 
 ### Stuff that will bankrupt me: 
 // Order Posts page by recent activity
-// Adding a smooth collapsing animation to the header banner when user scrolls down - (1/2) got the bnner working so fr
 // making 'show topics' and 'contact me' collapsable side bars instead of their own pages
-// Allowing each page to have its own banner image (dynamic css background images)
-	// Allowing each post to have a unique banner, or just default if no banner is present. (Set default bannerpath and default topic)
 // Making an image carousel for the recent posts section
 // Search comparing input to all existing posts as the user types. Search just takes in the theme and what they types, then returns it (as a prop for a master module, maybe?)
 // Adding a Star / Subscribe system for posts the user follows. 
@@ -152,6 +171,7 @@ Skipped:
 // Counting number of page views
 // Making page browser when above 10 pages.
 // Allowing users to upload an image when creating an account / post. 
+
 
 /* Figured out how to run the app to test it. - Seemed to be an issue with typescript and react.
   Troubleshooting steps: 
