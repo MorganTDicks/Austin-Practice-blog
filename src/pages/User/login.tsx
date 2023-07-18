@@ -1,52 +1,64 @@
 // Login
+// Gather the input data, check that it is valid, then send it through to auth to check with the database and set it as logged in. 
 
-import DataImporter from "@/Utilities/dataimporter";
 import MainLayout from "@/Layouts/mainlayout/mainlayout"
-import { User } from "@/Declarations/UserTypes";
+import GenericInput from "@/Components/generic/genericinput";
 import Link from "next/link";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
+import { checkLogin } from "@/Utilities/auth/auth";
 
-// Investigate Context
+type TempUser = {username: string, password: string, usernameisValid: boolean, passwordisValid: boolean};
 
-type TempUser = {username: string, password: string};
 
 export default function LogIn(){
-    const [inputUser, setInputUser] = useState<TempUser>({username: '', password: ''});
+    const [inputUser, setInputUser] = useState<TempUser>({username: '', password: '', usernameisValid: false, passwordisValid: false});
 
     function logInHandler(event: FormEvent<HTMLFormElement>){
-        let passed = false;
         event.preventDefault();
-        let acc: User = DataImporter.initialUser;
 
-        for (let user of DataImporter.importUsers){
-            if ((user.username === inputUser.username) && (user.password === inputUser.password)){
-                acc = user; 
-                passed = true;
-            }
-        }
-        
-        if (!passed){
+        if (!checkLogin(inputUser.username, inputUser.password)){
             alert('Incorrect username or password');
             setInputUser((prevUser) => ({...prevUser, password: ''}));
-            return
+            return;
         }
+
+        // Passed
         console.log('Login Successful');
         
-        
-        /* ... */
+        // Clearing Inputs
+        setInputUser({username: '', password: '', usernameisValid: false, passwordisValid: false});
 
-
-        // Resetting inputUser
-        setInputUser({username: '', password: ''});
-
+        /* ... */ // redirect to previous page once logged in
+            // useNavigate()?
+            // receive previous page link as a 
     }
+
+
 
     function usernameHandler(id: string, val: string){
         if (id === 'username'){
             setInputUser((prevName) => ({...prevName, username: val}));
          } else
-            setInputUser((prevName) => ({...prevName, password: val}));          
+            setInputUser((prevName) => ({...prevName, password: val})); 
     }
+        
+    // TODO: Check validity of inputs before enabling login button (useEffect)     
+    useEffect(()=>{
+        let timia = setTimeout(()=>{
+            // Check input validity
+            if (inputUser.password.length >= 8)
+                inputUser.passwordisValid=true;
+            if (inputUser.username.length > 0)
+                inputUser.usernameisValid=true;
+            console.log('check validity here');
+        }, 500)
+
+        return() => {
+            clearTimeout(timia);
+            console.log('cleared timeout.');
+        }
+
+    }, [inputUser.username, inputUser.password]);
     
     return(
         <>
@@ -57,14 +69,12 @@ export default function LogIn(){
                 
                 <form onSubmit={logInHandler}>
                     <div> 
-                        <label> Enter username </label>
-                        <input type="text" onChange={(event) => {usernameHandler('username', event.target.value)}} value={inputUser.username}/> 
+                        <GenericInput label="UserName" type="text" value={inputUser.username} onChange={(event:any) => {usernameHandler('username', event.target.value)}} />
                     </div>
                     <div> 
-                        <label> Enter Password </label>
-                        <input type="password" onChange={(event) => {usernameHandler('password', event.target.value)}} value={inputUser.password}/> 
+                         <GenericInput label="Password" type="password" value={inputUser.password} onChange={(event:any) => {usernameHandler('password', event.target.value)}} />
                     </div>
-                    <button type="submit"> Log In </button>
+                    <button type="submit" disabled={!((inputUser.passwordisValid) && (inputUser.usernameisValid))}> Log In </button>
                 </form>
                 
                 <p> 

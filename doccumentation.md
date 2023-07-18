@@ -116,6 +116,13 @@ Moved dataimporter to Utilities folder (thanks to Morgan)
 Moved housing module into its own layouts folder, and changed its name to mainlayout. 
 Moved a lot of stuff from userinfo to datatools.
 
+### Sprint 2 - Commit 5 (feature/user)
+created generic input module, making future inputs easier. This also included creating a generic input type declaration. 
+fleshed out the login logic
+created the checklogin component
+added input validation on login page with useEffect
+implimented page not found (404) to now actually work when navigating to a non-existent page. 
+
 
 ## Currently working on: 
 Investigating how to keep Posts & Users in states once initialised (Context?) 
@@ -126,6 +133,11 @@ Creating Profile Dashboard
 Investigating context usage to keep user info across pages.
 
 ### ToDO: 
+
+Logins: 
+Check validity of logins
+store logged in user ID in context. 
+Apply styling to login page
 
 Clean up repetitive CSS by using dynamic styling. 
 Editing User type to allow for followed users, followed posts, followed topics?  
@@ -140,12 +152,11 @@ Replace the page-not-found page.
 #### Suggestions from Morgan 17/07/2023
 
 styling: SCSS styling (look into it. ALso, tailwind.css)
-(material.ui?) - don't use yet. 
+(material.ui?) - don't use yet.  
 Page not found -- rename to 404 (refer to next.js doccumentation) https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts#layout-pattern
 user passwords -- instead store a jwt token in the future. for now, remove from user type, use an interface on the login page? 
 userinfo -- bulky. Use conditional rendering.  
-dataimporter is just to fetch data. store the context on the homepage? 
-Change doccumentation to doccumentation.md 
+dataimporter is just to fetch data. store the context on the homepage? -- context will be stored in a wrapper component that wraps the app page. 
 
 #### Other Features:
 

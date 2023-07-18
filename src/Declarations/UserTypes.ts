@@ -3,6 +3,6 @@ export type User = {
     username: string,
     name: string, 
     surname: string, 
-    email: string,
-    password: string // TODO: Impliment password protection. 
+    email: string
+    // password: string // TODO: Impliment password protection. 
 };

@@ -3,7 +3,7 @@ import { useState } from "react";
 let dummyUsers: Array<User> = [
     {id: "AA000000",
     username: "A_Acker", 
-    password: "1234",
+    // password: "1234",
     name: "Austin",
     surname: "Ackermann", 
     email: "austin@al.co.za"}
@@ -20,5 +20,5 @@ export default UserImporter;
 // Working on: AddUser (create user)
 
 export function initialiseUser(): User{
-    return({id: '', username: '', name: '', surname: '', email: '', password: ''})
+    return({id: '', username: '', name: '', surname: '', email: ''})
 }
