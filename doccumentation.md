@@ -123,21 +123,26 @@ created the checklogin component
 added input validation on login page with useEffect
 implimented page not found (404) to now actually work when navigating to a non-existent page. 
 
+### Sprint 2 - Commit 6 (feature/user)
+created context for login
+finished checkLogin component
+
 
 ## Currently working on: 
-Investigating how to keep Posts & Users in states once initialised (Context?) 
+investigating how to redirect back to a previous page on successful login. 
+  to redirect investigate useRouter hook. https://nextjs.org/docs/pages/api-reference/functions/use-router 
   
 Logging in and creating an account functionality
-Linking home page to !(logged in)? Login : User dashboard;
+Linking home page to !(logged in)? Login : User dashboard; - done
 Creating Profile Dashboard
-Investigating context usage to keep user info across pages.
+Investigating context usage to keep user info across pages. - done
 
 ### ToDO: 
 
 Logins: 
-Check validity of logins
-store logged in user ID in context. 
 Apply styling to login page
+
+fix Home & User going behind navbar (started once checkLogin component was implimented)
 
 Clean up repetitive CSS by using dynamic styling. 
 Editing User type to allow for followed users, followed posts, followed topics?  
@@ -147,16 +152,13 @@ Hide postcarousel buttons when at end.
 Fix post title overlapping (see post: bike driver's in the dev preview to understand)
 Replace toolbar text with icons. 
 adding styling to dynamic post page
-Replace the page-not-found page. 
 
 #### Suggestions from Morgan 17/07/2023
 
 styling: SCSS styling (look into it. ALso, tailwind.css)
 (material.ui?) - don't use yet.  
-Page not found -- rename to 404 (refer to next.js doccumentation) https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts#layout-pattern
-user passwords -- instead store a jwt token in the future. for now, remove from user type, use an interface on the login page? 
-userinfo -- bulky. Use conditional rendering.  
-dataimporter is just to fetch data. store the context on the homepage? -- context will be stored in a wrapper component that wraps the app page. 
+userinfo -- bulky. Use conditional rendering & Layouts
+https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts#layout-pattern
 
 #### Other Features:
 
@@ -188,7 +190,7 @@ Adding tags
 Counting number of page views
 Making page browser when above 10 pages.
 Allowing users to upload an image when creating an account / post. 
-
+make login a pop-up as opposed to a page of its own.
 
 /* Figured out how to run the app to test it. - Seemed to be an issue with typescript and react.
 Troubleshooting steps: 

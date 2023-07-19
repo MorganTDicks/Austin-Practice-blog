@@ -3,12 +3,11 @@
 
 import MainLayout from "@/Layouts/mainlayout/mainlayout"
 import GenericInput from "@/Components/generic/genericinput";
+import { calkLogin } from "@/Utilities/auth/auth";
 import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
-import { checkLogin } from "@/Utilities/auth/auth";
 
 type TempUser = {username: string, password: string, usernameisValid: boolean, passwordisValid: boolean};
-
 
 export default function LogIn(){
     const [inputUser, setInputUser] = useState<TempUser>({username: '', password: '', usernameisValid: false, passwordisValid: false});
@@ -16,7 +15,7 @@ export default function LogIn(){
     function logInHandler(event: FormEvent<HTMLFormElement>){
         event.preventDefault();
 
-        if (!checkLogin(inputUser.username, inputUser.password)){
+        if (!calkLogin(inputUser.username, inputUser.password)){
             alert('Incorrect username or password');
             setInputUser((prevUser) => ({...prevUser, password: ''}));
             return;
@@ -28,9 +27,9 @@ export default function LogIn(){
         // Clearing Inputs
         setInputUser({username: '', password: '', usernameisValid: false, passwordisValid: false});
 
-        /* ... */ // redirect to previous page once logged in
+        /* ... */ // TODO: redirect to previous page once logged in
             // useNavigate()?
-            // receive previous page link as a 
+            // receive previous page link? 
     }
 
 
@@ -42,7 +41,7 @@ export default function LogIn(){
             setInputUser((prevName) => ({...prevName, password: val})); 
     }
         
-    // TODO: Check validity of inputs before enabling login button (useEffect)     
+    // Checking validity of inputs before enabling login button (useEffect)     
     useEffect(()=>{
         let timia = setTimeout(()=>{
             // Check input validity
@@ -50,12 +49,10 @@ export default function LogIn(){
                 inputUser.passwordisValid=true;
             if (inputUser.username.length > 0)
                 inputUser.usernameisValid=true;
-            console.log('check validity here');
-        }, 500)
+        }, 500) // Show a loading arrow on the button while the timer is going?
 
         return() => {
             clearTimeout(timia);
-            console.log('cleared timeout.');
         }
 
     }, [inputUser.username, inputUser.password]);

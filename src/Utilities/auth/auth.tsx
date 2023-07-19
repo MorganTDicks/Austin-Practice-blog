@@ -1,6 +1,6 @@
 import DataImporter from "../dataimporter";
 
-export function checkLogin(username: string, password: string): boolean{
+export function calkLogin(username: string, password: string): boolean{
     
     // Input validation is done before data is passed to this function. 
 
