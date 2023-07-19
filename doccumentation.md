@@ -129,7 +129,12 @@ finished checkLogin component
 
 ### Sprint 2 - Commit 7 (feature/user)
 logging in succesfully now stores uid in context
-login page successfuly redirects upon logging in sucessfully (currently just redirects to home).
+login page successfuly redirects upon logging in sucessfully (used to just redirect to home).
+
+### Sprint 3 - Commit 8 (feature/user)
+Adjused context folder structure slightly.
+added refContext, for redirecting on successful login. Currently globally scoped, hope to change that if it becomes a problem. 
+successful login now redirects the user to the appropriate location if successful.
 
 
 ## Currently working on: 

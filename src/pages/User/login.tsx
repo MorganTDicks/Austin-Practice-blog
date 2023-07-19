@@ -3,7 +3,8 @@
 
 import MainLayout from "@/Layouts/mainlayout/mainlayout"
 import GenericInput from "@/Components/generic/genericinput";
-import loginContext from "@/Context/contextwrapper/contextwrapper";
+import loginContext from "@/Context/loginwrapper/loginwrapper";
+import refContext from "@/Context/refdirectwrapper/refdirectwrapper";
 import { calkLogin } from "@/Utilities/auth/auth";
 import { FormEvent, useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
@@ -15,6 +16,7 @@ export default function LogIn(){
     const [inputUser, setInputUser] = useState<TempUser>({username: '', password: '', usernameisValid: false, passwordisValid: false});
     const rout = useRouter();
     let contex = useContext(loginContext);
+    let refContex = useContext(refContext);
 
     function logInHandler(event: FormEvent<HTMLFormElement>){
         event.preventDefault();
@@ -37,8 +39,7 @@ export default function LogIn(){
         setInputUser({username: '', password: '', usernameisValid: false, passwordisValid: false});
 
         // redirect to previous page once logged in
-        // receive previous page link? 
-        let prevLink = '/';
+        let prevLink = refContex.value || '/'; // Save the link in context or go home
 
         // Note: router does not preload page in production build. Will need to impliment preloading manually at a later stage. 
         rout.push(prevLink);

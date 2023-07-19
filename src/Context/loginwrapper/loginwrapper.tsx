@@ -1,12 +1,11 @@
 // Currently just stores the loginContext.  
+// Scope: login page (sets), global(uses)
 
 import React, { useState } from "react";
 
-// Contexts needed: 
-// LoginID
+// Other contexts needed: 
 // arrPosts?
 // arrComments?
-// arrPosts?
 
 const loginContext = React.createContext({
     value: '',
@@ -17,18 +16,7 @@ export default loginContext;
 
 // Create context wrapper
 
-function reducer(contexState: any, action: any){
-    switch (action.type) {
-        case 'AUTHENTICATION_TOGGLE':
-            return { ...contexState, isAuthenticated: !(contexState.isAuthenticated)};
-        case 'AUTHORISATION_TOGGLE':
-            return { ...contexState, isAuthorised: !(contexState.isAuthorised)};
-        default: 
-            return contexState;
-    }
-}
-
-export function ContextProvider(props: any){
+export function LoginProvider(props: any){
     const [contexState, setContexState] = useState('');
 
     function changer(newVal: string){
