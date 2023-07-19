@@ -3,19 +3,24 @@
 
 import MainLayout from "@/Layouts/mainlayout/mainlayout"
 import GenericInput from "@/Components/generic/genericinput";
+import loginContext from "@/Context/contextwrapper/contextwrapper";
 import { calkLogin } from "@/Utilities/auth/auth";
+import { FormEvent, useEffect, useState, useContext } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
-import { FormEvent, useEffect, useState } from "react";
 
 type TempUser = {username: string, password: string, usernameisValid: boolean, passwordisValid: boolean};
 
 export default function LogIn(){
     const [inputUser, setInputUser] = useState<TempUser>({username: '', password: '', usernameisValid: false, passwordisValid: false});
+    const rout = useRouter();
+    let contex = useContext(loginContext);
 
     function logInHandler(event: FormEvent<HTMLFormElement>){
         event.preventDefault();
 
-        if (!calkLogin(inputUser.username, inputUser.password)){
+        let passuid = calkLogin(inputUser.username, inputUser.password);
+        if (!passuid){
             alert('Incorrect username or password');
             setInputUser((prevUser) => ({...prevUser, password: ''}));
             return;
@@ -24,12 +29,19 @@ export default function LogIn(){
         // Passed
         console.log('Login Successful');
         
+        // Store logged in user in context.
+        contex.changer(passuid);
+        console.log(contex.value);
+        
         // Clearing Inputs
         setInputUser({username: '', password: '', usernameisValid: false, passwordisValid: false});
 
-        /* ... */ // TODO: redirect to previous page once logged in
-            // useNavigate()?
-            // receive previous page link? 
+        // redirect to previous page once logged in
+        // receive previous page link? 
+        let prevLink = '/';
+
+        // Note: router does not preload page in production build. Will need to impliment preloading manually at a later stage. 
+        rout.push(prevLink);
     }
 
 

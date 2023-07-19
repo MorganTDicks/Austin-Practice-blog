@@ -1,6 +1,6 @@
 import DataImporter from "../dataimporter";
 
-export function calkLogin(username: string, password: string): boolean{
+export function calkLogin(username: string, password: string){
     
     // Input validation is done before data is passed to this function. 
 
@@ -22,10 +22,7 @@ export function calkLogin(username: string, password: string): boolean{
     // Consider passing password through other means?
     passwordPassed=true;
 
-    // IF PASSED
+    return((userPassed && passwordPassed) && accid);
 
-    // TODO: Store logged in user in context.
-
-    return (userPassed && passwordPassed);
     
 }

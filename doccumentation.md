@@ -127,6 +127,10 @@ implimented page not found (404) to now actually work when navigating to a non-e
 created context for login
 finished checkLogin component
 
+### Sprint 2 - Commit 7 (feature/user)
+logging in succesfully now stores uid in context
+login page successfuly redirects upon logging in sucessfully (currently just redirects to home).
+
 
 ## Currently working on: 
 investigating how to redirect back to a previous page on successful login. 
@@ -146,6 +150,7 @@ fix Home & User going behind navbar (started once checkLogin component was impli
 
 Clean up repetitive CSS by using dynamic styling. 
 Editing User type to allow for followed users, followed posts, followed topics?  
+investigate why refreshing pages breaks Links
 
 Change findrecentcomment in datatools so that it is able to find the recent post as well, and possibly return an array of ordered results?
 Hide postcarousel buttons when at end. 
