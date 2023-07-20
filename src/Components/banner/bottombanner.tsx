@@ -1,5 +1,4 @@
 // Bottom Banner
-import Link from "next/link";
 import styles from "../../styles/components/footerbanner.module.css";
 
 const BottomBanner = (props: any) =>{

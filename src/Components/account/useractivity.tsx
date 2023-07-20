@@ -4,15 +4,16 @@
 
 import { Comments } from "@/Declarations/PostTypes";
 import { User } from "@/Declarations/UserTypes";
-import DataImporter from "@/Utilities/dataimporter";
 import { getPost, getUser, previewContent } from "@/Utilities/datatools/dataitools";
 import Link from "next/link";
 import styles from '../../styles/components/useractivity.module.css';
+import { useContext } from "react";
+import commentsContext from "@/Context/datawrappers/commentswrapper";
 
 
 export default function UserActivity(props: any){
     let currentUser: User = props.currentUser;
-    let arrComments: Comments[] = DataImporter.importComments;
+    let arrComments: Comments[] = useContext(commentsContext).value;
     
     return(
         <div className={styles.divstuff}>

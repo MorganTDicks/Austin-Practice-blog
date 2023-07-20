@@ -8,8 +8,6 @@ export default function GenericInput(props: any){
     onChange: props.onChange
     };
 
-    
-
     return(
         <>
             <label> {iStuffs.label} </label>

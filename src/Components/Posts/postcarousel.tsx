@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Link from "next/link";
 
-import DataImporter from "../../Utilities/dataimporter";
 import styles from "../../styles/components/postcarousel.module.css";
 import type { Post } from "@/Declarations/PostTypes";
 import { getUser } from "../../Utilities/datatools/dataitools";
 import { previewContent } from "../../Utilities/datatools/dataitools";
+import postContext from "@/Context/datawrappers/postwrapper";
+import userContext from "@/Context/datawrappers/userwrapper";
 
 export default function PostCarousel(){
-    let arrPosts = DataImporter.importPosts;
+    let arrPosts = useContext(postContext).value;
+    let arrUsers = useContext(userContext).value;
     const [currPost, setCurrPost] = useState<Post>(arrPosts[0]);
-    let arrUsers = DataImporter.importUsers;
     
     const prev = () => {
         let postIndex = arrPosts.indexOf(currPost);
@@ -50,7 +51,7 @@ export default function PostCarousel(){
                                     <tr> 
                                         <td className={styles.datesuggester}> 
                                             <p> 
-                                                {getUser(arrUsers, currPost.suggester).username}
+                                                {getUser(currPost.suggester).username}
                                             </p>
                                             <p> {currPost.postdate} </p>
                                         </td>

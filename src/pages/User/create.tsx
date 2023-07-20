@@ -9,6 +9,7 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { User } from "@/Declarations/UserTypes";
 import DataImporter from "@/Utilities/dataimporter";
+import GenericInput from "@/Components/generic/genericinput";
 
 // Redirect to dashboard once account created
 
@@ -65,24 +66,29 @@ export default function CreateAccount(){
                     <table>
                         <tbody> 
                             <tr>
-                                <td> <label> E-Mail </label> </td>
-                                <td> <input type="text" onChange={(event) => inputUpdateHandler('email', event.target.value)} value={newUser.email}/> </td>
+                                <GenericInput label="E-Mail" type="email" onChange={(event: any) => inputUpdateHandler('email', event.target.value)} value={newUser.email}/> 
+                                {/*<td> <label> E-Mail </label> </td>
+                                <td> <input type="text" onChange={(event) => inputUpdateHandler('email', event.target.value)} value={newUser.email}/> </td> */}
                             </tr>
                             <tr>
-                                <td> <label> First Name </label> </td>
-                                <td> <input type="text" onChange={(event) => inputUpdateHandler('name', event.target.value)} value={newUser.name}/> </td>
+                                <GenericInput label="First Name" type="text" onChange={(event: any) => inputUpdateHandler('name', event.target.value)} value={newUser.name}/>
+                                {/* <td> <label> First Name </label> </td>
+                                <td> <input type="text" onChange={(event) => inputUpdateHandler('name', event.target.value)} value={newUser.name}/> </td> */}
                             </tr>
                             <tr>
-                                <td> <label> Last Name </label> </td>
-                                <td> <input type="text" onChange={(event) => inputUpdateHandler('surname', event.target.value)} value={newUser.surname}/> </td>
+                                <GenericInput label="Last Name" type="text" onChange={(event: any) => inputUpdateHandler('surname', event.target.value)} value={newUser.surname}/>
+                                {/* <td> <label> Last Name </label> </td>
+                                <td> <input type="text" onChange={(event) => inputUpdateHandler('surname', event.target.value)} value={newUser.surname}/> </td> */}
                             </tr>
                             <tr>
-                                <td> <label> Username </label> </td>
-                                <td> <input type="text" onChange={(event) => inputUpdateHandler('username', event.target.value)} value={newUser.username}/> </td>
+                                <GenericInput label="Username" type="text" onChange={(event: any) => inputUpdateHandler('username', event.target.value)} value={newUser.username}/>
+                                {/* <td> <label> Username </label> </td>
+                                <td> <input type="text" onChange={(event) => inputUpdateHandler('username', event.target.value)} value={newUser.username}/> </td> */}
                             </tr>
                             <tr>
-                                <td> <label> Password </label> </td>
-                                <td> <input type="password" onChange={(event) => inputUpdateHandler('password', event.target.value)} value={newUser.password}/> </td>
+                                {/* <GenericInput label="Password" type="text" onChange={(event: any) => inputUpdateHandler('password', event.target.value)} value={newUser.password}/> */}
+                                {/* <td> <label> Password </label> </td>
+                                <td> <input type="password" onChange={(event) => inputUpdateHandler('password', event.target.value)}/> </td> */}
                             </tr>
                         </tbody>
                     </table>

@@ -146,6 +146,12 @@ Styled userSummary
 Created useractivity module
 styled useractivity module
 
+### Sprint 5 - Commit 10 (feature/user)
+created settings page for adjusting user information
+users, posts & comments are now stored in context states. This means that the content can now be updated during runtime (adding / editing) 
+
+
+creating a module for adding / editing user information (optional parameter to preload a user, otherwise save to a new user)
 
 
 ## Currently working on: 
