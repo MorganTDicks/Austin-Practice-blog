@@ -6,33 +6,9 @@
     background-position: center -330px;
 }
 
-.toolbar{
-    top: 0;
-    z-index: 1021;
-}
-
 .bannermain{
     
     text-align: center;
     line-height: 200px;
     font-size: 100px;
-}
-
-.lica {
-    display: block;
-    color: #eae5f6;
-    text-align: center;
-    padding: 10px;
-    text-decoration: none;
-}
-
-.lica:hover {
-    background-color: #1c1c1c;
-    color: lightblue;
-    padding: 10px;
-    border-top-left-radius: var(--leftstyle);
-    border-bottom-left-radius: var(--leftstyle);
-    border-top-right-radius: var(--rightstyle);
-    border-bottom-right-radius: var(--rightstyle);
-    
 }

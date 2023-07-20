@@ -136,25 +136,38 @@ Adjused context folder structure slightly.
 added refContext, for redirecting on successful login. Currently globally scoped, hope to change that if it becomes a problem. 
 successful login now redirects the user to the appropriate location if successful.
 
+### Sprint 4 - Commit 9 (feature/user)
+moved toolbar into its own component. 
+Created alternate layout for when in a post or on dashboard.
+investigated why toolbar displays behind navbar. Results inconclusive. 
+Created basic dashboard skeleton.
+Created userSummary module for dashboard
+Styled userSummary
+Created useractivity module
+styled useractivity module
+
+
 
 ## Currently working on: 
-investigating how to redirect back to a previous page on successful login. 
-  to redirect investigate useRouter hook. https://nextjs.org/docs/pages/api-reference/functions/use-router 
   
-Logging in and creating an account functionality
-Linking home page to !(logged in)? Login : User dashboard; - done
+Logging in - done
+  and creating an account functionality
 Creating Profile Dashboard
+Linking home page to !(logged in)? Login : User dashboard; - done
 Investigating context usage to keep user info across pages. - done
+
 
 ### ToDO: 
 
 Logins: 
 Apply styling to login page
 
-fix Home & User going behind navbar (started once checkLogin component was implimented)
-
-Clean up repetitive CSS by using dynamic styling. 
 Editing User type to allow for followed users, followed posts, followed topics?  
+Allowing users to upload an image when creating an account / post. 
+dashboard, replace image with generic image if not found.
+
+fix Home & User going behind navbar (started once checkLogin component was implimented)
+Clean up repetitive CSS by using dynamic styling. 
 investigate why refreshing pages breaks Links
 
 Change findrecentcomment in datatools so that it is able to find the recent post as well, and possibly return an array of ordered results?
@@ -173,7 +186,6 @@ https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layout
 #### Other Features:
 
 Create Search Bar Component (Separate Feature Branch)?
-Users profile Page
 Topics 
 Suggesting & Adding Posts
 Deleting Posts
@@ -193,13 +205,11 @@ got it working to a point where i am satisfied with how it looks for now.
 ### Stuff that will bankrupt me: 
 Order Posts page by recent activity
 making 'show topics' and 'contact me' collapsable side bars instead of their own pages
-Making an image carousel for the recent posts section
 Search comparing input to all existing posts as the user types. Search just takes in the theme and what they types, then returns it (as a prop for a master module, maybe?)
 Adding a Star / Subscribe system for posts the user follows. 
 Adding tags
 Counting number of page views
 Making page browser when above 10 pages.
-Allowing users to upload an image when creating an account / post. 
 make login a pop-up as opposed to a page of its own.
 
 /* Figured out how to run the app to test it. - Seemed to be an issue with typescript and react.

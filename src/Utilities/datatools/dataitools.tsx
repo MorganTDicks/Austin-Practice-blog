@@ -1,23 +1,40 @@
 import DataImporter from "../dataimporter";
 import type { User } from "@/Declarations/UserTypes";
-import type { Comments } from "@/Declarations/PostTypes";
+import type { Comments, Post } from "@/Declarations/PostTypes";
 
 export function previewContent(msg: string, numchar: number): string {
     return(`${msg.substring(0,numchar-3)}...`);
 }
 
-export function getUser(arrUsers: User[], inpIdentifier: string): User{
+export function getUser(inpIdentifier: string): User{
     // Option 1: Check type of inpObject and action accordingly
     // Option 2: have two optional paramiters, one for Comments and one for Post
     // Option 3: have two separate functions, one for Comments one for Post
     // Option 4: Take just the identifier instead of the whole object. I chose this one. 
     
+    let arrUsers: User[] = DataImporter.importUsers;
+
     for (let u of arrUsers){
         if (u.id == inpIdentifier){
         return(u);
         }
     }
     return({...(DataImporter.initialUser), username: 'No replies yet'});
+}
+
+export function getPost(postID: string): Post{
+    let arrPosts: Post[] = DataImporter.importPosts;
+
+    for (let p of arrPosts){
+        if (p.id == postID){
+        return(p);
+        }
+    }
+    
+    return(
+        {...(DataImporter.initialPost)}
+    )
+
 }
 
 export function timeSince(date: string): number{

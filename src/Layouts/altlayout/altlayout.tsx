@@ -1,13 +1,13 @@
 import styles from '../../styles/components/housing.module.css';
 
-import TopBanner from "../../Components/banner/topbanner";
 import NavBar from "../../Components/bars/navbar";
 import BottomBanner from "../../Components/banner/bottombanner";
+import ToolBar from '@/Components/bars/toolbar';
 
-export default function MainLayout(props:any){
+export default function AltLayout(props:any){
     return(
         <>
-            <TopBanner pagename={props.pagename} backgroundpath={props.backgroundpath}/>
+            <ToolBar/>
             <NavBar/>
             <div className={styles.defaultStuffs}>
                 {props.children}
