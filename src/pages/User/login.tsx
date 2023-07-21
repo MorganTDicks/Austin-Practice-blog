@@ -9,11 +9,12 @@ import { calkLogin } from "@/Utilities/auth/auth";
 import { FormEvent, useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import styles from '../../styles/components/login.module.css';
 
-type TempUser = {username: string, password: string, usernameisValid: boolean, passwordisValid: boolean};
+type TempUser = {username: string, password: string, isValid: boolean};
 
 export default function LogIn(){
-    const [inputUser, setInputUser] = useState<TempUser>({username: '', password: '', usernameisValid: false, passwordisValid: false});
+    const [inputUser, setInputUser] = useState<TempUser>({username: '', password: '', isValid: false});
     const rout = useRouter();
     let contex = useContext(loginContext);
     let refContex = useContext(refContext);
@@ -36,7 +37,7 @@ export default function LogIn(){
         console.log(contex.value);
         
         // Clearing Inputs
-        setInputUser({username: '', password: '', usernameisValid: false, passwordisValid: false});
+        setInputUser({username: '', password: '', isValid: false});
 
         // redirect to previous page once logged in
         let prevLink = refContex.value || '/'; // Save the link in context or go home
@@ -58,10 +59,8 @@ export default function LogIn(){
     useEffect(()=>{
         let timia = setTimeout(()=>{
             // Check input validity
-            if (inputUser.password.length >= 8)
-                inputUser.passwordisValid=true;
-            if (inputUser.username.length > 0)
-                inputUser.usernameisValid=true;
+            if ((inputUser.password.length >= 8) && (inputUser.username.length > 0))
+                inputUser.isValid=true;
         }, 500) // Show a loading arrow on the button while the timer is going?
 
         return() => {
@@ -73,24 +72,26 @@ export default function LogIn(){
     return(
         <>
             <MainLayout pagename="Log In">
+                <div className={styles.divstuff}>
 
                 {/* Log In  */}
-                <p> Log In Page </p>
+                <p className={styles.headerstuff}> Log In Page </p>
                 
-                <form onSubmit={logInHandler}>
-                    <div> 
+                <form onSubmit={logInHandler} className={styles.formstuff}>
+                    <div className={styles.forminner}> 
                         <GenericInput label="UserName" type="text" value={inputUser.username} onChange={(event:any) => {usernameHandler('username', event.target.value)}} />
                     </div>
                     <div> 
                          <GenericInput label="Password" type="password" value={inputUser.password} onChange={(event:any) => {usernameHandler('password', event.target.value)}} />
                     </div>
-                    <button type="submit" disabled={!((inputUser.passwordisValid) && (inputUser.usernameisValid))}> Log In </button>
+                    <button type="submit" disabled={!((inputUser.isValid))} className={styles.buttonstuff} style={inputUser.isValid? {color: "white", backgroundColor: "green"} : {color: "silver", backgroundColor: "grey"}}> Log In </button>
                 </form>
                 
                 <p> 
-                    or <Link href="./create"> Create an account</Link>.
+                    or <Link href="./create" className={styles.linkstuff}> Create an account</Link>.
                 </p>
 
+                </div>
             </MainLayout>
         </>
     )

@@ -131,12 +131,12 @@ finished checkLogin component
 logging in succesfully now stores uid in context
 login page successfuly redirects upon logging in sucessfully (used to just redirect to home).
 
-### Sprint 3 - Commit 8 (feature/user)
+### Sprint 2 - Commit 8 (feature/user)
 Adjused context folder structure slightly.
 added refContext, for redirecting on successful login. Currently globally scoped, hope to change that if it becomes a problem. 
 successful login now redirects the user to the appropriate location if successful.
 
-### Sprint 4 - Commit 9 (feature/user)
+### Sprint 2 - Commit 9 (feature/user)
 moved toolbar into its own component. 
 Created alternate layout for when in a post or on dashboard.
 investigated why toolbar displays behind navbar. Results inconclusive. 
@@ -146,12 +146,20 @@ Styled userSummary
 Created useractivity module
 styled useractivity module
 
-### Sprint 5 - Commit 10 (feature/user)
+### Sprint 2 - Commit 10 (feature/user)
 created settings page for adjusting user information
 users, posts & comments are now stored in context states. This means that the content can now be updated during runtime (adding / editing) 
 
+### Sprint 2 - Commit 11 (feature/user)
+implimented id generation when creating a user
+implimented input checking for user creation
+Finished create account functionality
 
-creating a module for adding / editing user information (optional parameter to preload a user, otherwise save to a new user)
+### Sprint 2 - Commit 12 (feature/user)
+CSS 
+
+
+
 
 
 ## Currently working on: 
@@ -167,6 +175,7 @@ Investigating context usage to keep user info across pages. - done
 
 Logins: 
 Apply styling to login page
+creating a module for adding / editing user information (optional parameter to preload a user, otherwise save to a new user)
 
 Editing User type to allow for followed users, followed posts, followed topics?  
 Allowing users to upload an image when creating an account / post. 

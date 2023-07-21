@@ -10,7 +10,8 @@ let initialUser = DataImporter.importUsers;
 
 const userContext = React.createContext({
     value: initialUser,
-    changer: (newVal: User)=>{}
+    changer: (newVal: User)=>{},
+    updater: (newVal: User)=>{}
 })
 
 export default userContext;
@@ -24,9 +25,23 @@ export function UserProvider(props: any){
         setContexState((preVal) => ({...preVal, newVal}));
     }
 
+    function updater(newVal: User){
+        setContexState((preVal: User[]) => {
+            // Deleting the old object
+            for (let u of preVal){
+                if (u.id == newVal.id){
+                    preVal.splice(preVal.indexOf(u), 1);
+                }
+            }
+            // Adding the new object
+            return({...preVal, newVal});
+        });
+    }
+
     const contexStuff = {
         value: contexState,
-        changer: changer
+        changer: changer,
+        updater: updater
     }
 
     return(

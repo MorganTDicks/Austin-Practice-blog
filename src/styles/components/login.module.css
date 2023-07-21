@@ -1,0 +1,39 @@
+.formstuff{
+    background-color: #424c48;
+    width: 50%;
+    margin: auto;
+    padding: 25pt;
+    padding-bottom: 0pt;
+    border-radius: 25pt;
+}
+
+.forminner{
+    margin-bottom: 2%;
+}
+
+.divstuff{
+    background-color: #424242;
+    margin-left: 15%;
+    width: 70%;
+    padding: 25pt;
+    border-radius: 25pt;
+}
+
+.headerstuff{
+    margin: 3%;
+    margin-top: 0;
+    font-size: larger;
+}
+
+.buttonstuff{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding: 10pt;
+    background-color: green;
+    border-radius: 10pt;
+}
+
+.linkstuff{
+    text-decoration-line: underline;
+    color: lightblue;
+}

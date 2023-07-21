@@ -12,6 +12,7 @@ import loginContext from "@/Context/loginwrapper/loginwrapper"
 import { getUser } from "@/Utilities/datatools/dataitools";
 import { useContext } from "react"
 import { User } from "@/Declarations/UserTypes";
+import Link from "next/link";
 
 export default function Dashboard(){
     const contex = useContext(loginContext);
@@ -26,7 +27,7 @@ export default function Dashboard(){
                     <tr>
                         <td className={styles.userstuff}>
                             <UserSummary currentUser={currentUser}/>
-                            <p> Edit Profile or Change Settings </p>
+                            <Link href="/User/settings"> Edit Profile </Link>
                         </td>
                         <td className={styles.followedstuff}> 
                             <UserActivity currentUser={currentUser}/>

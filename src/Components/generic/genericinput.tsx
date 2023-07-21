@@ -11,7 +11,7 @@ export default function GenericInput(props: any){
     return(
         <>
             <label> {iStuffs.label} </label>
-            <input type={iStuffs.type} onChange={iStuffs.onChange} value={iStuffs.value}/> 
+            <input type={iStuffs.type} onChange={iStuffs.onChange} value={iStuffs.value} style={{color: "black"}}/> 
         </>
     )
 }
