@@ -39,7 +39,7 @@ export function getPost(postID: string): Post{
 
 export function timeSince(date: string): number{
     const dt = new Date();
-    let y = date.slice(0,4) // -> Expected: 'yyyy'
+    let y = date.slice(0,4); // -> Expected: 'yyyy'
     let currentyear = dt.getFullYear(); // -> Expected: yyyy
 
     let m = date.slice(5,7); // -> Expected: 'mm'
