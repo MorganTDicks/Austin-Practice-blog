@@ -1,0 +1,26 @@
+.tablestuff{
+    background-color: #424242;
+    border-radius: 10px;
+    margin: auto;
+    width: 100%;
+}
+
+.imagetable{
+    padding-left: 20px;
+    width: 45%;
+}
+
+.imagestuffs{
+    border-radius: 250px;
+    height: 250px;
+    padding: 10px;
+}
+
+.infostuffs{
+    padding: 10px;
+    padding-right: 20px;
+    text-align: left;
+    margin-left: 0;
+    padding-left: 0;
+    font-size: larger;
+}

@@ -1,0 +1,1 @@
+// Morgan mentioned previous / next post being part of a layout. That would go here. 

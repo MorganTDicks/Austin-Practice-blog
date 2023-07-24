@@ -1,5 +1,4 @@
 .bannerbacking{
-    background-image: url(../../Images/Banner.jpg);
     background-color: gray;
     background-blend-mode: darken;
     height: 220px;
@@ -7,56 +6,9 @@
     background-position: center -330px;
 }
 
-.toolbarl{
-    top: 0;
-    z-index: 1021;
-    position: fixed;
-
-}
-
-.toolbarr{
-    top: 0;
-    z-index: 1021;
-    position: fixed;
-    right: 0;
-}
-
 .bannermain{
     
     text-align: center;
     line-height: 200px;
     font-size: 100px;
-}
-
-.lical {
-    display: block;
-    color:  #eae5f6;
-    text-align: center;
-    padding: 10px;
-    text-decoration: none;
-}
-
-.licar {
-    display: block;
-    color: #eae5f6;
-    text-align: center;
-    padding: 10px;
-    text-decoration: none;
-}
-
-.lical:hover {
-    background-color: #1c1c1c;
-    color: lightblue;
-    padding: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    
-}
-.licar:hover {
-    background-color: #1c1c1c;
-    color: lightblue;
-    padding: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    
 }

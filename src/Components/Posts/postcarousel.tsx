@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Link from "next/link";
 
-import DataImporter from "../dataimporter";
 import styles from "../../styles/components/postcarousel.module.css";
 import type { Post } from "@/Declarations/PostTypes";
-import { getUser } from "./UserInfo";
-import { previewContent } from "../dataimporter/dataitools";
+import { getUser } from "../../Utilities/datatools/dataitools";
+import { previewContent } from "../../Utilities/datatools/dataitools";
+import postContext from "@/Context/datawrappers/postwrapper";
+import userContext from "@/Context/datawrappers/userwrapper";
 
 export default function PostCarousel(){
-    let arrPosts = DataImporter.importPosts;
+    let arrPosts = useContext(postContext).value;
+    let arrUsers = useContext(userContext).value;
     const [currPost, setCurrPost] = useState<Post>(arrPosts[0]);
-    let arrUsers = DataImporter.importUsers;
     
     const prev = () => {
         let postIndex = arrPosts.indexOf(currPost);
@@ -34,37 +35,45 @@ export default function PostCarousel(){
     return(
         <div className={styles.sorroundstuff}>
             <table className={styles.uls}>
-                <tr>
-                <td className={styles.tablesides}> 
-                    <button onClick={prev} className={styles.buttonstuff}>
-                        {' < '} 
-                    </button>
-                </td> 
-                <td className={styles.tablecontent}> 
-                    <p className={styles.internalHeader}> {currPost.header} </p>
-                    <table className={styles.internalTable}>
-                        <tr> 
-                            <td className={styles.datesuggester}> 
-                                <p> 
-                                    {getUser(arrUsers, currPost.suggester).username}
-                                </p>
-                                <p> {currPost.postdate} </p>
-                            </td>
-                            <td className={styles.bodycontent}> 
-                                {previewContent(currPost.body, 100)} 
-                            </td>
-                        </tr>
-                        <tr> 
-                        </tr>
-                    </table>
-                    <Link href= {`/Posts/${currPost.id}`} className={styles.linkstuff}> View This Post </Link>
-                </td> 
-                <td className={styles.tablesides}> 
-                    <button onClick={next} className={styles.buttonstuff}>
-                        {' > '} 
-                    </button>
-                </td>
-                </tr> 
+                <tbody>
+                    <tr>
+
+                        <td className={styles.tablesides}> 
+                            <button onClick={prev} className={styles.buttonstuff}>
+                                {' < '} 
+                            </button>
+                        </td> 
+                        
+                        <td className={styles.tablecontent}>     
+                            <p className={styles.internalHeader}> {currPost.header} </p>
+                            <table className={styles.internalTable}>
+                                <tbody> 
+                                    <tr> 
+                                        <td className={styles.datesuggester}> 
+                                            <p> 
+                                                {getUser(currPost.suggester).username}
+                                            </p>
+                                            <p> {currPost.postdate} </p>
+                                        </td>
+                                        <td className={styles.bodycontent}> 
+                                            {previewContent(currPost.body, 100)} 
+                                        </td>
+                                    </tr>
+                                    <tr> 
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <Link href= {`/Posts/${currPost.id}`} className={styles.linkstuff}> View This Post </Link>
+                        </td> 
+
+                        <td className={styles.tablesides}> 
+                            <button onClick={next} className={styles.buttonstuff}>
+                                {' > '} 
+                            </button>
+                        </td>
+
+                    </tr> 
+                </tbody>
             </table>
         </div>
     )

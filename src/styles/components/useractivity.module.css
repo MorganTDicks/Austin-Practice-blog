@@ -1,0 +1,29 @@
+.divstuff{
+    width: 100%;
+}
+
+.headerstuff{
+    /* margin-bottom: 3%; */
+    margin-top: 0%;
+    background-color:  #424242;
+    padding: 10pt;
+    border-radius: 10pt;
+}
+
+.bodystuff{
+    background-color:  #424242;
+    padding: 10pt;
+    border-radius: 10pt;
+}
+
+.ulstuff{
+    background-color: #1c1c1c;
+    padding: 10pt;
+    margin: 1%;
+    border-radius: 10pt;
+}
+
+.linkstuff{
+    color: lightblue;
+    text-decoration-line: underline;
+}

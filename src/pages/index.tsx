@@ -4,14 +4,14 @@ import Link from "next/link";
 import styles from '../styles/components/homepage.module.css';
 
 // Component Imports
-import Housing from "@/Components/housing/housing";
+import MainLayout from "@/Layouts/mainlayout/mainlayout";
 import PostCarousel from "@/Components/Posts/postcarousel";
 
 export default function Home(){
   
   return(
       <>
-      <Housing pagename="Home">
+      <MainLayout pagename="Home">
 
         {/* Header */}
         <div className={styles.headerstuff}> 
@@ -65,7 +65,7 @@ export default function Home(){
           <p> Click the relevant links to find out! </p>
         </div>
         <br/><br/>
-      </Housing>
+      </MainLayout>
       </>
   );
 };

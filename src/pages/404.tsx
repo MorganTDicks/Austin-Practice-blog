@@ -1,6 +1,6 @@
 // Want this to replace the default page not found. TODO
 import { useRouter } from "next/router";
-import NavBar from "@/Components/navbar/navbar";
+import NavBar from "@/Components/bars/navbar";
 import TopBanner from "@/Components/banner/topbanner";
 import Link from "next/link";
 

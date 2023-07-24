@@ -1,7 +1,11 @@
-import DataImporter from "../dataimporter";
 import styles from "@/styles/components/userinfo.module.css";
 import type { Post } from "@/Declarations/PostTypes";
 import type { Comments } from "@/Declarations/PostTypes";
+import type { User } from "@/Declarations/UserTypes";
+import { getUser, findRecentComment, timeMessage } from "@/Utilities/datatools/dataitools";
+import { useContext } from "react";
+import commentsContext from "@/Context/datawrappers/commentswrapper";
+import userContext from "@/Context/datawrappers/userwrapper";
 
 interface UserProps{
     workingPost: Post;
@@ -9,8 +13,8 @@ interface UserProps{
 };
 
 export default function UserInfo({workingPost: post, extrainfo = false}: UserProps){
-    let arrComments: Array<Comments> = DataImporter.importComments;
-    let arrUsers: Array<User> = DataImporter.importUsers;
+    let arrComments: Array<Comments> = useContext(commentsContext).value;
+    let arrUsers: Array<User> = useContext(userContext).value;
 
     let postComments:Array<Comments> = [];
     for (let c of arrComments){
@@ -28,7 +32,7 @@ export default function UserInfo({workingPost: post, extrainfo = false}: UserPro
     
     if (extrainfo === false){
         let recentComment  = findRecentComment(postComments);
-        let recentUser:  User = getUser(arrUsers, recentComment.uid);
+        let recentUser:  User = getUser(recentComment.uid);
         
         return(
             <table className={styles.tableStuff}>
@@ -50,7 +54,7 @@ export default function UserInfo({workingPost: post, extrainfo = false}: UserPro
     
     return(
         postComments.map((p: Comments) => {
-            let commentUser = getUser(arrUsers, p.uid)
+            let commentUser = getUser(p.uid)
             
             return(
             <table className={styles.tableStuff}>
@@ -71,51 +75,3 @@ export default function UserInfo({workingPost: post, extrainfo = false}: UserPro
     )
 }
 
-export function timeSince(date: string): number{
-    const dt = new Date();
-    let y = date.slice(0,4) // -> Expected: 'yyyy'
-    let currentyear = dt.getFullYear(); // -> Expected: yyyy
-
-    let m = date.slice(5,7); // -> Expected: 'mm'
-    let currentmonth= dt.getMonth()+1; // ->Expected: mm (NOTE: 0 is janury)
-
-    let d = date.slice(8,10); // -> Expected: 'dd'
-    let currentday = dt.getDate(); // -> Expected: dd
-
-    let newy = currentyear - +y;
-    let newm = currentmonth - +m;
-    let newd = currentday - +d;
-
-    let fin = newy*365 + newm*30 + newd;
-    return(fin);
-}
-
-function timeMessage(inp: string){
-    let fin= timeSince(inp);
-    if (fin == 0) return('Just now');
-    if (fin == 1) return(`1 day ago.`);
-    return(`${fin} days ago.`);
-}
-
-function findRecentComment(postComments: Array<Comments>): Comments{
-    let bigIndex = postComments.reduce((prev,curr) => {
-        return (timeSince(prev.activitydate) < timeSince(curr.activitydate))? prev: curr;
-    });
-
-    return(bigIndex);
-}
-
-export function getUser(arrUsers: User[], inpIdentifier: string): User{
-    // Option 1: Check type of inpObject and action accordingly
-    // Option 2: have two optional paramiters, one for Comments and one for Post
-    // Option 3: have two separate functions, one for Comments one for Post
-    // Option 4: Take just the identifier instead of the whole object. I chose this one. 
-    
-    for (let u of arrUsers){
-        if (u.id == inpIdentifier){
-        return(u);
-        }
-    }
-    return {id: '', username: 'No replies yet', name: '', surname: '', email: ''};
-
-}

@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from '../../styles/components/prevnext.module.css';
 import { useRouter } from "next/router";
 import type { Post } from "@/Declarations/PostTypes";
