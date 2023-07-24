@@ -38,7 +38,7 @@ export default function UserInput(props: any){
             
             // Saving new User.
             props.newuser? contex.changer(newUser): contex.updater(newUser);
-            console.log(contex.value[contex.value.length-1]);
+            console.log(contex.value[contex.value.length]);
 
             // TODO: Save Password
 
@@ -46,7 +46,7 @@ export default function UserInput(props: any){
             setNewUser({...(DataImporter.initialUser), password: ''});
 
             // redirect to the login screen
-            rout.push('/User/login');
+            rout.push(props.href);
     }
 
     function inputUpdateHandler(id: string, val: string){
@@ -71,7 +71,6 @@ export default function UserInput(props: any){
 
     return(
         <>
-                {/* Log In  */}
                 <Link href={props.href} className={styles.linkstuff}> {props.backto} </Link>
                 <div className={styles.divstuff}>
                 <p className={styles.headerstuff}> {props.purpose} </p>
@@ -110,8 +109,9 @@ function calcID(firstname: string, surname: string, arrUsers: User[]){
 
     // Check if number already taken, if so, incriment by 1. 
     let pass = true;
+    console.log(arrUsers);
     do{
-        for (let u of arrUsers){
+        for (let u of [...arrUsers]){
             if (u.id.slice(0,2) == `${fnn}${lnn}`){
                 if (+u.id.slice(3,9) == rand){
                     rand += 1; 

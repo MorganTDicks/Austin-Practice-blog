@@ -6,6 +6,12 @@ let dummyUsers: Array<User> = [
     // password: "1234",
     name: "Austin",
     surname: "Ackermann", 
+    email: "austin@al.co.za"},
+    {id: "AA000111",
+    username: "AusTwo", 
+    // password: "1234",
+    name: "Austin",
+    surname: "Ackermann", 
     email: "austin@al.co.za"}
 ];
 function UserImporter(){      

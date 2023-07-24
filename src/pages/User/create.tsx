@@ -12,7 +12,7 @@ export default function CreateAccount(){
         <>
             <MainLayout pagename ="Create Account">
                 <UserInput 
-                    href="./login" 
+                    href="/User/login" 
                     backto="<- Back to Login" 
                     purpose="Create Account" 
                     buttontext="Register" 

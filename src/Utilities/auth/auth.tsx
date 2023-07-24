@@ -1,6 +1,6 @@
-import DataImporter from "../dataimporter";
+import { User } from "@/Declarations/UserTypes";
 
-export function calkLogin(username: string, password: string){
+export function calkLogin(username: string, password: string, arrUsers: User[]){
     
     // Input validation is done before data is passed to this function. 
 
@@ -10,7 +10,7 @@ export function calkLogin(username: string, password: string){
     let userPassed=false;
     let passwordPassed = false;
 
-    for (let user of DataImporter.importUsers){
+    for (let user of arrUsers){
         if ((user.username === username)){
             accid = user.id; 
             userPassed=true;

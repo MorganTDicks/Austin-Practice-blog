@@ -10,6 +10,7 @@ import { FormEvent, useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import styles from '../../styles/components/login.module.css';
+import userContext from "@/Context/datawrappers/userwrapper";
 
 type TempUser = {username: string, password: string, isValid: boolean};
 
@@ -18,11 +19,12 @@ export default function LogIn(){
     const rout = useRouter();
     let contex = useContext(loginContext);
     let refContex = useContext(refContext);
+    let userContex = useContext(userContext);
 
     function logInHandler(event: FormEvent<HTMLFormElement>){
         event.preventDefault();
 
-        let passuid = calkLogin(inputUser.username, inputUser.password);
+        let passuid = calkLogin(inputUser.username, inputUser.password, userContex.value);
         if (!passuid){
             alert('Incorrect username or password');
             setInputUser((prevUser) => ({...prevUser, password: ''}));
@@ -59,7 +61,7 @@ export default function LogIn(){
     useEffect(()=>{
         let timia = setTimeout(()=>{
             // Check input validity
-            if ((inputUser.password.length >= 8) && (inputUser.username.length > 0))
+            if ((inputUser.password.length > 7) && (inputUser.username.length > 0))
                 inputUser.isValid=true;
         }, 500) // Show a loading arrow on the button while the timer is going?
 

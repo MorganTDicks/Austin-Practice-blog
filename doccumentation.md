@@ -156,10 +156,13 @@ implimented input checking for user creation
 Finished create account functionality
 
 ### Sprint 2 - Commit 12 (feature/user)
-CSS 
+Added Create account, login & edit user CSS 
+Moved create functionality to its own modular component, which is then reused in edit account 
+Finished tweaks to get the above working correctly. 
 
-
-
+### Sprint 2 - Commit 13 (feature/user)
+Fixed error where account creation would create an object instead of an array. 
+auth now fetches users context, as opposed to using dataimporter. 
 
 
 ## Currently working on: 

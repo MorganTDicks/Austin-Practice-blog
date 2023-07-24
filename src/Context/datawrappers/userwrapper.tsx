@@ -22,7 +22,7 @@ export function UserProvider(props: any){
     const [contexState, setContexState] = useState(initialUser);
 
     function changer(newVal: User){
-        setContexState((preVal) => ({...preVal, newVal}));
+        setContexState((preVal) => ([...preVal, newVal]));
     }
 
     function updater(newVal: User){
@@ -34,7 +34,7 @@ export function UserProvider(props: any){
                 }
             }
             // Adding the new object
-            return({...preVal, newVal});
+            return([...preVal, newVal]);
         });
     }
 
