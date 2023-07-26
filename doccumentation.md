@@ -77,6 +77,14 @@ Finished Home-page Styling.
 # Sprint 2: 
 Focus: Loging in, profile dashboard, Context & Cross-page states (Reaction)
 
+Scope: 
+Logging in - done
+  and creating an account functionality - done
+Creating Profile Dashboard - done
+Linking home page to !(logged in)? Login : User dashboard; - done
+Investigating context usage to keep user info across pages. - done
+
+
 ## Commits
 
 ### Stash 1 (filtersearch): 
@@ -165,20 +173,39 @@ Fixed error where account creation would create an object instead of an array.
 auth now fetches users context, as opposed to using dataimporter. 
 
 
+# Sprint 3
+## Sprint Goals: 
+
+Design a data model for api (what the structure of your data will look like)
+ - relational data model 
+ - include users, posts & comments
+
+Build api routes
+ - build dummy data (import locally, don't worry about external for now)
+ - build data models as types (look into GraphQL) 
+ - impliment apis 
+
+Mock authorisation with ApIs: 
+- mark on the ApI 
+When request is sent to api include extra user detail (like a userID)
+- mock out authorisation (mock check the validity of the ID, and check authority)
+
+## Commits: 
+
+### Sprint 3 - Commit 1 (feature/apiconnection)
+Created new feature branch apiconnection
+
+Types: user includes 'privelleges'
+Posts include 'suggestion?' 
+
+
+
 ## Currently working on: 
-  
-Logging in - done
-  and creating an account functionality
-Creating Profile Dashboard
-Linking home page to !(logged in)? Login : User dashboard; - done
-Investigating context usage to keep user info across pages. - done
+
+Implimenting APIs
 
 
 ### ToDO: 
-
-Logins: 
-Apply styling to login page
-creating a module for adding / editing user information (optional parameter to preload a user, otherwise save to a new user)
 
 Editing User type to allow for followed users, followed posts, followed topics?  
 Allowing users to upload an image when creating an account / post. 
@@ -193,6 +220,7 @@ Hide postcarousel buttons when at end.
 Fix post title overlapping (see post: bike driver's in the dev preview to understand)
 Replace toolbar text with icons. 
 adding styling to dynamic post page
+
 
 #### Suggestions from Morgan 17/07/2023
 
