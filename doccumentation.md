@@ -177,49 +177,70 @@ auth now fetches users context, as opposed to using dataimporter.
 ## Sprint Goals: 
 
 Design a data model for api (what the structure of your data will look like)
- - relational data model 
- - include users, posts & comments
+ - relational data model - done
+ - include users, posts & comments - done
+Subasks:
+- Set up modeling environment - done, using draw.io
+- Draft table structure - done
+- Expand table data
+
 
 Build api routes
  - build dummy data (import locally, don't worry about external for now)
  - build data models as types (look into GraphQL) 
  - impliment apis 
+Subtasks: 
+- Set up import types
+- Set up dummy data
+- Impliment User, Post & Comment APIs
+- Edit DataImporter to use APIs
+
 
 Mock authorisation with ApIs: 
 - mark on the ApI 
 When request is sent to api include extra user detail (like a userID)
 - mock out authorisation (mock check the validity of the ID, and check authority)
+Subtasks: 
+- Draft permission levels - done, on data model
+- Implinment resources needed by higher permission levels (such as: Editing a post, approving post)
+- Create levelCheck component to validate permission when trying to access certain resources
+  (This will link to levelCheck api, to validate server-side)
+
+
 
 ## Commits: 
 
 ### Sprint 3 - Commit 1 (feature/apiconnection)
 Created new feature branch apiconnection
+Added sprint 3 breakdown
 
-Types: user includes 'privelleges'
-Posts include 'suggestion?' 
-
+### Sprint 3 - Commit 2 (feature/apiconnection)
+Added Data Model v1, awaiting Morgan's approval. 
+Fleshed out doccumentation & creating sprint subtasks. 
 
 
 ## Currently working on: 
-
 Implimenting APIs
+Add 'approved' to suggsted posts?
 
 
 ### ToDO: 
 
-Editing User type to allow for followed users, followed posts, followed topics?  
-Allowing users to upload an image when creating an account / post. 
+Functionality:
+Edit types so that user is only calculated once per post / comment etc.
 dashboard, replace image with generic image if not found.
+Editing User type to allow for followed users, followed posts, followed topics?  
 
-fix Home & User going behind navbar (started once checkLogin component was implimented)
-Clean up repetitive CSS by using dynamic styling. 
-investigate why refreshing pages breaks Links
-
-Change findrecentcomment in datatools so that it is able to find the recent post as well, and possibly return an array of ordered results?
+Style Changes:
 Hide postcarousel buttons when at end. 
-Fix post title overlapping (see post: bike driver's in the dev preview to understand)
-Replace toolbar text with icons. 
 adding styling to dynamic post page
+Replace toolbar text with icons. 
+Clean up repetitive CSS by using dynamic styling. 
+
+Bugfixes:
+Fix post title overlapping (see post: bike driver's in the dev preview to understand)
+fix Home & User going behind navbar (started once checkLogin component was implimented)
+investigate why refreshing pages breaks Links
 
 
 #### Suggestions from Morgan 17/07/2023
@@ -249,14 +270,24 @@ got it working to a point where i am satisfied with how it looks for now.
 
 
 ### Stuff that will bankrupt me: 
-Order Posts page by recent activity
-making 'show topics' and 'contact me' collapsable side bars instead of their own pages
-Search comparing input to all existing posts as the user types. Search just takes in the theme and what they types, then returns it (as a prop for a master module, maybe?)
+
+Users: 
 Adding a Star / Subscribe system for posts the user follows. 
+
+Posts: 
+Order Posts page by recent activity
 Adding tags
 Counting number of page views
-Making page browser when above 10 pages.
+Making page browser when above 10 posts (10 posts per page).
+
+Login: 
 make login a pop-up as opposed to a page of its own.
+
+Other: 
+Allowing users to upload an image when creating an account / post. 
+Search comparing input to all existing posts as the user types. Search just takes in the theme and what they types, then returns it (as a prop for a master module, maybe?)
+making 'show topics' and 'contact me' collapsable side bars instead of their own pages
+
 
 /* Figured out how to run the app to test it. - Seemed to be an issue with typescript and react.
 Troubleshooting steps: 
