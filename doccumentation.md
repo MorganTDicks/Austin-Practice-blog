@@ -182,7 +182,6 @@ Design a data model for api (what the structure of your data will look like)
 Subasks:
 - Set up modeling environment - done, using draw.io
 - Draft table structure - done
-- Expand table data
 
 
 Build api routes
@@ -218,11 +217,17 @@ Added sprint 3 breakdown
 Added Data Model v1, awaiting Morgan's approval. 
 Fleshed out doccumentation & creating sprint subtasks. 
 
+### Sprint 3 - Commit 3 (feature/apiconnection)
+Set up Post API skeleton & adjusted dataimporter.postImporter
+
 
 ## Currently working on: 
 Implimenting APIs
 Add 'approved' to suggsted posts?
 
+Set up import types, as per the database data model
+Set up dummy data
+Finalise User, Post & Comment APIs
 
 ### ToDO: 
 
