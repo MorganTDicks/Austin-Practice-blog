@@ -237,9 +237,12 @@ Fixed an error resulting from using states that rely on eachother in postWrapper
 Now works as intended and results in no errors. 
 removed the initial blank record during post conversion. 
 
+### Sprint 3 - Commit 6 (feature/apiconnection)
+Created usePostFetch hook, making the postwrapper component cleaner.
+Changed usePostFetch state to store frontend format rather
+
 
 ## Currently working on: 
-Changing state to store frontend format rather
 fix styling on userinfo & impliment conditional rendering using '&&' (suggested by Morgan)
 impliment post saving (API changer).
 investigate why postWrapper is running several times unneccecarily. (runs twice per page navigation)
@@ -265,7 +268,6 @@ Clean up repetitive CSS by using dynamic styling.
 Bugfixes:
 Fix post title overlapping (see post: bike driver's in the dev preview to understand)
 fix Home & User going behind navbar (started once checkLogin component was implimented)
-investigate why refreshing pages breaks Links
 
 
 #### Suggestions from Morgan 17/07/2023
