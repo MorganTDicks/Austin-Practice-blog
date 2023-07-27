@@ -231,11 +231,20 @@ Attempted to fix errors appearing on load, causing it to render client-side
 Fixed an error in checklogin that resulted from changing state in an external component
 Posts are still not reflecting on the posts page. Will investigate further in next commit. 
 
+### Sprint 3 - Commit 5 (feature/apiconnection)
+Fixed error resulting from whitespace in table (userinfo)
+Fixed an error resulting from using states that rely on eachother in postWrapper
+Now works as intended and results in no errors. 
+removed the initial blank record during post conversion. 
+
 
 ## Currently working on: 
-Implimenting APIs
-Add 'approved' to suggsted posts?
+Changing state to store frontend format rather
+fix styling on userinfo & impliment conditional rendering using '&&' (suggested by Morgan)
+impliment post saving (API changer).
+investigate why postWrapper is running several times unneccecarily. (runs twice per page navigation)
 
+Implimenting APIs
 Set up import types, as per the database data model
 Set up dummy data
 Finalise User, Post & Comment APIs

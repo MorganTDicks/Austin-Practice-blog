@@ -24,7 +24,7 @@ export default function UserInfo({workingPost: post, extrainfo = false}: UserPro
     let noReplies = postComments.length;
     if (noReplies == 0){ // If no comments on post, then there can't be a most recent post.
         return(
-            <table className={styles.tableStuff}> <tbody> <tr> <td> No replies yet </td> </tr> </tbody> </table>
+            <p> No replies yet </p>
         )
     }  
     
@@ -37,12 +37,12 @@ export default function UserInfo({workingPost: post, extrainfo = false}: UserPro
                 <tbody> 
                     <tr className={styles.topStuff}> 
                         <td className={styles.leftStuff}> {noReplies} Replies </td>
-                        <td className={styles.middleStuff}></td>
+                        {/* <td className={styles.middleStuff}></td> */}
                         <td className={styles.rightStuff}> {recentUser.username} </td>
                     </tr>
                     <tr className={styles.bottomStuff}>
                         <td className={styles.leftStuff}> {recentComment.likes} Likes </td>
-                        <td className={styles.middleStuff}></td>
+                        {/* <td className={styles.middleStuff}></td> */}
                         <td className={styles.rightStuff}> {timeMessage(recentComment.activitydate)} </td>
                     </tr>
                 </tbody>
@@ -67,7 +67,7 @@ export default function UserInfo({workingPost: post, extrainfo = false}: UserPro
                                 <li className={styles.bottomStuff}> {p.likes} Likes </li>
                             </ul>
                         </td>
-                        <td className={styles.middleStuff}></td>
+                        {/* <td className={styles.middleStuff}></td> */}
                         <td className={styles.rightStuff}> {p.body} </td>
                     </tr>
                 </tbody>

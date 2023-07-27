@@ -29,7 +29,6 @@ const dummyPosts: PostData[] = [
     Body: `After thinking i was finally done with the trudge of getting a driver's licence, it was now suggested to me that a Biker's licence is just as essential? I would love to hear your thoughts and experience on this. `,
     Topic: 'Cars',
     PostDate: '2021-12-05',
-    Suggester: 'AA000000',
     Status: 'approved'
   }
 ];

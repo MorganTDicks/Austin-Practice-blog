@@ -1,6 +1,5 @@
 import Link from "next/link";
 import styles from '@/styles/components/posts.module.css';
-import DataImporter from "@/Utilities/dataimporter";
 
 // Component Imports
 import MainLayout from "@/Layouts/mainlayout/mainlayout";
@@ -12,7 +11,8 @@ import postContext from "@/Context/datawrappers/postwrapper";
 
 export default function AllPosts(){
     // Importing the List of Posts from the object
-    let arrPosts: Post[] = useContext(postContext).value;
+    let contex = useContext(postContext);
+    let arrPosts: Post[] = contex.value;
 
     // TODO: Order Posts by Most Recent Activity
 

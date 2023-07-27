@@ -17,10 +17,8 @@ export default postContext;
 // Create context wrapper
 
 export function PostProvider(props: any){
-    
-    // Fetching the Posts from api/posts
-    
-    // Temporary data until states can be used
+    // TODO: Convert to a custom hook for better single-use methodology 
+
     const [data, setData] = useState<PostData[]>([{
         postID: '', 
         Header: '',
@@ -29,40 +27,31 @@ export function PostProvider(props: any){
         PostDate: '', 
         Status: ''
     }]);
-
-    // TODO: Convert to a custom hook for better single-use methodology
-    // TODO: handle updates / changes to Posts. 
     
+    // Fetching the Posts from api/posts
     useEffect(()=>{
-        fetch("/api/posts").then(async res => await res.json()).then(json => setData(json)); // or .then(setData) assumes json is passed in automatically    
-        console.log(data);
+        fetch("/api/posts").then(async res => await res.json()).then(setData);  
     }, [])
     
     // Convert Database format to local format:
     let preVal: Post[] = [DataImporter.initialPost];
+    preVal.splice(0,1); // Removing the blank initial post
+    
     for (let dat of data){
         if (dat.Status === 'approved'){
             preVal = [...preVal, {id: dat.postID, topic: dat.Topic, postdate: dat.PostDate, suggester: dat.Suggester, header: dat.Header, body: dat.Body}]; 
         }
     }
     let convertedData: Post[] = preVal;
-    console.log(convertedData);
-    // return(convertedData);
     
-    // let initialValue: Post[] = DataImporter.importPosts;
-    let initialValue: Post[] = convertedData;
     
-
-    const [contexState, setContexState] = useState<Post[]>(initialValue);
-
-    console.log('Init: ', initialValue);
-
     function changer(newVal: Post){
-        setContexState((preVal) => ([...preVal, newVal]));
+        // setContexState((preVal) => ([...preVal, newVal]));
+        // TODO: Setdata and update API.
     }
 
     const contexStuff = {
-        value: contexState,
+        value: convertedData,
         changer: changer
     }
 
