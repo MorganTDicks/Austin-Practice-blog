@@ -220,6 +220,17 @@ Fleshed out doccumentation & creating sprint subtasks.
 ### Sprint 3 - Commit 3 (feature/apiconnection)
 Set up Post API skeleton & adjusted dataimporter.postImporter
 
+### Sprint 3 - Commit 4 (feature/apiconnection)
+Added PostData type to DBTypes for posts imported from the database
+Moved API fetching from dataimporter to postWrapper (rules of hooks)
+Added postWrapper to contextWrapper
+Updated db to local post conversion logic
+Tested and it worked, until several rendering errors occured 
+Added several missing '<tbody></tbody>' to tables that were missing them
+Attempted to fix errors appearing on load, causing it to render client-side
+Fixed an error in checklogin that resulted from changing state in an external component
+Posts are still not reflecting on the posts page. Will investigate further in next commit. 
+
 
 ## Currently working on: 
 Implimenting APIs

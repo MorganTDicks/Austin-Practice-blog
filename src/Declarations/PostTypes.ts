@@ -3,7 +3,7 @@ export type Post = {
     id: string, 
     topic:string, 
     postdate: string,
-    suggester: string,
+    suggester?: string,
 
     // Content
     //string in typescript has maximum character length of well over 255, so it is fine for posts

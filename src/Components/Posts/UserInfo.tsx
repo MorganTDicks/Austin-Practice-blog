@@ -5,7 +5,6 @@ import type { User } from "@/Declarations/UserTypes";
 import { getUser, findRecentComment, timeMessage } from "@/Utilities/datatools/dataitools";
 import { useContext } from "react";
 import commentsContext from "@/Context/datawrappers/commentswrapper";
-import userContext from "@/Context/datawrappers/userwrapper";
 
 interface UserProps{
     workingPost: Post;
@@ -14,7 +13,6 @@ interface UserProps{
 
 export default function UserInfo({workingPost: post, extrainfo = false}: UserProps){
     let arrComments: Array<Comments> = useContext(commentsContext).value;
-    let arrUsers: Array<User> = useContext(userContext).value;
 
     let postComments:Array<Comments> = [];
     for (let c of arrComments){
@@ -26,7 +24,7 @@ export default function UserInfo({workingPost: post, extrainfo = false}: UserPro
     let noReplies = postComments.length;
     if (noReplies == 0){ // If no comments on post, then there can't be a most recent post.
         return(
-            <table className={styles.tableStuff}> <tr> <td> No replies yet </td> </tr> </table>
+            <table className={styles.tableStuff}> <tbody> <tr> <td> No replies yet </td> </tr> </tbody> </table>
         )
     }  
     
@@ -36,16 +34,18 @@ export default function UserInfo({workingPost: post, extrainfo = false}: UserPro
         
         return(
             <table className={styles.tableStuff}>
-                <tr className={styles.topStuff}> 
-                    <td className={styles.leftStuff}> {noReplies} Replies </td>
-                    <td className={styles.middleStuff}></td>
-                    <td className={styles.rightStuff}> {recentUser.username} </td>
-                </tr>
-                <tr className={styles.bottomStuff}>
-                    <td className={styles.leftStuff}> {recentComment.likes} Likes </td>
-                    <td className={styles.middleStuff}></td>
-                    <td className={styles.rightStuff}> {timeMessage(recentComment.activitydate)} </td>
-                </tr>
+                <tbody> 
+                    <tr className={styles.topStuff}> 
+                        <td className={styles.leftStuff}> {noReplies} Replies </td>
+                        <td className={styles.middleStuff}></td>
+                        <td className={styles.rightStuff}> {recentUser.username} </td>
+                    </tr>
+                    <tr className={styles.bottomStuff}>
+                        <td className={styles.leftStuff}> {recentComment.likes} Likes </td>
+                        <td className={styles.middleStuff}></td>
+                        <td className={styles.rightStuff}> {timeMessage(recentComment.activitydate)} </td>
+                    </tr>
+                </tbody>
             </table>
         )
     }
@@ -58,17 +58,19 @@ export default function UserInfo({workingPost: post, extrainfo = false}: UserPro
             
             return(
             <table className={styles.tableStuff}>
-                <tr>
-                    <td className={styles.leftStuff}> 
-                        <ul> 
-                            <li className={styles.topStuff}> {commentUser.username} </li>
-                            <li className={styles.bottomStuff}> {timeMessage(p.activitydate)} </li>
-                            <li className={styles.bottomStuff}> {p.likes} Likes </li>
-                        </ul>
-                    </td>
-                    <td className={styles.middleStuff}></td>
-                    <td className={styles.rightStuff}> {p.body} </td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td className={styles.leftStuff}> 
+                            <ul> 
+                                <li className={styles.topStuff}> {commentUser.username} </li>
+                                <li className={styles.bottomStuff}> {timeMessage(p.activitydate)} </li>
+                                <li className={styles.bottomStuff}> {p.likes} Likes </li>
+                            </ul>
+                        </td>
+                        <td className={styles.middleStuff}></td>
+                        <td className={styles.rightStuff}> {p.body} </td>
+                    </tr>
+                </tbody>
             </table>
             )
         })

@@ -31,28 +31,6 @@ let dummyPosts: Array<Post> = [
 
 
 function PostImporter(): Array<Post>{
-    
-    // Fetching the Posts from api/posts
-    
-    // Temporary data until states can be used
-    let data = [{}];
-    function setData(newData: any){
-        data = newData; // This is temporary, you can ignore that it is incorrect for now.
-    }
-
-    // TODO: Convert to a custom hook to use useEffect & useState 
-
-    // useEffect(()=>{
-        fetch("/api/posts").then(async res => await res.json()).then(json => setData(json)); // or .then(setData) assumes json is passed in automatically    
-        console.log(data);
-    // }, [])
-
-    // Convert Database format to local format:
-    // let convertedData: Post[] = data.map((dat) => {
-    //     return {id: dat.PostID, topic: '', postdate: '', suggester: '', header: dat.Body, body: dat.Body, bannerpath: dat.Bannerpath} 
-    // })
-    // return(convertedData);
-
     return(dummyPosts);
 }
 export default PostImporter;
