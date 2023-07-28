@@ -12,6 +12,7 @@ export function getUser(inpIdentifier: string): User{
     // Option 3: have two separate functions, one for Comments one for Post
     // Option 4: Take just the identifier instead of the whole object. I chose this one. 
     
+    // TODO: Update to use context instead
     let arrUsers: User[] = DataImporter.importUsers;
 
     for (let u of arrUsers){
@@ -22,9 +23,7 @@ export function getUser(inpIdentifier: string): User{
     return({...(DataImporter.initialUser), username: 'No replies yet'});
 }
 
-export function getPost(postID: string): Post{
-    let arrPosts: Post[] = DataImporter.importPosts;
-
+export function getPost(arrPosts: Post[], postID: string): Post{
     for (let p of arrPosts){
         if (p.id == postID){
         return(p);
@@ -53,16 +52,12 @@ export function previewContent(msg: string, numchar: number): string {
 }
 
 export function timeSince(date: string): number{
-    const dt = new Date();
+    let {currentyear, currentmonth, currentday} = getCurrentDate();
+    
     let y = date.slice(0,4); // -> Expected: 'yyyy'
-    let currentyear = dt.getFullYear(); // -> Expected: yyyy
-
     let m = date.slice(5,7); // -> Expected: 'mm'
-    let currentmonth= dt.getMonth()+1; // ->Expected: mm (NOTE: 0 is janury)
-
     let d = date.slice(8,10); // -> Expected: 'dd'
-    let currentday = dt.getDate(); // -> Expected: dd
-
+    
     let newy = currentyear - +y;
     let newm = currentmonth - +m;
     let newd = currentday - +d;
@@ -70,6 +65,16 @@ export function timeSince(date: string): number{
     let fin = newy*365 + newm*30 + newd;
     return(fin);
 }
+
+export function getCurrentDate(){
+    const dt = new Date();
+    return {
+        currentyear: dt.getFullYear(), // -> Expected: yyyy
+        currentmonth: dt.getMonth()+1, // ->Expected: mm (NOTE: 0 is janury)
+        currentday: dt.getDate() // -> Expected: dd
+    }
+}
+
 
 export function timeMessage(inp: string){
     let fin= timeSince(inp);

@@ -261,12 +261,21 @@ Updated dataimporter to no longer reference non-existent postimporter.
 Fixed dynamic post page referring to importposts instead of post context. 
 updated navbar to checklogin before allowing user to suggest a post. 
 Created skeleton for submitting a new post
-Switching to stash to retrieve work on searchbar, since that same logic will be used in suggesting a post. 
+
+### Sprint 3 - Commit 10 (feature/apiconnection)
+Restored searchfilter stash to retrieve work on searchbar, since that same logic will be used in suggesting a post. 
+Updated searchfilter logic
+Added states in searchfilter
+passed searchfilter data up to suggest post. this resulted in an infinite loop (possibly due to states). 
+separated datatools calculatedate from the calculate message function. 
+Added add Post functionality to suggest post. 
+Adjusted datatools to require post context as a parameter (this will cause an error, will fix it next commit.)
 
 
 ## Currently working on: 
 adding 'suggest post' functionality
 
+Edit suggester logic to not be a suggestion if user authentication level 3
 fix styling on userinfo & impliment conditional rendering using '&&' (suggested by Morgan)
 change user & comment types same as had been done with post type. 
 impliment post saving (API changer).
