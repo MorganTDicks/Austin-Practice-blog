@@ -4,12 +4,14 @@ import DataImporter from "@/Utilities/dataimporter";
 import PrevNext from "@/Components/Posts/prevnext";
 import UserInfo from "@/Components/Posts/UserInfo";
 import { Post } from "@/Declarations/PostTypes";
+import { useContext } from "react";
+import postContext from "@/Context/datawrappers/postwrapper";
 
 export default function Posting(){
     const router = useRouter();
     const { id } = router.query;
 
-    let allData = DataImporter.importPosts;
+    let allData = useContext(postContext).value;
     let myData: Post = DataImporter.initialPost;
     let prevPost: Post = DataImporter.initialPost;
     let nextPost: Post = DataImporter.initialPost;

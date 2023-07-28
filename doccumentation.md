@@ -256,11 +256,19 @@ Cleaned up some unused code here and there
 removed dataimporter/importposts default export. Only initialisepost remains used. 
 Changed genericinput to also have an ID proprty based off the displayname. This may result in errors with spaces, will need to investigate. 
 
+### Sprint 3 - Commit 9 (feature/apiconnection)
+Updated dataimporter to no longer reference non-existent postimporter. 
+Fixed dynamic post page referring to importposts instead of post context. 
+updated navbar to checklogin before allowing user to suggest a post. 
+Created skeleton for submitting a new post
+Switching to stash to retrieve work on searchbar, since that same logic will be used in suggesting a post. 
+
 
 ## Currently working on: 
-change user & comment types same as had been done with post type. 
 adding 'suggest post' functionality
+
 fix styling on userinfo & impliment conditional rendering using '&&' (suggested by Morgan)
+change user & comment types same as had been done with post type. 
 impliment post saving (API changer).
 adding 'edit post' functionality (for implimenting mock validation, task 3)
 investigate why postWrapper is running several times unneccecarily. (runs twice per page navigation)

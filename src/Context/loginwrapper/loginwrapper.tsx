@@ -3,10 +3,6 @@
 
 import React, { useState } from "react";
 
-// Other contexts needed: 
-// arrPosts?
-// arrComments?
-
 const loginContext = React.createContext({
     value: '',
     changer: (newVal: string)=>{}

@@ -1,5 +1,5 @@
 import UserImporter, { initialiseUser } from "./userimporter";
-import PostImporter, { initialisePost } from "./postimporter";
+import { initialisePost } from "./postimporter";
 import CommentImporter from "./commentimporter";
 
 // If data not already imported, Import the backend data into the below array(s) here
@@ -7,12 +7,10 @@ import CommentImporter from "./commentimporter";
 // That will be handled by hooks.
 
 const DataImporter = {
-        importPosts: PostImporter(),
         importUsers: UserImporter(),
         importComments: CommentImporter(),
         initialPost: initialisePost(),
         initialUser: initialiseUser()
-
 };
 
 export default DataImporter;
