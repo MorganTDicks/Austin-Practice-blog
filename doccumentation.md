@@ -241,8 +241,19 @@ removed the initial blank record during post conversion.
 Created usePostFetch hook, making the postwrapper component cleaner.
 Changed usePostFetch state to store frontend format rather
 
+### Sprint 3 - Commit 7 (feature/apiconnection)
+<!-- Experimented with use useReducer in usePostFetch. slight adjustments to useState proved to be easier and better suited. 
+updated changer in usepostfetch to allow editing & removing posts. Defaults to add if not specified. -->
+Changed useState to useReducer in usePostFetch hook. This resulted in slightly more complex but overall cleaner code. 
+Along with this, the edit and remove functionality was added. 
+adjusted the changer function for usePostFetch to make type default to 'add'
+added functions to utilities/datatools to convert db post format to fontend post format, and vice versa.
+slightly adjusted code of datatools to a more organised structure. 
+
 
 ## Currently working on: 
+
+Changing Post type to include the entire User, as well as remove bannerpath property. 
 fix styling on userinfo & impliment conditional rendering using '&&' (suggested by Morgan)
 impliment post saving (API changer).
 investigate why postWrapper is running several times unneccecarily. (runs twice per page navigation)
@@ -275,6 +286,7 @@ fix Home & User going behind navbar (started once checkLogin component was impli
 styling: SCSS styling (look into it. ALso, tailwind.css)
 (material.ui?) - don't use yet.  
 userinfo -- bulky. Use conditional rendering & Layouts
+// Graph QL - appsynch 
 https://nextjs.org/docs/pages/building-your-application/routing/pages-and-layouts#layout-pattern
 
 #### Other Features:

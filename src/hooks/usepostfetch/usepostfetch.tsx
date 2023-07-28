@@ -1,51 +1,118 @@
 import { PostData } from "@/Declarations/DBTypes";
 import { Post } from "@/Declarations/PostTypes";
 import DataImporter from "@/Utilities/dataimporter";
-import { useEffect, useState } from "react";
+import { postToPostData, postdataToPost } from "@/Utilities/datatools/dataitools";
+import { useEffect, useReducer, useState } from "react";
+
+type reducerType = {type: string, value: Post[]};
+
+const reducerChanger = (stateVal: reducerType, action: reducerType): reducerType => {
+    const { type, value } = action;
+    let preVal: Post[] = stateVal.value; 
+
+    // value can be an array of Post in the case of initialise, but must be a single Post in all other cases. 
+
+    switch(type){
+        case 'initialise':
+            return(intitStuff());
+        case 'add':
+            return(addStuff());
+        case 'replace':
+            return(replaceStuff());
+        case 'remove':
+            return(removeStuff());
+        default:   
+            console.log('defaulting. The program should not normally do this.')  
+            break;
+    }
+    return(stateVal)
+
+    function intitStuff(): reducerType {
+        // newVal is Post[]
+        let newVal: Post[] = value;
+        
+        return({
+            ...stateVal,
+            value: newVal
+        })
+    }
+
+    function addStuff(): reducerType {
+        // newVal is Post
+        let newVal: Post = value[0];
+
+        // TODO: convert to server-side type & update API. For now, just logs the converted data to the console and saves to state. 
+        console.log(postToPostData([...preVal, newVal]))
+        
+        return({
+            ...stateVal,
+            value: [...preVal, newVal]
+        })
+    }
+
+    function replaceStuff(): reducerType {
+        // newVal is Post
+        let newVal: Post = value[0];
+
+        // Replacing the old value with the new value
+        preVal.splice(preVal.indexOf(newVal), 1, newVal); 
+        
+        // TODO: convert to server-side type & update API. For now, just logs the converted data to the console and saves to state. 
+        console.log(postToPostData(preVal))
+
+        return({
+            ...stateVal,
+            value: [...preVal, newVal]
+        })
+    }
+
+    function removeStuff(): reducerType {
+        // newVal is Post
+        let newVal: Post = value[0];
+
+        // Removing the value
+        preVal.splice(preVal.indexOf(newVal), 1); 
+        
+        // TODO: convert to server-side type & update API. For now, just logs the converted data to the console and saves to state. 
+        console.log(postToPostData(preVal))
+
+        return({
+            ...stateVal,
+            value: [...preVal, newVal]
+        })
+    }
+}
+
 
 export default function usePostFetch(){
-    const [convertedData, setConvertedData] = useState<Post[]>([DataImporter.initialPost])
+    const [convertedData, dispachConvertedData] = useReducer(reducerChanger, {
+        type: '',
+        value: [DataImporter.initialPost]
+    });
 
     // Fetching the Posts from api/posts
     useEffect(()=>{
         fetch("/api/posts").then(async res => await res.json()).then(setData);  
     }, [])
     
-    // Convert Database format to local format:
+    // overwrite the current data with what was pulled from the db
     function setData(data: PostData[]){
-        let preVal: Post[] = convertedData;
-        preVal.splice(0,1); // Removing the blank initial post
-    
-        for (let dat of data){
-            if (dat.Status === 'approved'){
-                preVal = [...preVal, {id: dat.postID, topic: dat.Topic, postdate: dat.PostDate, suggester: dat.Suggester, header: dat.Header, body: dat.Body}]; 
-            }
-        }
-        setConvertedData(preVal); // overwrite the current data with what was pulled from the db
+        dispachConvertedData({
+            type: 'initialise', 
+            value: postdataToPost(data, 'approved') 
+            }) 
+    }
+        
+    // Changer function to allow external updates to Posts state via context
+    function changer(newVal: Post, type?: string){
+        dispachConvertedData({
+            type: (type? type : 'add'), 
+            value: [newVal]
+        })    
     }
     
-    
-    function changer(newVal: Post){
-        // Additional argument: addtype? If that is the case, try using useReducer instead? 
-            // addType would be replace, add or remove.
-        
-        // for now just adds to the pool. 
-        setConvertedData((preVal) => ([...preVal, newVal]));
-        
-        // TODO: convert to server-side type & update API.
-        // This will come in handy for converting the data:
-            // [{
-            //     postID: '', 
-            //     Header: '',
-            //     Body: '', 
-            //     Topic: '',
-            //     PostDate: '', 
-            //     Status: ''
-            // }]
-    }
-
     return({
-        value: convertedData,
+        value: convertedData!.value,
         changer: changer
     })
 }

@@ -1,10 +1,10 @@
 import DataImporter from "../dataimporter";
 import type { User } from "@/Declarations/UserTypes";
 import type { Comments, Post } from "@/Declarations/PostTypes";
+import { PostData } from "@/Declarations/DBTypes";
 
-export function previewContent(msg: string, numchar: number): string {
-    return(`${msg.substring(0,numchar-3)}...`);
-}
+
+// ================== Getting stuff ============================
 
 export function getUser(inpIdentifier: string): User{
     // Option 1: Check type of inpObject and action accordingly
@@ -37,6 +37,21 @@ export function getPost(postID: string): Post{
 
 }
 
+export function findRecentComment(postComments: Array<Comments>): Comments{
+    let bigIndex = postComments.reduce((prev,curr) => {
+        return (timeSince(prev.activitydate) < timeSince(curr.activitydate))? prev: curr;
+    });
+
+    return(bigIndex);
+}
+
+
+//  ======================== String Stuff =================================
+
+export function previewContent(msg: string, numchar: number): string {
+    return(`${msg.substring(0,numchar-3)}...`);
+}
+
 export function timeSince(date: string): number{
     const dt = new Date();
     let y = date.slice(0,4); // -> Expected: 'yyyy'
@@ -63,11 +78,53 @@ export function timeMessage(inp: string){
     return(`${fin} days ago`);
 }
 
-// TODO: Change to finding recent post, or change to sorting in order of most recent, and just take the first. 
-export function findRecentComment(postComments: Array<Comments>): Comments{
-    let bigIndex = postComments.reduce((prev,curr) => {
-        return (timeSince(prev.activitydate) < timeSince(curr.activitydate))? prev: curr;
-    });
 
-    return(bigIndex);
+// ========================== Converting Stuff ================================
+
+export function postdataToPost(data: PostData[], status: string): Post[]{
+    // Convert Database format to local format:
+    
+    let tempVal: Post[] = [DataImporter.initialPost];
+    tempVal.splice(0,1); // Removing the blank initial post
+    
+    for (let dat of data){
+        if (dat.Status === status){
+            tempVal = [...tempVal, {
+                    id: dat.postID, 
+                    topic: dat.Topic, 
+                    postdate: dat.PostDate, 
+                    suggester: dat.Suggester, 
+                    header: dat.Header, 
+                    body: dat.Body
+                }]; 
+        }
+    }
+    return tempVal;
+}
+
+export function postToPostData(data: Post[]): PostData[]{
+    // Convert local to database format:
+
+    let tempVal: PostData[] = [{ 
+                    postID: '', 
+                    Header: '',
+                    Body: '', 
+                    Topic: '',
+                    PostDate: '', 
+                    Status: ''
+                }];
+    tempVal.splice(0,1); // Removing the blank initial post
+    
+    for (let dat of data){
+        tempVal = [...tempVal, {
+            postID: dat.id, 
+            Header: dat.header,
+            Body: dat.body, 
+            Topic: dat.topic,
+            Suggester: dat.suggester,
+            PostDate: dat.postdate, 
+            Status: (dat.suggester? 'pending' : 'draft')
+        }]; 
+    }
+    return tempVal;
 }

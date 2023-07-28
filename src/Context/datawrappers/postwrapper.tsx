@@ -9,7 +9,7 @@ import React, { useEffect, useState } from "react";
 
 const postContext = React.createContext({
     value: [DataImporter.initialPost], // This value will only be used if no value is provided by the wrapper.
-    changer: (newVal: Post)=>{}
+    changer: (newVal: Post, type?: string)=>{}
 })
 
 export default postContext;
