@@ -3,14 +3,11 @@ import Link from "next/link";
 
 import styles from "../../styles/components/postcarousel.module.css";
 import type { Post } from "@/Declarations/PostTypes";
-import { getUser } from "../../Utilities/datatools/dataitools";
 import { previewContent } from "../../Utilities/datatools/dataitools";
 import postContext from "@/Context/datawrappers/postwrapper";
-import userContext from "@/Context/datawrappers/userwrapper";
 
 export default function PostCarousel(){
     let arrPosts = useContext(postContext).value;
-    let arrUsers = useContext(userContext).value;
     const [currPost, setCurrPost] = useState<Post>(arrPosts[0]);
     
     const prev = () => {
@@ -50,9 +47,7 @@ export default function PostCarousel(){
                                 <tbody> 
                                     <tr> 
                                         <td className={styles.datesuggester}> 
-                                            <p> 
-                                                {getUser(currPost.suggester).username}
-                                            </p>
+                                            {currPost.suggester && <p> currPost.suggester.username </p>}
                                             <p> {currPost.postdate} </p>
                                         </td>
                                         <td className={styles.bodycontent}> 

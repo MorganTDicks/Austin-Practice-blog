@@ -1,6 +1,4 @@
 import ContextWrapper from '@/Context/contextWrapper'
-import { LoginProvider } from '@/Context/loginwrapper/loginwrapper'
-import { RefProvider } from '@/Context/refdirectwrapper/refdirectwrapper'
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 

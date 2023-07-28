@@ -93,7 +93,7 @@ export function postdataToPost(data: PostData[], status: string): Post[]{
                     id: dat.postID, 
                     topic: dat.Topic, 
                     postdate: dat.PostDate, 
-                    suggester: dat.Suggester, 
+                    suggester: (dat.Suggester? getUser(dat.Suggester): undefined), 
                     header: dat.Header, 
                     body: dat.Body
                 }]; 
@@ -121,7 +121,7 @@ export function postToPostData(data: Post[]): PostData[]{
             Header: dat.header,
             Body: dat.body, 
             Topic: dat.topic,
-            Suggester: dat.suggester,
+            Suggester: (dat.suggester? dat.suggester.id: undefined),
             PostDate: dat.postdate, 
             Status: (dat.suggester? 'pending' : 'draft')
         }]; 

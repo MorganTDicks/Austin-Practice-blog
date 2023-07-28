@@ -1,19 +1,18 @@
 import { useRouter } from "next/router";
-import Link from "next/link";
-
 import MainLayout from "@/Layouts/mainlayout/mainlayout";
 import DataImporter from "@/Utilities/dataimporter";
 import PrevNext from "@/Components/Posts/prevnext";
 import UserInfo from "@/Components/Posts/UserInfo";
+import { Post } from "@/Declarations/PostTypes";
 
 export default function Posting(){
     const router = useRouter();
     const { id } = router.query;
 
     let allData = DataImporter.importPosts;
-    let myData: Post = {id: '', topic: '', postdate: '', suggester: '',  header: '', body: ``, bannerpath: ''};
-    let prevPost: Post = {id: '', topic: '', postdate: '', suggester: '',  header: '', body: ``, bannerpath: ''};
-    let nextPost: Post = {id: '', topic: '', postdate: '', suggester: '',  header: '', body: ``, bannerpath: ''};
+    let myData: Post = DataImporter.initialPost;
+    let prevPost: Post = DataImporter.initialPost;
+    let nextPost: Post = DataImporter.initialPost;
 
     for (let i of allData){
         if (i.id == id){

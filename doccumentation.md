@@ -250,12 +250,19 @@ adjusted the changer function for usePostFetch to make type default to 'add'
 added functions to utilities/datatools to convert db post format to fontend post format, and vice versa.
 slightly adjusted code of datatools to a more organised structure. 
 
+### Sprint 3 - Commit 8 (feature/apiconnection)
+Changed Post type to include the entire User, as well as removd bannerpath property. 
+Cleaned up some unused code here and there
+removed dataimporter/importposts default export. Only initialisepost remains used. 
+Changed genericinput to also have an ID proprty based off the displayname. This may result in errors with spaces, will need to investigate. 
+
 
 ## Currently working on: 
-
-Changing Post type to include the entire User, as well as remove bannerpath property. 
+change user & comment types same as had been done with post type. 
+adding 'suggest post' functionality
 fix styling on userinfo & impliment conditional rendering using '&&' (suggested by Morgan)
 impliment post saving (API changer).
+adding 'edit post' functionality (for implimenting mock validation, task 3)
 investigate why postWrapper is running several times unneccecarily. (runs twice per page navigation)
 
 Implimenting APIs

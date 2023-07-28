@@ -8,10 +8,12 @@ export default function GenericInput(props: any){
     onChange: props.onChange
     };
 
+    // May result in error if iStuffs.value contains spaces. 
+
     return(
         <>
-            <label> {iStuffs.label} </label>
-            <input type={iStuffs.type} onChange={iStuffs.onChange} value={iStuffs.value} style={{color: "black"}}/> 
+            <label htmlFor={iStuffs.value}> {iStuffs.label} </label>
+            <input id={iStuffs.value} type={iStuffs.type} onChange={iStuffs.onChange} value={iStuffs.value} style={{color: "black"}}/> 
         </>
     )
 }
