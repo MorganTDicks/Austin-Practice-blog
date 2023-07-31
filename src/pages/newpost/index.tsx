@@ -2,10 +2,11 @@ import SearchFilter from "@/Components/SearchFilter/searchfilter";
 import GenericInput from "@/Components/generic/genericinput";
 import postContext from "@/Context/datawrappers/postwrapper";
 import loginContext from "@/Context/loginwrapper/loginwrapper";
+import refContext from "@/Context/refdirectwrapper/refdirectwrapper";
 import { Post } from "@/Declarations/PostTypes";
 import MainLayout from "@/Layouts/mainlayout/mainlayout";
 import DataImporter from "@/Utilities/dataimporter";
-import { getCurrentDate, getUser } from "@/Utilities/datatools/dataitools";
+import { containsSpecialChars, getCurrentDate, getUser, isUniquePost } from "@/Utilities/datatools/dataitools";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
@@ -14,27 +15,33 @@ export default function NewPost(){
     let [newPost, setNewPost] = useState<Post>(DataImporter.initialPost);
     let postContex = useContext(postContext);
     let currentUser = useContext(loginContext).value;
-    const rout = useRouter();
+    let [isValid, setIsValid] = useState<boolean>(false);
+    let [hintString, setHintString] = useState<string>('');
+    
 
+    // If not logged in, redirect back to login page.
+    const rout = useRouter();
+    let refContex = useContext(refContext);
     useEffect(()=>{
         if (currentUser.length < 1){
-            // redirect back to login page 
-
-            rout.push('/User/login'); // -> Error: No router instance found
+            refContex.changer('/newpost');
+            rout.push('/User/login');
         }
     }, [])
 
+
+    // Update the context with the new values stored in state
     function formSubmitHandler(){
-        // Update the context with the new values stored in state
         newPost.id = calcID();
         newPost.postdate = calcPostDate();
         newPost.suggester = getUser(currentUser);
+        console.log(newPost);
         postContex.changer(newPost);
     }
 
     function calcID(){
-        // All special characters are cleaned before this function is called. 
-        return (newPost.header.toLowerCase().split(" ").join(""));
+        // Generate post id by Replacing all spaces with dashes, and set to lower case
+        return (newPost.header.toLowerCase().split(" ").join("-"));
     }
 
     function calcPostDate(){
@@ -42,49 +49,59 @@ export default function NewPost(){
         return(`${dateStuff.currentyear}-${dateStuff.currentmonth}-${dateStuff.currentday}`);
     }
 
-    let searchFilterStuff = {
-        theme: '',
-        searchkey: '',
-        orderby: ''
-    };
 
-    // function getState(inputState: any){
-    //     console.log('State received: ', inputState.searchkey);
-    //     searchFilterStuff.searchkey = inputState.searchkey;
-    // }
-    
+    // Retrieving the title and theme from the searchfilter input component
     function getState(inputState: any){
             setNewPost((prevPost) => ({...prevPost, header: inputState.searchkey}));
+            setNewPost((prevPost) => ({...prevPost, topic: inputState.theme}));
     }
-    
-    // useEffect(()=>{
-        // }, [searchFilterStuff.searchkey])
-        //     setNewPost((prevPost) => ({...prevPost, header: searchFilterStuff.searchkey})) // Results in an infinite loop
-    
-    // TODO: Input Checking here (no special chars, no blank entries, theme cannot be 'Select theme', etc.)
+
+
+    // Input Checking (no special chars, no blank entries, theme cannot be 'Select theme', etc.)
+    useEffect(()=>{
+        let timia = setTimeout(()=>{
+            // Check input validity
+            setIsValid(checkPostValidity(newPost));
+        }, 500)
+
+        return() => {
+            clearTimeout(timia);
+        }
+    }, [newPost])
+
+    function checkPostValidity(newPost: Post): boolean{
+        
+        // Check if body or title are empty
+        if ((newPost.body.length < 1) || (newPost.header.length < 1)){
+            setHintString('Please fill in all fields');
+            return(false);
+        }
+        // Check if theme is 'select theme'
+        console.log(newPost.topic);
+        if ((newPost.topic == 'Select Theme') || (newPost.topic=='')){
+            setHintString('Please select a theme.');
+            return(false);
+        }
+        // Check title for special characters
+        if (containsSpecialChars(newPost.header)){
+            setHintString('Title cannot contain any special characters');
+            return(false);
+        }
+        // Check if post title is unique
+        if (!isUniquePost(postContex.value, newPost.header)){
+            setHintString('Title already taken.');
+            return(false);
+        }
+        // Impliment character limits? 
+        return(true)
+    }
+
 
     return (
         <>
         <MainLayout pagename="Suggest a Post">
-            <SearchFilter getstate={getState}/>
             <form onSubmit={formSubmitHandler}> 
-                {/* The below is covered by the searchfilter component already. */}
-                <div>
-                    <GenericInput 
-                        label="Post Title" 
-                        type="text" 
-                        value={newPost.header}
-                        onChange={
-                            (event: any) => setNewPost((prevPost) => ({...prevPost, header: event.target.value}))} 
-                    /> 
-                </div>
-                {/* <div>
-                    <select>
-                        {postContex.value.map((p) => {
-                            return (<option value={p.topic}> {p.topic} </option>)
-                        })}
-                    </select>
-               </div> */}
+                <SearchFilter getstate={getState}/>
                 <div> 
                     <GenericInput 
                         label="Body" 
@@ -95,7 +112,13 @@ export default function NewPost(){
                     /> 
                 </div>
                 <p> By submitting a post suggestion, you agree <Link href="/"> Terms and Conditions </Link> </p>
-                <button type="submit"> Submit your suggestion </button>
+                <button 
+                    type="submit" 
+                    disabled={!isValid}
+                    style={isValid? {color: "white", backgroundColor: "green"} 
+                        : {color: "silver", backgroundColor: "grey"}}
+                > Submit your suggestion </button>
+                {isValid || <p> Hint: {hintString} </p>}
             </form>
         </MainLayout>
         </>

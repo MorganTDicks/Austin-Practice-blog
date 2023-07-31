@@ -44,6 +44,27 @@ export function findRecentComment(postComments: Array<Comments>): Comments{
     return(bigIndex);
 }
 
+export function getThemes(allPosts: Post[]){
+    let allThemes: Array<string> = ['Select Theme'];
+    
+    for (let p of allPosts){
+        let theme = p.topic;
+        if (allThemes.indexOf(theme) == -1)
+        allThemes.push(theme);
+    }
+
+    return(allThemes)
+}
+
+export function getCurrentDate(){
+    const dt = new Date();
+    return {
+        currentyear: dt.getFullYear(), // -> Expected: yyyy
+        currentmonth: dt.getMonth()+1, // ->Expected: mm (NOTE: 0 is janury)
+        currentday: dt.getDate() // -> Expected: dd
+    }
+}
+
 
 //  ======================== String Stuff =================================
 
@@ -66,21 +87,28 @@ export function timeSince(date: string): number{
     return(fin);
 }
 
-export function getCurrentDate(){
-    const dt = new Date();
-    return {
-        currentyear: dt.getFullYear(), // -> Expected: yyyy
-        currentmonth: dt.getMonth()+1, // ->Expected: mm (NOTE: 0 is janury)
-        currentday: dt.getDate() // -> Expected: dd
-    }
-}
-
-
 export function timeMessage(inp: string){
     let fin= timeSince(inp);
     if (fin == 0) return('Just now');
     if (fin == 1) return(`1 day ago`);
     return(`${fin} days ago`);
+}
+
+export function containsSpecialChars(str: string): boolean { 
+    // Credit: https://bobbyhadz.com/blog/javascript-check-if-string-contains-special-characters#:~:text=To%20check%20if%20a%20string,Copied!
+    // const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+    const specialChars = /[`!@#$%^&*_+\-=\[\]{}\\|<>\/~]/; // Adjusted special characters for post headers
+    return specialChars.test(str);
+}
+
+export function isUniquePost(arrInput: Post[], title: string): boolean{
+    // ID is calculated from header, hence why header is checked and not id. 
+    for (let p of arrInput){
+        if (p.header == title){
+            return (false);
+        }
+    }
+    return (true);
 }
 
 

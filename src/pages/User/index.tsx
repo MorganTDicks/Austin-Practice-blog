@@ -7,21 +7,33 @@ import UserSummary from "@/Components/account/usersummary";
 import AltLayout from "@/Layouts/altlayout/altlayout";
 import styles from "../../styles/components/dashboard.module.css";
 import UserActivity from "@/Components/account/useractivity";
-// import Link from "next/link";
 import loginContext from "@/Context/loginwrapper/loginwrapper"
 import { getUser } from "@/Utilities/datatools/dataitools";
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { User } from "@/Declarations/UserTypes";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import refContext from "@/Context/refdirectwrapper/refdirectwrapper";
 
 export default function Dashboard(){
     const contex = useContext(loginContext);
+    
+    // If not logged in, redirect back to login page.
+    const rout = useRouter();
+    let refContex = useContext(refContext);
+    useEffect(()=>{
+        if (contex.value.length < 1){
+            refContex.changer('/User');
+            rout.push('/User/login');
+        }
+    }, [])
+
+
     let currentUser: User = getUser(contex.value);
     
     return(
         <AltLayout>
             <h1> Dashboard </h1>
-            {/* <Link href="./User/login"> Login </Link> // Logging in now happens before visiting this page */}
             <table className={styles.tablestuff}> 
                 <tbody>
                     <tr>

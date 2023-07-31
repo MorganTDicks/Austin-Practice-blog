@@ -1,7 +1,5 @@
 import type { InputStuffs } from "@/Declarations/OtherTypes"
-// import React, { useImperativeHandle, useRef } from "react";
 
-//const GenericInput = React.forwardRef((props: any, ref) => {
 export default function GenericInput(props: any){
     let iStuffs: InputStuffs = {
     label: props.label,
@@ -9,14 +7,6 @@ export default function GenericInput(props: any){
     value: props.value,
     onChange: props.onChange
     };
-
-    // const genericRef = useRef<HTMLInputElement>(null);
-    // useImperativeHandle(ref, ()=>{
-    //     return {
-    //         val: (genericRef.current? genericRef.current.value : '')
-    //     }
-    // })
-
 
     // May result in error if iStuffs.value contains spaces. 
 
@@ -29,11 +19,7 @@ export default function GenericInput(props: any){
                 onChange={iStuffs.onChange} 
                 value={iStuffs.value} 
                 style={{color: "black"}} 
-                // ref={genericRef}
             /> 
         </div>
     )
 }
-// })
-
-// export default GenericInput;

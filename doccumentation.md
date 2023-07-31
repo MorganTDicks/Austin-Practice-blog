@@ -281,10 +281,25 @@ Added keys to searchfilter theme selector. Still causes key warning sometimes?
 Encountered an error when accessing User dashboard page. Possibly related to aforementioned datatools error. investigating next commit. 
 Encountered an error on refresh when clicking 'login', redirects to suggest post instead of user dashboard. Investigating next commit. 
 
+### Sprint 3 - Commit 12 (feature/apiconnection)
+Removed all comments referencing useRef in SearchBar & genericinput
+Moved getTheme functionality from searchFilter to dataTools. 
+Added new functions to datatools to check for special characters, and to check if post is unique. 
+Added input checking to newPost
+Change code to fix error with datatools (as mentioned above)
+Imrpved redirect to now update link to redirect to (refcontext). 
+added redirect logic to user dashboard. 
+Changed variable in checklogin from 'href' to 'redirectTo' as href is reserved. 
+Moved href saving to a variable outside of useEffect. 
+fixed the login only redirecting to newpost.
+
 
 ## Currently working on: 
 adding 'suggest post' functionality
-Change code to fix error with datatools (as mentioned above)
+
+investigate the key warning. Looks to be regarding checklogin or useractivity.
+investigate why homepage postcarousel is blank on intitial load (page is rendering before context is initialised fully)
+investigate why postWrapper is running several times unneccecarily. (runs twice per page navigation, has something to do with the above)
 
 add in redirects to pages that require the user to be logged in (as done on the suggest post page). 
 fix styling on userinfo & impliment conditional rendering using '&&' (suggested by Morgan)
@@ -292,7 +307,6 @@ change user & comment types same as had been done with post type.
 impliment post saving (API changer).
 adding 'edit post' functionality (for implimenting mock validation, task 3)
 Edit suggester logic to not be a suggestion if user authentication level 3 (for task 3)
-investigate why postWrapper is running several times unneccecarily. (runs twice per page navigation)
 
 Implimenting APIs
 Set up import types, as per the database data model

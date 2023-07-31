@@ -15,9 +15,9 @@ export default function CheckLogin(props: any){
 
     // Receive link of page to forward to once logged in. 
     let refContex = useContext(refContext);
+    let redirectTo = props.redirectTo;
     useEffect(()=>{ 
-        let href = props.href;
-        refContex.changer(href); // React doesn't like changing states from other components, as such it must be wrapped in a useEffect. 
+        refContex.changer(redirectTo); // React doesn't like changing states from other components, as such it must be wrapped in a useEffect. 
     }, [])
 
     // if logged in, return props.children. else, show link to log in page (receive text for this as a prop) and forward to props.href page once logged in. 

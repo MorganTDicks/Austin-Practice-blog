@@ -8,7 +8,7 @@ import postContext from "@/Context/datawrappers/postwrapper";
 
 export default function PostCarousel(){
     let arrPosts = useContext(postContext).value;
-    const [currPost, setCurrPost] = useState<Post>(arrPosts[0]);
+    const [currPost, setCurrPost] = useState<Post>(arrPosts[0]); // This is running while context is still blank. Use promises and await to fix. 
     
     const prev = () => {
         let postIndex = arrPosts.indexOf(currPost);

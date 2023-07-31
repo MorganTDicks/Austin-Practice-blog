@@ -10,7 +10,7 @@ export default function ToolBar(){
             </div>
             
             <div className={styles.toolbar}>
-                <CheckLogin href="/User" label="LgIn" className={styles.lica} 
+                <CheckLogin redirectTo="/User" label="LgIn" className={styles.lica} 
                 style={{position: 'fixed', right: '0', ['--leftstyle' as any]: '10px', ['--rightstyle' as any]: '0px'}}>
                     <Link href="/User" className={styles.lica}
                     style={{position: 'fixed', right: '0', ['--leftstyle' as any]: '10px', ['--rightstyle' as any]: '0px'}}> User </Link>
