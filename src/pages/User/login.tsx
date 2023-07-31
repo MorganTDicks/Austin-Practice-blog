@@ -5,7 +5,7 @@ import MainLayout from "@/Layouts/mainlayout/mainlayout"
 import GenericInput from "@/Components/generic/genericinput";
 import loginContext from "@/Context/loginwrapper/loginwrapper";
 import refContext from "@/Context/refdirectwrapper/refdirectwrapper";
-import { calkLogin } from "@/Utilities/auth/auth";
+import { MockAuthServer } from "@/Utilities/auth/auth";
 import { FormEvent, useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -24,7 +24,7 @@ export default function LogIn(){
     function logInHandler(event: FormEvent<HTMLFormElement>){
         event.preventDefault();
 
-        let passuid = calkLogin(inputUser.username, inputUser.password, userContex.value);
+        let passuid = MockAuthServer(inputUser.username, inputUser.password, userContex.value);
         if (!passuid){
             alert('Incorrect username or password');
             setInputUser((prevUser) => ({...prevUser, password: ''}));

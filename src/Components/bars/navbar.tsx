@@ -11,7 +11,7 @@ const NavBar: React.FC = () =>{
                 <li className={styles.licl}><Link className={styles.lica} href="/"> Show Topics </Link></li>
                 <li className={styles.licl}><Link className={styles.lica} href="/Posts"> All Posts </Link></li>
                 <li className={styles.licl}>
-                    <CheckLogin label="Suggest a Post" className={styles.lica} href="/newpost">
+                    <CheckLogin label="Suggest a Post" className={styles.lica} redirectTo="/newpost">
                         <Link className={styles.lica} href="/newpost"> Suggest a Post </Link>
                     </CheckLogin>
                 </li>

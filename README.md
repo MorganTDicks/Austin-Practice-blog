@@ -10,7 +10,7 @@ Once a visitor is logged in, they must then be able to add comments to posts, or
 Allow myself to post new posts, edit existing posts, approve of suggested posts & comment / reply to comments. 
 
 ## History
-For full history, see <a href="./doccumentation.md"> doccumentation.md </a>
+For full history, see <a href="/doccumentation/doccumentation.md"> doccumentation.md </a>
 
 
 <hr/>

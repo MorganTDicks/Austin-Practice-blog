@@ -2,9 +2,9 @@
 Welcome to doccumentation, doccumenting all the changes / adjustments to this project since its inception. 
 
 For detailed sprint info, see below: 
-- <a href="./doccumentation/sprint1.md"> Sprint 1</a>: Creating home page, initialising git & git flow, initialising the next.ts app. 
-- <a href="./doccumentation/sprint1.md"> Sprint 2</a>: Loging in, profile dashboard, Context & Cross-page states (Reaction)
-- <a href="./doccumentation/sprint1.md"> Sprint 3 (Current)</a>: Designing back-end data model, building API routes & implimenting mock authorisation
+- <a href="/doccumentation/sprint1.md"> Sprint 1</a>: Creating home page, initialising git & git flow, initialising the next.ts app. 
+- <a href="/doccumentation/sprint2.md"> Sprint 2</a>: Loging in, profile dashboard, Context & Cross-page states (Reaction)
+- <a href="/doccumentation/sprint3.md"> Sprint 3 (Current)</a>: Designing back-end data model, building API routes & implimenting mock authorisation
 
 
 Regarding future plans and stuff still to be done that is not planned for the current sprint, see below: 

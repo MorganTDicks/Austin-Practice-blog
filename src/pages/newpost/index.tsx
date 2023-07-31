@@ -12,9 +12,9 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 
 export default function NewPost(){
-    let [newPost, setNewPost] = useState<Post>(DataImporter.initialPost);
     let postContex = useContext(postContext);
     let currentUser = useContext(loginContext).value;
+    let [newPost, setNewPost] = useState<Post>(DataImporter.initialPost);
     let [isValid, setIsValid] = useState<boolean>(false);
     let [hintString, setHintString] = useState<string>('');
     
@@ -111,7 +111,7 @@ export default function NewPost(){
                             (event: any) => setNewPost((prevPost) => ({...prevPost, body: event.target.value}))} 
                     /> 
                 </div>
-                <p> By submitting a post suggestion, you agree <Link href="/"> Terms and Conditions </Link> </p>
+                <p> By submitting a post suggestion, you agree <Link href="/" className="linkstuff"> Terms and Conditions </Link> </p>
                 <button 
                     type="submit" 
                     disabled={!isValid}

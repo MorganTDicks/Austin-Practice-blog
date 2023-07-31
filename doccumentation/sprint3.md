@@ -2,28 +2,29 @@
 ## Sprint Goals: 
 Designing back-end data model, building API routes & implimenting mock authorisation
 
+
 Design a data model for api (what the structure of your data will look like)
  - relational data model - done
  - include users, posts & comments - done
 Subasks:
 - Set up modeling environment - done, using draw.io
 - Draft table structure - done
+Link to data model: <a href="/Data_Model-Austin_Practice_Blog.png"> Data_Model </a>
 
 
 Build api routes
- - build dummy data (import locally, don't worry about external for now)
- - build data models as types (look into GraphQL) 
- - impliment apis 
+ - build dummy data (import locally, don't worry about external for now) - 1/3
+ - build data models as types (look into GraphQL)  - 4/6
+ - impliment apis - 1/3
 Subtasks: 
-- Set up import types
-- Set up dummy data
-- Impliment User, Post & Comment APIs
-- Edit DataImporter to use APIs
+- Set up import types - 1/3
+- Set up dummy data - 1/3
+- Impliment User, Post & Comment APIs - 1/3
+- Edit DataImporter to use APIs - 1/3
 
 
 Mock authorisation with ApIs: 
-- mark on the ApI 
-When request is sent to api include extra user detail (like a userID)
+- mark on the ApI when request is sent to api. include extra user detail (like a userID)
 - mock out authorisation (mock check the validity of the ID, and check authority)
 Subtasks: 
 - Draft permission levels - done, on data model
@@ -121,9 +122,16 @@ fixed the login only redirecting to newpost.
 ### Sprint 3 - Commit 13 (feature/apiconnection)
 Adjusted doccumentation layout.
 
+### Sprint 3 - Commit 14 (feature/apiconnection)
+Updated links in doccumentation
+Updated reference in navbar to 'redirectTo' for old ref element. 
+Experimented with adding classes to global styling. Works well. 
+Layed out the logic via comments for mock authentication, which requires user API to be completed. 
+Added basic Comments & User API's
+
 
 ## Currently working on: 
-adding 'suggest post' functionality
+implimenting user API. 
 
 investigate the key warning. Looks to be regarding checklogin or useractivity.
 investigate why homepage postcarousel is blank on intitial load (page is rendering before context is initialised fully)
@@ -140,3 +148,7 @@ Implimenting APIs
 Set up import types, as per the database data model
 Set up dummy data
 Finalise User, Post & Comment APIs
+
+allow users with authentication level 2 or 3 to edit posts, authentication level 1 can suggest edits (id becomes the postid with their id appended).
+allow users with authentication level 3 to view posts of all statuses, with a selector on the posts page (defaults to accepted only if auth 1 or 2)
+
