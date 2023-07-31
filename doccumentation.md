@@ -271,15 +271,27 @@ separated datatools calculatedate from the calculate message function.
 Added add Post functionality to suggest post. 
 Adjusted datatools to require post context as a parameter (this will cause an error, will fix it next commit.)
 
+### Sprint 3 - Commit 11 (feature/apiconnection)
+Experimented with using forwardRefs for easrchfilter & genericinput. Worked, but was clunky. 
+commented out all forwardref code and reverted back to states. Will remove said comments next commit. 
+Implimented a useEffect in searchfilter, fixing infinite refreshes. 
+Implimented a redirect to login when accessing suggest post through means other than the navbar. Only happens if not logged in already. 
+Fixed error in genericinput where key was based on value instead of label. Bug possibility above still stands. 
+Added keys to searchfilter theme selector. Still causes key warning sometimes? 
+Encountered an error when accessing User dashboard page. Possibly related to aforementioned datatools error. investigating next commit. 
+Encountered an error on refresh when clicking 'login', redirects to suggest post instead of user dashboard. Investigating next commit. 
+
 
 ## Currently working on: 
 adding 'suggest post' functionality
+Change code to fix error with datatools (as mentioned above)
 
-Edit suggester logic to not be a suggestion if user authentication level 3
+add in redirects to pages that require the user to be logged in (as done on the suggest post page). 
 fix styling on userinfo & impliment conditional rendering using '&&' (suggested by Morgan)
 change user & comment types same as had been done with post type. 
 impliment post saving (API changer).
 adding 'edit post' functionality (for implimenting mock validation, task 3)
+Edit suggester logic to not be a suggestion if user authentication level 3 (for task 3)
 investigate why postWrapper is running several times unneccecarily. (runs twice per page navigation)
 
 Implimenting APIs

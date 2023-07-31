@@ -7,12 +7,22 @@ import MainLayout from "@/Layouts/mainlayout/mainlayout";
 import DataImporter from "@/Utilities/dataimporter";
 import { getCurrentDate, getUser } from "@/Utilities/datatools/dataitools";
 import Link from "next/link";
-import { useContext, useState } from "react";
+import { useRouter } from "next/router";
+import { useContext, useEffect, useState } from "react";
 
 export default function NewPost(){
     let [newPost, setNewPost] = useState<Post>(DataImporter.initialPost);
     let postContex = useContext(postContext);
     let currentUser = useContext(loginContext).value;
+    const rout = useRouter();
+
+    useEffect(()=>{
+        if (currentUser.length < 1){
+            // redirect back to login page 
+
+            rout.push('/User/login'); // -> Error: No router instance found
+        }
+    }, [])
 
     function formSubmitHandler(){
         // Update the context with the new values stored in state
@@ -32,10 +42,25 @@ export default function NewPost(){
         return(`${dateStuff.currentyear}-${dateStuff.currentmonth}-${dateStuff.currentday}`);
     }
 
-    function getState(inputState: any){
-        setNewPost((prevPost) => ({...prevPost, header: inputState.searchkey}))
-    }
+    let searchFilterStuff = {
+        theme: '',
+        searchkey: '',
+        orderby: ''
+    };
 
+    // function getState(inputState: any){
+    //     console.log('State received: ', inputState.searchkey);
+    //     searchFilterStuff.searchkey = inputState.searchkey;
+    // }
+    
+    function getState(inputState: any){
+            setNewPost((prevPost) => ({...prevPost, header: inputState.searchkey}));
+    }
+    
+    // useEffect(()=>{
+        // }, [searchFilterStuff.searchkey])
+        //     setNewPost((prevPost) => ({...prevPost, header: searchFilterStuff.searchkey})) // Results in an infinite loop
+    
     // TODO: Input Checking here (no special chars, no blank entries, theme cannot be 'Select theme', etc.)
 
     return (
@@ -44,7 +69,7 @@ export default function NewPost(){
             <SearchFilter getstate={getState}/>
             <form onSubmit={formSubmitHandler}> 
                 {/* The below is covered by the searchfilter component already. */}
-                {/* <div>
+                <div>
                     <GenericInput 
                         label="Post Title" 
                         type="text" 
@@ -53,7 +78,7 @@ export default function NewPost(){
                             (event: any) => setNewPost((prevPost) => ({...prevPost, header: event.target.value}))} 
                     /> 
                 </div>
-                <div>
+                {/* <div>
                     <select>
                         {postContex.value.map((p) => {
                             return (<option value={p.topic}> {p.topic} </option>)
