@@ -5,6 +5,7 @@ import type { User } from "@/Declarations/UserTypes";
 import { getUser, findRecentComment, timeMessage } from "@/Utilities/datatools/dataitools";
 import { useContext } from "react";
 import commentsContext from "@/Context/datawrappers/commentswrapper";
+import userContext from "@/Context/datawrappers/userwrapper";
 
 interface UserProps{
     workingPost: Post;
@@ -13,6 +14,7 @@ interface UserProps{
 
 export default function UserInfo({workingPost: post, extrainfo = false}: UserProps){
     let arrComments: Array<Comments> = useContext(commentsContext).value;
+    let arrUsers: User[] = useContext(userContext).value;
 
     let postComments:Array<Comments> = [];
     for (let c of arrComments){
@@ -30,7 +32,7 @@ export default function UserInfo({workingPost: post, extrainfo = false}: UserPro
     
     if (extrainfo === false){
         let recentComment  = findRecentComment(postComments);
-        let recentUser:  User = getUser(recentComment.uid);
+        let recentUser:  User = getUser(arrUsers, recentComment.uid);
         
         return(
             <table className={styles.tableStuff}>
@@ -54,7 +56,7 @@ export default function UserInfo({workingPost: post, extrainfo = false}: UserPro
     
     return(
         postComments.map((p: Comments) => {
-            let commentUser = getUser(p.uid)
+            let commentUser = getUser(arrUsers, p.uid);
             
             return(
             <table className={styles.tableStuff}>

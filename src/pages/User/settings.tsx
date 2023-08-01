@@ -1,14 +1,17 @@
 // Settings Page (Currently just edit user)
 
 import UserInput from "@/Components/account/userinput";
+import userContext from "@/Context/datawrappers/userwrapper";
 import loginContext from "@/Context/loginwrapper/loginwrapper";
+import { User } from "@/Declarations/UserTypes";
 import MainLayout from "@/Layouts/mainlayout/mainlayout";
 import { getUser } from "@/Utilities/datatools/dataitools";
 import { useContext } from "react";
 
 export default function SettingsPage(){
+    const arrUsers: User[] = useContext(userContext).value;
     let contex = useContext(loginContext);
-    let currentUser = getUser(contex.value);
+    let currentUser = getUser(arrUsers, contex.value);
     
     return(
         <>

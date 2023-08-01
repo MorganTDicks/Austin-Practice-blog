@@ -1,19 +1,19 @@
 import DataImporter from "../dataimporter";
 import type { User } from "@/Declarations/UserTypes";
 import type { Comments, Post } from "@/Declarations/PostTypes";
-import { PostData } from "@/Declarations/DBTypes";
+import { PostData, UserData } from "@/Declarations/DBTypes";
 
 
 // ================== Getting stuff ============================
 
-export function getUser(inpIdentifier: string): User{
+export function getUser(arrUsers: User[], inpIdentifier: string): User{
     // Option 1: Check type of inpObject and action accordingly
     // Option 2: have two optional paramiters, one for Comments and one for Post
     // Option 3: have two separate functions, one for Comments one for Post
     // Option 4: Take just the identifier instead of the whole object. I chose this one. 
     
     // TODO: Update to use context instead
-    let arrUsers: User[] = DataImporter.importUsers;
+    // let arrUsers: User[] = DataImporter.importUsers;
 
     for (let u of arrUsers){
         if (u.id == inpIdentifier){
@@ -114,7 +114,7 @@ export function isUniquePost(arrInput: Post[], title: string): boolean{
 
 // ========================== Converting Stuff ================================
 
-export function postdataToPost(data: PostData[], status: string): Post[]{
+export function postdataToPost(arrUsers: User[], data: PostData[], status: string): Post[]{
     // Convert Database format to local format:
     
     let tempVal: Post[] = [DataImporter.initialPost];
@@ -126,7 +126,7 @@ export function postdataToPost(data: PostData[], status: string): Post[]{
                     id: dat.postID, 
                     topic: dat.Topic, 
                     postdate: dat.PostDate, 
-                    suggester: (dat.Suggester? getUser(dat.Suggester): undefined), 
+                    suggester: (dat.Suggester? getUser(arrUsers, dat.Suggester): undefined), 
                     header: dat.Header, 
                     body: dat.Body
                 }]; 
@@ -160,4 +160,44 @@ export function postToPostData(data: Post[]): PostData[]{
         }]; 
     }
     return tempVal;
+}
+
+export function userdataToUser(data: UserData[]): User[]{
+    // Convert Database format to local format:
+    
+    let tempVal: User[] = [DataImporter.initialUser];
+    tempVal.splice(0,1); // Removing the blank initial post
+    
+    for (let dat of data){
+            tempVal = [...tempVal, {
+                id: dat.userID, // ID format: II000000, II being either initials or two random letters if firstname not provided
+                username: dat.Username,
+                name: dat.Name, 
+                surname: dat.Surname, 
+                email: dat.Email
+                // Password not stored in frontend. 
+            }]; 
+    }
+    return tempVal;
+}
+
+export function userToUserData(data: User[]): UserData[]{
+    let tempVal: UserData[] = [{
+        userID: '', 
+        Username: '', 
+        Email: ''
+    }];
+    tempVal.splice(0,1); // Removing the blank initial post
+    
+    for (let dat of data){
+            tempVal = [...tempVal, {
+                userID: dat.id, 
+                Username: dat.username, 
+                Email: dat.email
+                // Password is updated externally
+                // Level is updated externally (such as in an email verification)
+            }]; 
+    }
+
+    return(tempVal);
 }

@@ -1,8 +1,10 @@
+import userContext from "@/Context/datawrappers/userwrapper";
 import { PostData } from "@/Declarations/DBTypes";
 import { Post } from "@/Declarations/PostTypes";
+import { User } from "@/Declarations/UserTypes";
 import DataImporter from "@/Utilities/dataimporter";
 import { postToPostData, postdataToPost } from "@/Utilities/datatools/dataitools";
-import { useEffect, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer } from "react";
 
 type reducerType = {type: string, value: Post[]};
 
@@ -85,6 +87,7 @@ const reducerChanger = (stateVal: reducerType, action: reducerType): reducerType
 
 
 export default function usePostFetch(){
+    const arrUsers: User[] = useContext(userContext).value;
     const [convertedData, dispachConvertedData] = useReducer(reducerChanger, {
         type: '',
         value: [DataImporter.initialPost]
@@ -99,7 +102,7 @@ export default function usePostFetch(){
     function setData(data: PostData[]){
         dispachConvertedData({
             type: 'initialise', 
-            value: postdataToPost(data, 'approved') 
+            value: postdataToPost(arrUsers, data, 'approved') 
             }) 
     }
         

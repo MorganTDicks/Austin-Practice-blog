@@ -129,6 +129,44 @@ Experimented with adding classes to global styling. Works well.
 Layed out the logic via comments for mock authentication, which requires user API to be completed. 
 Added basic Comments & User API's
 
+### Sprint 3 - Commit 15 (feature/apiconnection)
+Migrated User context from using dataimporter to user API.
+Created user db-locale conversion functions
+Updated name and surname fields in type User to be optional. UserID must now be updated to use random characters if name or surname not provided. 
+UserIDs must never be updated, only created with the account. 
+Updated UserData type field 'password' to be optional. This is to prevent bugs as passwords are handled separately from the rest of the data
+changed references to dataimporter.importusers to userContext instead. 
+updated getUser (and all references) to use userContext. 
+
+
+## TODO: 
+
+--
+Skipped updating local comments type, as it is fine as is.
+Update comments context to use api instead of dataimporter
+
+--
+Impliment commenting system
+Impliment edit comment, and authenticate that it is the same user when editing comment? 
+
+--
+Update userID calculation in the case of blank firstname/lastname
+Add delete functionality to userContext. 
+
+--
+Update the MockAuthServer function to return a token, and make required changes to the rest of the program
+Complete Mock authentication
+
+--
+Complete edit post functionality
+Impliment authentication for edit posts
+
+-- 
+Impliment authentication into edit account
+
+--
+Add styling to all new components
+
 
 ## Currently working on: 
 implimenting user API. 
@@ -139,7 +177,6 @@ investigate why postWrapper is running several times unneccecarily. (runs twice 
 
 add in redirects to pages that require the user to be logged in (as done on the suggest post page). 
 fix styling on userinfo & impliment conditional rendering using '&&' (suggested by Morgan)
-change user & comment types same as had been done with post type. 
 impliment post saving (API changer).
 adding 'edit post' functionality (for implimenting mock validation, task 3)
 Edit suggester logic to not be a suggestion if user authentication level 3 (for task 3)
@@ -151,4 +188,3 @@ Finalise User, Post & Comment APIs
 
 allow users with authentication level 2 or 3 to edit posts, authentication level 1 can suggest edits (id becomes the postid with their id appended).
 allow users with authentication level 3 to view posts of all statuses, with a selector on the posts page (defaults to accepted only if auth 1 or 2)
-

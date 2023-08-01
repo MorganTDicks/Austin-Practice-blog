@@ -1,4 +1,5 @@
-import UserImporter, { initialiseUser } from "./userimporter";
+//import UserImporter, { initialiseUser } from "./userimporter";
+import { initialiseUser } from "./userimporter";
 import { initialisePost } from "./postimporter";
 import CommentImporter from "./commentimporter";
 
@@ -7,7 +8,7 @@ import CommentImporter from "./commentimporter";
 // That will be handled by hooks.
 
 const DataImporter = {
-        importUsers: UserImporter(),
+        // importUsers: UserImporter(),
         importComments: CommentImporter(),
         initialPost: initialisePost(),
         initialUser: initialiseUser()

@@ -14,9 +14,11 @@ import { User } from "@/Declarations/UserTypes";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import refContext from "@/Context/refdirectwrapper/refdirectwrapper";
+import userContext from "@/Context/datawrappers/userwrapper";
 
 export default function Dashboard(){
     const contex = useContext(loginContext);
+    const arrUsers: User[] = useContext(userContext).value;
     
     // If not logged in, redirect back to login page.
     const rout = useRouter();
@@ -29,7 +31,7 @@ export default function Dashboard(){
     }, [])
 
 
-    let currentUser: User = getUser(contex.value);
+    let currentUser: User = getUser(arrUsers, contex.value);
     
     return(
         <AltLayout>

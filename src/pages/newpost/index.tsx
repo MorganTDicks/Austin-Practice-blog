@@ -1,9 +1,11 @@
 import SearchFilter from "@/Components/SearchFilter/searchfilter";
 import GenericInput from "@/Components/generic/genericinput";
 import postContext from "@/Context/datawrappers/postwrapper";
+import userContext from "@/Context/datawrappers/userwrapper";
 import loginContext from "@/Context/loginwrapper/loginwrapper";
 import refContext from "@/Context/refdirectwrapper/refdirectwrapper";
 import { Post } from "@/Declarations/PostTypes";
+import { User } from "@/Declarations/UserTypes";
 import MainLayout from "@/Layouts/mainlayout/mainlayout";
 import DataImporter from "@/Utilities/dataimporter";
 import { containsSpecialChars, getCurrentDate, getUser, isUniquePost } from "@/Utilities/datatools/dataitools";
@@ -13,6 +15,7 @@ import { useContext, useEffect, useState } from "react";
 
 export default function NewPost(){
     let postContex = useContext(postContext);
+    const arrUsers: User[] = useContext(userContext).value;
     let currentUser = useContext(loginContext).value;
     let [newPost, setNewPost] = useState<Post>(DataImporter.initialPost);
     let [isValid, setIsValid] = useState<boolean>(false);
@@ -34,7 +37,7 @@ export default function NewPost(){
     function formSubmitHandler(){
         newPost.id = calcID();
         newPost.postdate = calcPostDate();
-        newPost.suggester = getUser(currentUser);
+        newPost.suggester = getUser(arrUsers, currentUser);
         console.log(newPost);
         postContex.changer(newPost);
     }
