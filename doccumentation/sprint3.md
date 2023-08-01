@@ -133,20 +133,30 @@ Added basic Comments & User API's
 Migrated User context from using dataimporter to user API.
 Created user db-locale conversion functions
 Updated name and surname fields in type User to be optional. UserID must now be updated to use random characters if name or surname not provided. 
-UserIDs must never be updated, only created with the account. 
+Note: UserIDs must never be updated, only created with the account. 
 Updated UserData type field 'password' to be optional. This is to prevent bugs as passwords are handled separately from the rest of the data
 changed references to dataimporter.importusers to userContext instead. 
 updated getUser (and all references) to use userContext. 
+
+### Sprint 3 - Commit 16 (feature/apiconnection)
+Skipped updating local comments type, as it is fine as is.
+Removed commented out dataimport users code
+Added initialComment to dataporter, to generate blank comments
+Updated comments context to use api instead of dataimporter
+Created comments db-locale conversion functions
+Added commentsprovider to contextwrapper
+Commented out dataimporter.importcomments. 
+Commentscontext was the only commentsimporter reference. it has been updated to use APi context instead. 
+deleted commented out commentimporter code. 
 
 
 ## TODO: 
 
 --
-Skipped updating local comments type, as it is fine as is.
-Update comments context to use api instead of dataimporter
-
+Changed datatools structure to separate it into usertools, posttools & commentstools. 
+Updated datatools references accordingly with the above.
 --
-Impliment commenting system
+Impliment add comment system
 Impliment edit comment, and authenticate that it is the same user when editing comment? 
 
 --

@@ -1,3 +1,4 @@
+import { CommentsProvider } from "./datawrappers/commentswrapper";
 import { PostProvider } from "./datawrappers/postwrapper";
 import { UserProvider } from "./datawrappers/userwrapper";
 import { LoginProvider } from "./loginwrapper/loginwrapper";
@@ -10,7 +11,9 @@ export default function ContextWrapper(props: any){
                 <RefProvider>
                     <UserProvider>
                         <PostProvider>
-                            {props.children}
+                            <CommentsProvider>
+                                {props.children}
+                            </CommentsProvider>
                         </PostProvider>
                     </UserProvider>
                 </RefProvider>    

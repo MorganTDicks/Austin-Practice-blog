@@ -22,6 +22,6 @@ export type UserData = {
     Name?: string,
     Surname?: string, 
     Email: string, 
-    Password: string, // Confirm Password type
+    Password?: string, // Confirm Password type
     Level?: number
 }

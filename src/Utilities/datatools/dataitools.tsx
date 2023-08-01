@@ -1,7 +1,7 @@
 import DataImporter from "../dataimporter";
 import type { User } from "@/Declarations/UserTypes";
 import type { Comments, Post } from "@/Declarations/PostTypes";
-import { PostData, UserData } from "@/Declarations/DBTypes";
+import { CommentsData, PostData, UserData } from "@/Declarations/DBTypes";
 
 
 // ================== Getting stuff ============================
@@ -118,7 +118,7 @@ export function postdataToPost(arrUsers: User[], data: PostData[], status: strin
     // Convert Database format to local format:
     
     let tempVal: Post[] = [DataImporter.initialPost];
-    tempVal.splice(0,1); // Removing the blank initial post
+    tempVal.splice(0,1); // Removing the blank initial value
     
     for (let dat of data){
         if (dat.Status === status){
@@ -146,7 +146,7 @@ export function postToPostData(data: Post[]): PostData[]{
                     PostDate: '', 
                     Status: ''
                 }];
-    tempVal.splice(0,1); // Removing the blank initial post
+    tempVal.splice(0,1); // Removing the blank initial value
     
     for (let dat of data){
         tempVal = [...tempVal, {
@@ -166,7 +166,7 @@ export function userdataToUser(data: UserData[]): User[]{
     // Convert Database format to local format:
     
     let tempVal: User[] = [DataImporter.initialUser];
-    tempVal.splice(0,1); // Removing the blank initial post
+    tempVal.splice(0,1); // Removing the blank initial value
     
     for (let dat of data){
             tempVal = [...tempVal, {
@@ -187,7 +187,7 @@ export function userToUserData(data: User[]): UserData[]{
         Username: '', 
         Email: ''
     }];
-    tempVal.splice(0,1); // Removing the blank initial post
+    tempVal.splice(0,1); // Removing the blank initial value
     
     for (let dat of data){
             tempVal = [...tempVal, {
@@ -196,6 +196,46 @@ export function userToUserData(data: User[]): UserData[]{
                 Email: dat.email
                 // Password is updated externally
                 // Level is updated externally (such as in an email verification)
+            }]; 
+    }
+
+    return(tempVal);
+}
+
+export function commentsdataToComments(data: CommentsData[]): Comments[]{
+    let tempVal: Comments[] = [DataImporter.initialComment];
+    tempVal.splice(0,1); // Removing the blank initial value
+    
+    for (let dat of data){
+            tempVal = [...tempVal, {
+                pid: dat.pID,
+                uid: dat.uID,
+                body: dat.Body,
+                activitydate: dat.ActivityDate,
+                likes: dat.Likes
+            }]; 
+    }
+
+    return(tempVal);
+}
+
+export function commentsToCommentsData(data: Comments[]): CommentsData[]{
+    let tempVal: CommentsData[] = [{
+        pID: '',
+        uID: '',
+        Body: '',
+        ActivityDate: '',
+        Likes: 0
+    }];
+    tempVal.splice(0,1); // Removing the blank initial value
+    
+    for (let dat of data){
+            tempVal = [...tempVal, {
+                pID: dat.pid,
+                uID: dat.uid,
+                Body: dat.body,
+                ActivityDate: dat.activitydate,
+                Likes: dat.likes
             }]; 
     }
 

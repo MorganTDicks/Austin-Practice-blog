@@ -3,31 +3,20 @@
 
 import { Comments } from "@/Declarations/PostTypes";
 import DataImporter from "@/Utilities/dataimporter";
-import React, { useState } from "react";
-
-
-let initialValue = DataImporter.importComments;
+import { useCommentsFetch } from "@/hooks/usecommentsfetch/usecommentsfetch";
+import React from "react";
 
 const commentsContext = React.createContext({
-    value: initialValue,
+    value: [DataImporter.initialComment],
     changer: (newVal: Comments)=>{}
 })
 
 export default commentsContext;
 
-// Create context wrapper
+// Comments context wrapper
 
-export function commentsProvider(props: any){
-    const [contexState, setContexState] = useState(initialValue);
-
-    function changer(newVal: Comments){
-        setContexState((preVal) => ({...preVal, newVal}));
-    }
-
-    const contexStuff = {
-        value: contexState,
-        changer: changer
-    }
+export function CommentsProvider(props: any){
+    const contexStuff = useCommentsFetch();
 
     return(
         <commentsContext.Provider value={contexStuff}> 
