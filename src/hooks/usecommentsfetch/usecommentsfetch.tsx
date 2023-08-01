@@ -17,7 +17,7 @@ export function useCommentsFetch(){
     }
 
     function changer(newVal: Comments){
-        setContexState((preVal) => ({...preVal, newVal}));
+        setContexState((preVal) => ([...preVal, newVal]));
     }
 
     return {

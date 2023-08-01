@@ -8,7 +8,7 @@ import { Post } from "@/Declarations/PostTypes";
 import { User } from "@/Declarations/UserTypes";
 import MainLayout from "@/Layouts/mainlayout/mainlayout";
 import DataImporter from "@/Utilities/dataimporter";
-import { containsSpecialChars, getCurrentDate, getUser, isUniquePost } from "@/Utilities/datatools/dataitools";
+import { calcDateString, containsSpecialChars, getUser, isUniquePost } from "@/Utilities/datatools/dataitools";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
@@ -32,26 +32,20 @@ export default function NewPost(){
         }
     }, [])
 
-
-    // Update the context with the new values stored in state
-    function formSubmitHandler(){
-        newPost.id = calcID();
-        newPost.postdate = calcPostDate();
-        newPost.suggester = getUser(arrUsers, currentUser);
-        console.log(newPost);
-        postContex.changer(newPost);
-    }
-
+    
     function calcID(){
         // Generate post id by Replacing all spaces with dashes, and set to lower case
         return (newPost.header.toLowerCase().split(" ").join("-"));
     }
 
-    function calcPostDate(){
-        let dateStuff = getCurrentDate();
-        return(`${dateStuff.currentyear}-${dateStuff.currentmonth}-${dateStuff.currentday}`);
+    // Update the context with the new values stored in state
+    function formSubmitHandler(){
+        newPost.id = calcID();
+        newPost.postdate = calcDateString();
+        newPost.suggester = getUser(arrUsers, currentUser);
+        console.log(newPost);
+        postContex.changer(newPost);
     }
-
 
     // Retrieving the title and theme from the searchfilter input component
     function getState(inputState: any){

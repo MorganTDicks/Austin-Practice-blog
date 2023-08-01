@@ -2,14 +2,19 @@ import { useRouter } from "next/router";
 import MainLayout from "@/Layouts/mainlayout/mainlayout";
 import DataImporter from "@/Utilities/dataimporter";
 import PrevNext from "@/Components/Posts/prevnext";
-import UserInfo from "@/Components/Posts/UserInfo";
+import CommentInfo from "@/Components/Comments/CommentInfo";
 import { Post } from "@/Declarations/PostTypes";
 import { useContext } from "react";
 import postContext from "@/Context/datawrappers/postwrapper";
+import AddComment from "@/Components/Comments/addcomment";
+import Link from "next/link";
+import loginContext from "@/Context/loginwrapper/loginwrapper";
+import CheckLogin from "@/Components/account/checkLogin";
 
 export default function Posting(){
     const router = useRouter();
     const { id } = router.query;
+    const loggedinID = useContext(loginContext).value;
 
     let allData = useContext(postContext).value;
     let myData: Post = DataImporter.initialPost;
@@ -33,18 +38,22 @@ export default function Posting(){
     return(
         <div>
             <MainLayout pagename= {myData.header}> 
-            <p> back to browse posts (allign Left) </p>
+            <p> <Link href="/Posts" className="linkstuff"> {'<-'} back to browse posts </Link> </p>
             <h1> {myData.header} </h1>
-            <p> Suggester Info (On the left) </p>
+            {myData.suggester && <p> Suggested by {myData.suggester.username} </p>}
+            <br/>
             <p> {myData.body} </p>
-            <p> prev / next post </p>
             <br/>
             <PrevNext prevPost = {prevPost} nextPost = {nextPost} />
             <br/>
             <br/>
             <br/>
-            <p> Add a comment or Suggest a post! </p>
-            <UserInfo extrainfo={true} workingPost={myData}/>
+            <CheckLogin label="Log in to post a comment" redirectTo={`/Posts/${myData.id}`} className="linkstuff">
+                <p> Suggest an edit </p>
+                <AddComment postID={myData.id} loggedinID={loggedinID}/>
+                
+            </CheckLogin>
+            <CommentInfo extrainfo={true} workingPost={myData}/>
             </MainLayout> 
         </div> 
     );

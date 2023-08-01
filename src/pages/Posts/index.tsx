@@ -3,7 +3,7 @@ import styles from '@/styles/components/posts.module.css';
 
 // Component Imports
 import MainLayout from "@/Layouts/mainlayout/mainlayout";
-import UserInfo from "@/Components/Posts/UserInfo";
+import CommentInfo from "@/Components/Comments/CommentInfo";
 // import SearchFilter from "@/Components/SearchFilter/searchfilter";
 import type { Post } from "@/Declarations/PostTypes";
 import { useContext } from "react";
@@ -38,7 +38,7 @@ export default function AllPosts(){
                             </td>
                             <td className={styles.TableData}> Post Image / Preview </td> 
                             <td className={styles.TableDatar}> 
-                                <UserInfo workingPost={post}/>
+                                <CommentInfo workingPost={post}/>
                             </td>
                         </tr>
                         );

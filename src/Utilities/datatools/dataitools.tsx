@@ -11,9 +11,6 @@ export function getUser(arrUsers: User[], inpIdentifier: string): User{
     // Option 2: have two optional paramiters, one for Comments and one for Post
     // Option 3: have two separate functions, one for Comments one for Post
     // Option 4: Take just the identifier instead of the whole object. I chose this one. 
-    
-    // TODO: Update to use context instead
-    // let arrUsers: User[] = DataImporter.importUsers;
 
     for (let u of arrUsers){
         if (u.id == inpIdentifier){
@@ -56,7 +53,7 @@ export function getThemes(allPosts: Post[]){
     return(allThemes)
 }
 
-export function getCurrentDate(){
+export function getCurrentDateObject(){
     const dt = new Date();
     return {
         currentyear: dt.getFullYear(), // -> Expected: yyyy
@@ -73,7 +70,7 @@ export function previewContent(msg: string, numchar: number): string {
 }
 
 export function timeSince(date: string): number{
-    let {currentyear, currentmonth, currentday} = getCurrentDate();
+    let {currentyear, currentmonth, currentday} = getCurrentDateObject();
     
     let y = date.slice(0,4); // -> Expected: 'yyyy'
     let m = date.slice(5,7); // -> Expected: 'mm'
@@ -109,6 +106,22 @@ export function isUniquePost(arrInput: Post[], title: string): boolean{
         }
     }
     return (true);
+}
+
+export function calcDateString(): string{
+    let dateStuff = getCurrentDateObject();
+
+    let dayreturn = `${dateStuff.currentday}`;
+    if (dayreturn.length !== 2)
+        dayreturn = `0${dayreturn}`;
+    
+    let monthreturn = `${dateStuff.currentmonth}`;
+    if (monthreturn.length !== 2)
+        monthreturn = `0${monthreturn}`;
+
+    let yearReturn = `${dateStuff.currentyear}`;
+
+    return(`${yearReturn}-${monthreturn}-${dayreturn}`);
 }
 
 

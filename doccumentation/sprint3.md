@@ -149,14 +149,27 @@ Commented out dataimporter.importcomments.
 Commentscontext was the only commentsimporter reference. it has been updated to use APi context instead. 
 deleted commented out commentimporter code. 
 
+### Sprint 3 - Commit 17 (feature/apiconnection)
+Skipped changing datatools, not worth the effort
+Created comments component folder
+Move UserInfo to comments folder, and renamed file to 'CommentInfo' as that is more fitting to its functionality
+Created Addcomment component 
+Adjusted dynamic post page slightly
+moved calcDate to datatools and renamed to calcDateString
+renamed getDate in datatools to getDateObject
+adjusted calcDateString in datatools to account for single months / days
+Investigated checklogin refContext further, implimented a fix
+Investigated why adding comments are blank, unless added twice. -- fixed by adding the rest of the info in a useEffect
 
-## TODO: 
+
+## Currently working on: 
 
 --
-Changed datatools structure to separate it into usertools, posttools & commentstools. 
-Updated datatools references accordingly with the above.
+add comment ID. one user can make multiple comments on the same post, therefore pid+uid cannot be the primary key for comments. 
+Prevnext buttons do not account for state. therefore login & comment.pid states break when using prevnext buttons.
+fix user errors in userinput (optional name and surname fields).
+
 --
-Impliment add comment system
 Impliment edit comment, and authenticate that it is the same user when editing comment? 
 
 --
@@ -176,25 +189,24 @@ Impliment authentication into edit account
 
 --
 Add styling to all new components
-
-
-## Currently working on: 
-implimenting user API. 
-
-investigate the key warning. Looks to be regarding checklogin or useractivity.
+ 
+--
+investigate the key warning. Looks to be regarding checklogin or useractivity. It is also an issue on the login page. 
 investigate why homepage postcarousel is blank on intitial load (page is rendering before context is initialised fully)
 investigate why postWrapper is running several times unneccecarily. (runs twice per page navigation, has something to do with the above)
 
+--
 add in redirects to pages that require the user to be logged in (as done on the suggest post page). 
 fix styling on userinfo & impliment conditional rendering using '&&' (suggested by Morgan)
 impliment post saving (API changer).
 adding 'edit post' functionality (for implimenting mock validation, task 3)
 Edit suggester logic to not be a suggestion if user authentication level 3 (for task 3)
 
-Implimenting APIs
-Set up import types, as per the database data model
-Set up dummy data
-Finalise User, Post & Comment APIs
-
+--
 allow users with authentication level 2 or 3 to edit posts, authentication level 1 can suggest edits (id becomes the postid with their id appended).
 allow users with authentication level 3 to view posts of all statuses, with a selector on the posts page (defaults to accepted only if auth 1 or 2)
+
+
+## Skipped 
+Changing datatools structure to separate it into usertools, posttools & commentstools. -- The effort compared to the effect is not worth it. 
+Updating Comments Context -- Found no need to update it

@@ -12,7 +12,7 @@ interface UserProps{
     extrainfo?: boolean;
 };
 
-export default function UserInfo({workingPost: post, extrainfo = false}: UserProps){
+export default function CommentInfo({workingPost: post, extrainfo = false}: UserProps){
     let arrComments: Array<Comments> = useContext(commentsContext).value;
     let arrUsers: User[] = useContext(userContext).value;
 
