@@ -57,7 +57,7 @@ export default function Home(){
           <p className={styles.homepageDialogue}> 
             Or, if you you can relate to whatever it is you might be reading here, feel free to leave a comment
             on one of the <Link href="/Posts" className={styles.linkstuff}>other posts</Link> as you go by, 
-            or <Link href="/newpost" className={styles.linkstuff}>suggest a post of your own</Link>.
+            or <Link href="/Posts/new-Post" className={styles.linkstuff}>suggest a post of your own</Link>.
           </p>
           <br/>
           <p> 

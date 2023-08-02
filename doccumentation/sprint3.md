@@ -179,11 +179,23 @@ updated auth to return a token instead of userID. This token includes their ID a
 Updated logincontext to accomodate for the above change. 
 Updated references to logincontext to reflect the above changes. 
 
+### Sprint 3 - Commit 20 (feature/apiconnection)
+changed newpost from /newpost to /Posts/new-Post
+added Posts/edit-Post for editing a post. 
+created auth function fetchUserLevel to fetch user level from the db via API
+investigate why fetcUserLevel is returning blank. 
+
 
 ## Currently working on: 
+Implimenting Mock authentication where required.
+ 
+--
+impliment links to edit posts if authorised
+suggest post ID must be calculated when visiting 
 
 --
-Impliment Mock authentication where required.
+Change auth into an API & store/ log every request
+improve the efficiency of fetchUserLevel in auth. It currently fetches the entire db, instead of just the user levels based on the ID. 
 
 --
 Complete edit post functionality
@@ -192,12 +204,17 @@ allow users with authentication level 2 or 3 to edit posts, authentication level
 allow users with authentication level 3 to view posts of all statuses, with a selector on the posts page (defaults to accepted only if auth 1 or 2)
 
 --
+Impliment selector for those with authority 2+ to see drafted, suggested & all posts. 
+
+--
 Impliment edit comment
 Impliment authentication to check that it is the same user who posted the comment, when attempting to edit comment.
 Moderators (auth level 2) should be able to edit and delete all comments. 
 
 -- 
-Impliment authentication into edit account
+update dashboard to be a dynamic page, so that other users can see eachother's dashboards. 
+impliment authentication so that users can edit their own profile when on their dashboard. 
+
 
 --
 Add styling to all new components
@@ -216,3 +233,4 @@ impliment post saving (API changer).
 Changing datatools structure to separate it into usertools, posttools & commentstools. -- The effort compared to the effect is not worth it. 
 Updating Comments Context -- Found no need to update it
 Add delete functionality to userContext. -- Skipped, users have no reason to be able to be deleted in the frontend. 
+Impliment authentication into edit account -- technically already done. 

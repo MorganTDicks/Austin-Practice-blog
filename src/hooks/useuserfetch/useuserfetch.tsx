@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 export function useUserFetch(){
     const [contexState, setContexState] = useState([DataImporter.initialUser]);
 
-    // Fetching the Posts from api/posts
+    // Fetching the data from api
     useEffect(()=>{
         fetch("/api/users").then(async res => await res.json()).then(setData);  
     }, [])

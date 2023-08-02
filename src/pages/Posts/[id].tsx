@@ -10,7 +10,7 @@ import AddComment from "@/Components/Comments/addcomment";
 import Link from "next/link";
 import loginContext from "@/Context/loginwrapper/loginwrapper";
 import CheckLogin from "@/Components/account/checkLogin";
-import { getUserID } from "@/Utilities/auth/auth";
+import { getUserID, getUserLevel } from "@/Utilities/auth/auth";
 
 export default function Posting(){
     const router = useRouter();
@@ -36,6 +36,21 @@ export default function Posting(){
         }
     }
 
+    function postLevelString(){
+        const userLevel = getUserLevel(loggedinID);
+        switch (userLevel){
+            case 0: 
+                return('Suggest an edit');
+            case 1: 
+                return('Suggest an edit');
+            case 2: 
+                return('Edit this post');
+            case 3: 
+                return('Edit this post');
+        }
+        return('')
+    }
+
     return(
         <div>
             <MainLayout pagename= {myData.header}> 
@@ -44,15 +59,14 @@ export default function Posting(){
             {myData.suggester && <p> Suggested by {myData.suggester.username} </p>}
             <br/>
             <p> {myData.body} </p>
+            <p> <Link href="/Posts/edit-Post"> {postLevelString()} </Link> </p>
             <br/>
             <PrevNext prevPost = {prevPost} nextPost = {nextPost} />
             <br/>
             <br/>
             <br/>
             <CheckLogin label="Log in to post a comment" redirectTo={`/Posts/${myData.id}`} className="linkstuff">
-                <p> Suggest an edit </p>
                 <AddComment postID={myData.id} loggedinID={loggedinID}/>
-                
             </CheckLogin>
             <CommentInfo extrainfo={true} workingPost={myData}/>
             </MainLayout> 

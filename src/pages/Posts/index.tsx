@@ -8,6 +8,7 @@ import CommentInfo from "@/Components/Comments/CommentInfo";
 import type { Post } from "@/Declarations/PostTypes";
 import { useContext } from "react";
 import postContext from "@/Context/datawrappers/postwrapper";
+import SearchFilter from "@/Components/SearchFilter/searchfilter";
 
 export default function AllPosts(){
     // Importing the List of Posts from the object
@@ -20,8 +21,8 @@ export default function AllPosts(){
         <div>
             <MainLayout backgroundpath = "/Item.jpg" pagename="All Posts">
             <p> View All posts: </p>
-            {/* <SearchFilter /> */}
-            <p> This give you an idea? Suggest a post! (On the right)</p>
+            {/* <SearchFilter/> */}
+            <p> This give you an idea? <Link href="/Posts/new-Post" className={"linkstuff"}>suggest a post</Link>! </p>
             <br/><br/>
             <div className={styles.PostList}>
                 <table className={styles.TableStuff}>
