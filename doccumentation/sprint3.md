@@ -170,26 +170,31 @@ Added function to datatools that generates a random letter
 moved calcUserID to datatools
 fixed user errors in userinput (optional name and surname fields).
 
+### Sprint 3 - Commit 19 (feature/apiconnection)
+Added comment ID to db backend in data model. One user can make multiple comments on the same post, therefore pid+uid cannot be the primary key for comments. 
+This is only needed on the database backend, as it is not used on the frontend. 
+Added calcMockToken to auth utility
+Also added getUserID & getAuthLevel( currently returns level as an int. Thinking of changing this in the future for security reasons)
+updated auth to return a token instead of userID. This token includes their ID and their authentication level. 
+Updated logincontext to accomodate for the above change. 
+Updated references to logincontext to reflect the above changes. 
+
 
 ## Currently working on: 
 
 --
-add comment ID. one user can make multiple comments on the same post, therefore pid+uid cannot be the primary key for comments. 
-
---
-Impliment edit comment, and authenticate that it is the same user when editing comment? 
-
---
-Update userID calculation in the case of blank firstname/lastname
-Add delete functionality to userContext. 
-
---
-Update the MockAuthServer function to return a token, and make required changes to the rest of the program
-Complete Mock authentication
+Impliment Mock authentication where required.
 
 --
 Complete edit post functionality
 Impliment authentication for edit posts
+allow users with authentication level 2 or 3 to edit posts, authentication level 1 can suggest edits (id becomes the postid with their id appended).
+allow users with authentication level 3 to view posts of all statuses, with a selector on the posts page (defaults to accepted only if auth 1 or 2)
+
+--
+Impliment edit comment
+Impliment authentication to check that it is the same user who posted the comment, when attempting to edit comment.
+Moderators (auth level 2) should be able to edit and delete all comments. 
 
 -- 
 Impliment authentication into edit account
@@ -203,17 +208,11 @@ investigate why homepage postcarousel is blank on intitial load (page is renderi
 investigate why postWrapper is running several times unneccecarily. (runs twice per page navigation, has something to do with the above)
 
 --
-add in redirects to pages that require the user to be logged in (as done on the suggest post page). 
 fix styling on userinfo & impliment conditional rendering using '&&' (suggested by Morgan)
 impliment post saving (API changer).
-adding 'edit post' functionality (for implimenting mock validation, task 3)
-Edit suggester logic to not be a suggestion if user authentication level 3 (for task 3)
-
---
-allow users with authentication level 2 or 3 to edit posts, authentication level 1 can suggest edits (id becomes the postid with their id appended).
-allow users with authentication level 3 to view posts of all statuses, with a selector on the posts page (defaults to accepted only if auth 1 or 2)
 
 
 ## Skipped 
 Changing datatools structure to separate it into usertools, posttools & commentstools. -- The effort compared to the effect is not worth it. 
 Updating Comments Context -- Found no need to update it
+Add delete functionality to userContext. -- Skipped, users have no reason to be able to be deleted in the frontend. 

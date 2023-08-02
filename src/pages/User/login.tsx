@@ -5,7 +5,7 @@ import MainLayout from "@/Layouts/mainlayout/mainlayout"
 import GenericInput from "@/Components/generic/genericinput";
 import loginContext from "@/Context/loginwrapper/loginwrapper";
 import refContext from "@/Context/refdirectwrapper/refdirectwrapper";
-import { MockAuthServer } from "@/Utilities/auth/auth";
+import { MockAuthServer, getUserID } from "@/Utilities/auth/auth";
 import { FormEvent, useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -18,6 +18,7 @@ export default function LogIn(){
     const [inputUser, setInputUser] = useState<TempUser>({username: '', password: '', isValid: false});
     const rout = useRouter();
     let contex = useContext(loginContext);
+    let loggedinID = getUserID(contex.value);
     let refContex = useContext(refContext);
     let userContex = useContext(userContext);
 
@@ -36,7 +37,7 @@ export default function LogIn(){
         
         // Store logged in user in context.
         contex.changer(passuid);
-        console.log(contex.value);
+        console.log(loggedinID);
         
         // Clearing Inputs
         setInputUser({username: '', password: '', isValid: false});

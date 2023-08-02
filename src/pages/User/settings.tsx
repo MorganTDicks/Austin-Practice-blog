@@ -5,13 +5,14 @@ import userContext from "@/Context/datawrappers/userwrapper";
 import loginContext from "@/Context/loginwrapper/loginwrapper";
 import { User } from "@/Declarations/UserTypes";
 import MainLayout from "@/Layouts/mainlayout/mainlayout";
+import { getUserID } from "@/Utilities/auth/auth";
 import { getUser } from "@/Utilities/datatools/dataitools";
 import { useContext } from "react";
 
 export default function SettingsPage(){
     const arrUsers: User[] = useContext(userContext).value;
-    let contex = useContext(loginContext);
-    let currentUser = getUser(arrUsers, contex.value);
+    let loggedinID = getUserID(useContext(loginContext).value);
+    let currentUser = getUser(arrUsers, loggedinID);
     
     return(
         <>

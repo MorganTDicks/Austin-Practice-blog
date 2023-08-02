@@ -15,23 +15,24 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import refContext from "@/Context/refdirectwrapper/refdirectwrapper";
 import userContext from "@/Context/datawrappers/userwrapper";
+import { getUserID } from "@/Utilities/auth/auth";
 
 export default function Dashboard(){
-    const contex = useContext(loginContext);
+    const loggedinID = getUserID(useContext(loginContext).value);
     const arrUsers: User[] = useContext(userContext).value;
     
     // If not logged in, redirect back to login page.
     const rout = useRouter();
     let refContex = useContext(refContext);
     useEffect(()=>{
-        if (contex.value.length < 1){
+        if (loggedinID.length < 1){
             refContex.changer('/User');
             rout.push('/User/login');
         }
     }, [])
 
 
-    let currentUser: User = getUser(arrUsers, contex.value);
+    let currentUser: User = getUser(arrUsers, loggedinID);
     
     return(
         <AltLayout>

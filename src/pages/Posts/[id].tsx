@@ -10,11 +10,12 @@ import AddComment from "@/Components/Comments/addcomment";
 import Link from "next/link";
 import loginContext from "@/Context/loginwrapper/loginwrapper";
 import CheckLogin from "@/Components/account/checkLogin";
+import { getUserID } from "@/Utilities/auth/auth";
 
 export default function Posting(){
     const router = useRouter();
     const { id } = router.query;
-    const loggedinID = useContext(loginContext).value;
+    const loggedinID = getUserID(useContext(loginContext).value);
 
     let allData = useContext(postContext).value;
     let myData: Post = DataImporter.initialPost;

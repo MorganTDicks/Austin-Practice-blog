@@ -4,5 +4,4 @@ export type User = {
     name?: string, 
     surname?: string, 
     email: string
-    // password: string // TODO: Impliment password protection. 
 };

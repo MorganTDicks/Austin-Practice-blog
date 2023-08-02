@@ -1,4 +1,4 @@
-// Currently just stores the loginContext.  
+// Stored the Auth Token once logged in.   
 // Scope: login page (sets), global(uses)
 
 import React, { useState } from "react";

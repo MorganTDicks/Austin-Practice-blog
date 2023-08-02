@@ -7,6 +7,7 @@ import refContext from "@/Context/refdirectwrapper/refdirectwrapper";
 import { Post } from "@/Declarations/PostTypes";
 import { User } from "@/Declarations/UserTypes";
 import MainLayout from "@/Layouts/mainlayout/mainlayout";
+import { getUserID } from "@/Utilities/auth/auth";
 import DataImporter from "@/Utilities/dataimporter";
 import { calcDateString, containsSpecialChars, getUser, isUniquePost } from "@/Utilities/datatools/dataitools";
 import Link from "next/link";
@@ -16,7 +17,7 @@ import { useContext, useEffect, useState } from "react";
 export default function NewPost(){
     let postContex = useContext(postContext);
     const arrUsers: User[] = useContext(userContext).value;
-    let currentUser = useContext(loginContext).value;
+    let loggedinID = getUserID(useContext(loginContext).value);
     let [newPost, setNewPost] = useState<Post>(DataImporter.initialPost);
     let [isValid, setIsValid] = useState<boolean>(false);
     let [hintString, setHintString] = useState<string>('');
@@ -26,7 +27,7 @@ export default function NewPost(){
     const rout = useRouter();
     let refContex = useContext(refContext);
     useEffect(()=>{
-        if (currentUser.length < 1){
+        if (loggedinID.length < 1){
             refContex.changer('/newpost');
             rout.push('/User/login');
         }
@@ -42,7 +43,7 @@ export default function NewPost(){
     function formSubmitHandler(){
         newPost.id = calcID();
         newPost.postdate = calcDateString();
-        newPost.suggester = getUser(arrUsers, currentUser);
+        newPost.suggester = getUser(arrUsers, loggedinID);
         console.log(newPost);
         postContex.changer(newPost);
     }
