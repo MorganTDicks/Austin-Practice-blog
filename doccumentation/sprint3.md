@@ -161,13 +161,20 @@ adjusted calcDateString in datatools to account for single months / days
 Investigated checklogin refContext further, implimented a fix
 Investigated why adding comments are blank, unless added twice. -- fixed by adding the rest of the info in a useEffect
 
+### Sprint 3 - Commit 18 (feature/apiconnection)
+NOTE: Prevnext buttons do not account for state. therefore login & comment.pid states break when using prevnext buttons.
+  This is because of useRouter not updating states. 
+Updated prevnext to use Links instead of redirects. Redirects after login account for states manually, and therefore do not need to be updated. 
+Commented out old prevnext code. Will remove this next commit. 
+Added function to datatools that generates a random letter
+moved calcUserID to datatools
+fixed user errors in userinput (optional name and surname fields).
+
 
 ## Currently working on: 
 
 --
 add comment ID. one user can make multiple comments on the same post, therefore pid+uid cannot be the primary key for comments. 
-Prevnext buttons do not account for state. therefore login & comment.pid states break when using prevnext buttons.
-fix user errors in userinput (optional name and surname fields).
 
 --
 Impliment edit comment, and authenticate that it is the same user when editing comment? 

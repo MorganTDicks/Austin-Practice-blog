@@ -6,6 +6,7 @@ import userContext from "@/Context/datawrappers/userwrapper";
 import { User } from "@/Declarations/UserTypes";
 import { useRouter } from "next/router";
 import styles from '../../styles/components/login.module.css';
+import { calcUserID, getRandomLetter } from "@/Utilities/datatools/dataitools";
 
 export default function UserInput(props: any){ 
     let initialvalues: User = props.initialvalues;
@@ -18,7 +19,7 @@ export default function UserInput(props: any){
     useEffect(()=>{
         let timia = setTimeout(()=>{
             // Check input validity
-            if ((newUser.email.indexOf('@') !== -1) && (newUser.password.length >= 8) && (newUser.name.length > 0) && (newUser.surname.length > 0)){
+            if ((newUser.email.indexOf('@') !== -1) && (newUser.password.length >= 8)){
                 setIsValid(true);
             }
         }, 500)
@@ -33,7 +34,11 @@ export default function UserInput(props: any){
             
             // Calculate ID
             if (props.newuser){
-                newUser.id = calcID(newUser.name, newUser.surname, contex.value);
+                newUser.id = calcUserID(
+                    (newUser.name? newUser.name : getRandomLetter()), 
+                    (newUser.surname? newUser.surname : getRandomLetter()), 
+                    contex.value
+                );
             }
             
             // Saving new User.
@@ -94,36 +99,5 @@ export default function UserInput(props: any){
                 </form>
                 </div>
         </>
-    )
-}
-
-function calcID(firstname: string, surname: string, arrUsers: User[]){
-    // Copy first letter of firstname
-    let fnn = firstname.slice(0,1);
-
-    // Copy first letter of lastname
-    let lnn = firstname.slice(0,1);
-
-    // Generate random number for remaining characters
-    let rand = Math.floor(Math.random() * (999999 - 99999) + 99999); // Expected random between 99999 & 999999
-
-    // Check if number already taken, if so, incriment by 1. 
-    let pass = true;
-    console.log(arrUsers);
-    do{
-        for (let u of [...arrUsers]){
-            if (u.id.slice(0,2) == `${fnn}${lnn}`){
-                if (+u.id.slice(3,9) == rand){
-                    rand += 1; 
-                    pass=false;
-                }
-            }
-        }
-    } while(!pass)
-
-    let finalID = `${fnn}${lnn}${rand}`;
-
-    // Sample: "AA000000"
-    // Received: "AA678430"
-    return(finalID);
+    ) 
 }

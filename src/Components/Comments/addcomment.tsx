@@ -25,7 +25,7 @@ export default function AddComment(props: any){
             setCommentState((prevState) => ({...prevState, uid: props.loggedinID}));
             setCommentState((prevState) => ({...prevState, activitydate: calcDateString()}));
             setCommentState((prevState) => ({...prevState, likes: 0}));
-        }, [commentState.pid])
+        }, [commentState.pid]) // Using the post 
 
     //TODO: Input sanitation. 
 

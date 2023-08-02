@@ -62,12 +62,28 @@ export function getCurrentDateObject(){
     }
 }
 
+export function getRandomLetter(){
+    let randy = Math.floor(Math.random()*26);
+    const alphab = `abcdefghijklmnopqrstuvwxyz`;
+    return(alphab.charAt(randy).toUpperCase());
+}
+
 
 //  ======================== String Stuff =================================
 
 export function previewContent(msg: string, numchar: number): string {
     return(`${msg.substring(0,numchar-3)}...`);
 }
+
+export function timeMessage(inp: string){
+    let fin= timeSince(inp);
+    if (fin == 0) return('Just now');
+    if (fin == 1) return(`1 day ago`);
+    return(`${fin} days ago`);
+}
+
+
+// ======================= Calculations =============================
 
 export function timeSince(date: string): number{
     let {currentyear, currentmonth, currentday} = getCurrentDateObject();
@@ -82,13 +98,6 @@ export function timeSince(date: string): number{
 
     let fin = newy*365 + newm*30 + newd;
     return(fin);
-}
-
-export function timeMessage(inp: string){
-    let fin= timeSince(inp);
-    if (fin == 0) return('Just now');
-    if (fin == 1) return(`1 day ago`);
-    return(`${fin} days ago`);
 }
 
 export function containsSpecialChars(str: string): boolean { 
@@ -108,6 +117,7 @@ export function isUniquePost(arrInput: Post[], title: string): boolean{
     return (true);
 }
 
+
 export function calcDateString(): string{
     let dateStuff = getCurrentDateObject();
 
@@ -122,6 +132,37 @@ export function calcDateString(): string{
     let yearReturn = `${dateStuff.currentyear}`;
 
     return(`${yearReturn}-${monthreturn}-${dayreturn}`);
+}
+
+export function calcUserID(firstname: string, surname: string, arrUsers: User[]){
+    // Copy first letter of firstname
+    let fnn = firstname.slice(0,1);
+
+    // Copy first letter of lastname
+    let lnn = firstname.slice(0,1);
+
+    // Generate random number for remaining characters
+    let rand = Math.floor(Math.random() * (999999 - 99999) + 99999); // Expected random between 99999 & 999999
+
+    // Check if number already taken, if so, incriment by 1. 
+    let pass = true;
+    console.log(arrUsers);
+    do{
+        for (let u of [...arrUsers]){
+            if (u.id.slice(0,2) == `${fnn}${lnn}`){
+                if (+u.id.slice(3,9) == rand){
+                    rand += 1; 
+                    pass=false;
+                }
+            }
+        }
+    } while(!pass)
+
+    let finalID = `${fnn}${lnn}${rand}`;
+
+    // Sample: "AA000000"
+    // Received: "AA678430"
+    return(finalID);
 }
 
 
