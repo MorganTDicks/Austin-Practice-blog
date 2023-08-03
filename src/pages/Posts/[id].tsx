@@ -15,7 +15,7 @@ import { getUserID, getUserLevel } from "@/Utilities/auth/auth";
 export default function Posting(){
     const router = useRouter();
     const { id } = router.query;
-    const loggedinID = getUserID(useContext(loginContext).value);
+    const tokenContex = useContext(loginContext).value
 
     let allData = useContext(postContext).value;
     let myData: Post = DataInitialiser.initialPost;
@@ -37,7 +37,7 @@ export default function Posting(){
     }
 
     function postLevelString(){
-        const userLevel = getUserLevel(loggedinID);
+        const userLevel = getUserLevel(tokenContex);
         switch (userLevel){
             case 0: 
                 return('Suggest an edit');
@@ -66,7 +66,7 @@ export default function Posting(){
             <br/>
             <br/>
             <CheckLogin label="Log in to post a comment" redirectTo={`/Posts/${myData.id}`} className="linkstuff">
-                <AddComment postID={myData.id} loggedinID={loggedinID}/>
+                <AddComment postID={myData.id} loggedinID={getUserID(tokenContex)}/>
             </CheckLogin>
             <CommentInfo extrainfo={true} workingPost={myData}/>
             </MainLayout> 

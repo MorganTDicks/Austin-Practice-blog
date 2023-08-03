@@ -2,7 +2,7 @@ import { User } from "@/Declarations/UserTypes";
 import { calcDateString, getRandomLetter } from "../datatools/dataitools";
 import { UserData } from "@/Declarations/DBTypes";
 
-export async function MockAuthServer(username: string, password: string, arrUsers: User[]){// would it not be better to encrypt the password, even if it is just local?
+export function MockAuthServer(username: string, password: string, arrUsers: User[]){// would it not be better to encrypt the password, even if it is just local?
     // This is the mock authentication server
 
     // Check validity. if valid, generate and return key. 
@@ -29,71 +29,54 @@ export async function MockAuthServer(username: string, password: string, arrUser
     // For now, generates a key using MockAuthServer Function, which then must be stored in context? Or rather, store the authkey in a session or in a local file? 
     
     // Instead of returning user id, return an authentication token.
-    let tokenstuff = await calcMockToken(accid);
+    let tokenstuff = calcMockToken(accid);
     return((userPassed && passwordPassed) && tokenstuff);
 }
 
-async function calcMockToken(uID: string){ // uID format: II000000
-    // Supposed mock token format: `${CurrentDate}.${UserID}.${2 random letters}${userLevel}${1 Random Letter}`
+function calcMockToken(uID: string){ // uID format: II000000
+    // Supposed mock token format: `${CurrentDate}.${UserID}.${2 random letters}${1 Random Letter}`
     // For now the information is stored planely to make testing easier. 
     // On actual auth server, the authkey will have each piece of information encrypted. 
 
-    let tokenLevel = await fetchUserLevel(uID);
-    let returnToken: string =`${calcDateString()}.${uID}.${getRandomLetter()}${getRandomLetter()}${tokenLevel}${getRandomLetter()}`;
+    // let tokenLevel = fetchUserLevel(uID);
+    let returnToken: string =`${calcDateString()}.${uID}.${getRandomLetter()}${getRandomLetter()}${getRandomLetter()}`;
     console.log('Token generated: ', returnToken);
     return(returnToken);
 }
 
-async function fetchUserLevel(iID: string){
-    // Fetching the data from api
-    // let dbData: UserData[] = [{
-    //     userID: '', 
-    //     Username: '', 
-    //     Email: '',
-    //     Level: 0
-    // }];
+export function getUserLevel(inputToken: string){
+    // validate the input token each time it is received. 
 
-    // let level = 6;
-
-    // await fetch(`/api/users/${iID}`).then(async res => await res.json()).then((json: number) => {level = json});  
-
-    let result = await fetch(`/api/users/${iID}`);
-    let level = await result.json();
-
-    // console.log(dbData); // Returns blank, meanind it is not waiting for fetch. 
-    // Also, userID is fetched around 2-6 times each time the page is changed. 
- 
-    // dbData.map((dat)=>{
-    //     if (dat.userID == iID){
-    //         console.log('found')
-    //         level = ((dat.Level || 0));
-    //         return
-    //     }
-    // })
-    // console.log('not found');
+    let level = 3;
+    
+    // let iID = getUserID(inputToken);
+    // let result = await fetch(`/api/users/${iID}`);
+    // let level = await result.json();
+    
     return (level);
 
 }
 
-export function getUserID(inputToken: string): string{ // Token Format: `${CurrentDate}.${UserID}.${2 random letters}${userLevel}${1 Random Letter}`
+export function getUserID(inputToken: string): string{ // Token Format: `${CurrentDate}.${UserID}.${2 random letters}${1 Random Letter}`
+    // Validate the token
     // retrieve the logged in user ID from the token. 
 
-    if ((!inputToken) || (inputToken.length !== 24)){
-        console.log('no token to derive id. Waiting... ');
-            return('')
-    }
+    // if ((!inputToken) || (inputToken.length !== 24)){
+    //     console.log('no token to derive id. Waiting... ');
+    //         return('')
+    // }
+    console.log('inputtoken', inputToken)
 
-
-        // Copy everything after the date
-        let firstDotIndex = inputToken.indexOf('.');
-        let slice1 = inputToken.slice(firstDotIndex+1, inputToken.length);
-        
-        // Copy the user ID
-        let secondDotIndex = inputToken.indexOf('.');
-        let slice2 = slice1.slice(0, secondDotIndex-2);
-        
-        console.log('ID retrieved from token: ', slice2);
-        return(slice2)
+    // Copy everything after the date
+    let firstDotIndex = inputToken.indexOf('.');
+    let slice1 = inputToken.slice(firstDotIndex+1, inputToken.length);
+    
+    // Copy the user ID
+    let secondDotIndex = inputToken.indexOf('.');
+    let slice2 = slice1.slice(0, secondDotIndex-2);
+    
+    console.log('ID retrieved from token: ', slice2);
+    return(slice2)
 }
 
 // function checkUserPermissions(inputToken: string, requestePermission: string){ 
@@ -101,10 +84,11 @@ export function getUserID(inputToken: string): string{ // Token Format: `${Curre
     // Store the permission hidden in the token instead
 // }
 
-export function getUserLevel(inputToken: string): number{
-    // gets the user level from the token
-    if (inputToken == '') return (0); 
-    // Should it not maybe check the level and return something that cannot be faked? 
-    return (+(inputToken.charAt(inputToken.length-1)))
-
-}
+// export function getUserLevel(inputToken: string): number{
+//     // gets the user level from the token
+//     // if (inputToken == '') return (0); 
+//     // Should it not maybe check the level and return something that cannot be faked? 
+//     let returnToken = (inputToken.charAt(inputToken.length-2));
+//     console.log('returntoken', returnToken)
+//     return (+returnToken)
+// }

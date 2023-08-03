@@ -195,6 +195,15 @@ changed dynamic post API to to dynamic User API. Was only testing the posts. Now
 Works, except the fetchuserlevel function is not waiting for the key to be generated, resulting in an infinite number of awaits. 
 Will investigate the above on the next commit. 
 
+### Sprint 3 - Commit 22 (feature/apiconnection)
+Temporarily made fetchuserlevel return a dummy value until the above has been fixed
+removed some old comments
+removed getUserID as User ID should not be stored client-side, only the token
+changed fetchUserID to getUserID, since it serves the same purpose
+Removed userLevel from token. 
+getUserID now retrieves the token as a parameter, then validates the token before returning the ID. 
+updated dynamic posts page to reflect the above changes. 
+
 
 ## Currently working on: 
 Implimenting Mock authentication where required.
