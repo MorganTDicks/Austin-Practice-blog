@@ -9,7 +9,7 @@ let dummyUsers: UserData[] = [
         Name: "Austin",
         Surname: "Ackermann", 
         Email: "austin@al.co.za",
-        Password: "1234",
+        Password: "12341234",
         Level: 3
     },
     {
@@ -18,20 +18,20 @@ let dummyUsers: UserData[] = [
         Name: "Austin",
         Surname: "Ackermann", 
         Email: "austin@al.co.za",
-        Password: "1234",
+        Password: "12341234",
         Level: 1
     },
     {
         userID: "PS004325",
         Username: "RandomJoe",
         Email: "randomjoe@gmail.com",
-        Password: "5678",
+        Password: "56785678",
     },
     {
         userID: "MO321434",
         Username: "ModMan",
         Email: "modman@thecan.can",
-        Password: "1234",
+        Password: "12341234",
         Level: 2
     }
 ]

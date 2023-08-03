@@ -1,11 +1,11 @@
 import { CommentsData } from "@/Declarations/DBTypes";
 import { Comments } from "@/Declarations/PostTypes";
-import DataImporter from "@/Utilities/dataimporter";
+import DataInitialiser from "@/Utilities/dataiinitialiser";
 import { commentsdataToComments } from "@/Utilities/datatools/dataitools";
 import { useEffect, useState } from "react";
 
 export function useCommentsFetch(){
-    const [contexState, setContexState] = useState([DataImporter.initialComment]);
+    const [contexState, setContexState] = useState([DataInitialiser.initialComment]);
 
     // Fetching the Posts from api/posts
     useEffect(()=>{

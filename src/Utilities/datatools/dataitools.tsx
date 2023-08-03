@@ -1,4 +1,4 @@
-import DataImporter from "../dataimporter";
+import DataInitialiser from "../dataiinitialiser";
 import type { User } from "@/Declarations/UserTypes";
 import type { Comments, Post } from "@/Declarations/PostTypes";
 import { CommentsData, PostData, UserData } from "@/Declarations/DBTypes";
@@ -17,7 +17,7 @@ export function getUser(arrUsers: User[], inpIdentifier: string): User{
         return(u);
         }
     }
-    return({...(DataImporter.initialUser), username: 'No replies yet'});
+    return({...(DataInitialiser.initialUser), username: 'No replies yet'});
 }
 
 export function getPost(arrPosts: Post[], postID: string): Post{
@@ -28,7 +28,7 @@ export function getPost(arrPosts: Post[], postID: string): Post{
     }
     
     return(
-        {...(DataImporter.initialPost)}
+        {...(DataInitialiser.initialPost)}
     )
 
 }
@@ -171,7 +171,7 @@ export function calcUserID(firstname: string, surname: string, arrUsers: User[])
 export function postdataToPost(arrUsers: User[], data: PostData[], status: string): Post[]{
     // Convert Database format to local format:
     
-    let tempVal: Post[] = [DataImporter.initialPost];
+    let tempVal: Post[] = [DataInitialiser.initialPost];
     tempVal.splice(0,1); // Removing the blank initial value
     
     for (let dat of data){
@@ -219,7 +219,7 @@ export function postToPostData(data: Post[]): PostData[]{
 export function userdataToUser(data: UserData[]): User[]{
     // Convert Database format to local format:
     
-    let tempVal: User[] = [DataImporter.initialUser];
+    let tempVal: User[] = [DataInitialiser.initialUser];
     tempVal.splice(0,1); // Removing the blank initial value
     
     for (let dat of data){
@@ -236,11 +236,7 @@ export function userdataToUser(data: UserData[]): User[]{
 }
 
 export function userToUserData(data: User[]): UserData[]{
-    let tempVal: UserData[] = [{
-        userID: '', 
-        Username: '', 
-        Email: ''
-    }];
+    let tempVal: UserData[] = [DataInitialiser.initialUserData];
     tempVal.splice(0,1); // Removing the blank initial value
     
     for (let dat of data){
@@ -257,7 +253,7 @@ export function userToUserData(data: User[]): UserData[]{
 }
 
 export function commentsdataToComments(data: CommentsData[]): Comments[]{
-    let tempVal: Comments[] = [DataImporter.initialComment];
+    let tempVal: Comments[] = [DataInitialiser.initialComment];
     tempVal.splice(0,1); // Removing the blank initial value
     
     for (let dat of data){

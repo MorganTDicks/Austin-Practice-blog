@@ -8,7 +8,7 @@ import { Post } from "@/Declarations/PostTypes";
 import { User } from "@/Declarations/UserTypes";
 import MainLayout from "@/Layouts/mainlayout/mainlayout";
 import { getUserID } from "@/Utilities/auth/auth";
-import DataImporter from "@/Utilities/dataimporter";
+import DataInitialiser from "@/Utilities/dataiinitialiser";
 import { calcDateString, containsSpecialChars, getUser, isUniquePost } from "@/Utilities/datatools/dataitools";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -18,7 +18,7 @@ export default function NewPost(){
     let postContex = useContext(postContext);
     const arrUsers: User[] = useContext(userContext).value;
     let loggedinID = getUserID(useContext(loginContext).value);
-    let [newPost, setNewPost] = useState<Post>(DataImporter.initialPost);
+    let [newPost, setNewPost] = useState<Post>(DataInitialiser.initialPost);
     let [isValid, setIsValid] = useState<boolean>(false);
     let [hintString, setHintString] = useState<string>('');
     

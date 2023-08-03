@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FormEvent, useContext, useEffect, useState } from "react";
-import DataImporter from "@/Utilities/dataimporter";
+import DataInitialiser from "@/Utilities/dataiinitialiser";
 import GenericInput from "@/Components/generic/genericinput";
 import userContext from "@/Context/datawrappers/userwrapper";
 import { User } from "@/Declarations/UserTypes";
@@ -48,7 +48,7 @@ export default function UserInput(props: any){
             // TODO: Save Password
 
             // Clearing the forms once the user has been added. 
-            setNewUser({...(DataImporter.initialUser), password: ''});
+            setNewUser({...(DataInitialiser.initialUser), password: ''});
 
             // redirect to the login screen
             rout.push(props.href);

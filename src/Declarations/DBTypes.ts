@@ -1,5 +1,6 @@
 export type PostData = {
     postID: string, 
+    //id: number,
     Header: string,
     Body: string, 
     Topic: string,

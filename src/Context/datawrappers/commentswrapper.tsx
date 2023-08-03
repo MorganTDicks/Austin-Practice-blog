@@ -2,12 +2,12 @@
 // Scope:  (sets), global(uses)
 
 import { Comments } from "@/Declarations/PostTypes";
-import DataImporter from "@/Utilities/dataimporter";
+import DataInitialiser from "@/Utilities/dataiinitialiser";
 import { useCommentsFetch } from "@/hooks/usecommentsfetch/usecommentsfetch";
 import React from "react";
 
 const commentsContext = React.createContext({
-    value: [DataImporter.initialComment],
+    value: [DataInitialiser.initialComment],
     changer: (newVal: Comments)=>{}
 })
 

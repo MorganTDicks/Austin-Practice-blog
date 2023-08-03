@@ -2,13 +2,13 @@
 // Scope:  (sets), global(uses)
 
 import { Post } from "@/Declarations/PostTypes";
-import DataImporter from "@/Utilities/dataimporter";
+import DataInitialiser from "@/Utilities/dataiinitialiser";
 import usePostFetch from "@/hooks/usepostfetch/usepostfetch";
 import React, { useEffect, useState } from "react";
 
 
 const postContext = React.createContext({
-    value: [DataImporter.initialPost], // This value will only be used if no value is provided by the wrapper.
+    value: [DataInitialiser.initialPost], // This value will only be used if no value is provided by the wrapper.
     changer: (newVal: Post, type?: string)=>{}
 })
 

@@ -2,12 +2,12 @@
 // Scope:  (sets), global(uses)
 
 import { User } from "@/Declarations/UserTypes";
-import DataImporter from "@/Utilities/dataimporter";
+import DataInitialiser from "@/Utilities/dataiinitialiser";
 import { useUserFetch } from "@/hooks/useuserfetch/useuserfetch";
 import React, { useState } from "react";
 
 const userContext = React.createContext({
-    value: [DataImporter.initialUser],
+    value: [DataInitialiser.initialUser],
     changer: (newVal: User)=>{},
     updater: (newVal: User)=>{}
 })

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import MainLayout from "@/Layouts/mainlayout/mainlayout";
-import DataImporter from "@/Utilities/dataimporter";
+import DataInitialiser from "@/Utilities/dataiinitialiser";
 import PrevNext from "@/Components/Posts/prevnext";
 import CommentInfo from "@/Components/Comments/CommentInfo";
 import { Post } from "@/Declarations/PostTypes";
@@ -18,9 +18,9 @@ export default function Posting(){
     const loggedinID = getUserID(useContext(loginContext).value);
 
     let allData = useContext(postContext).value;
-    let myData: Post = DataImporter.initialPost;
-    let prevPost: Post = DataImporter.initialPost;
-    let nextPost: Post = DataImporter.initialPost;
+    let myData: Post = DataInitialiser.initialPost;
+    let prevPost: Post = DataInitialiser.initialPost;
+    let nextPost: Post = DataInitialiser.initialPost;
 
     for (let i of allData){
         if (i.id == id){

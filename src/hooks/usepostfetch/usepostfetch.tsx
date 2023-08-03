@@ -2,7 +2,7 @@ import userContext from "@/Context/datawrappers/userwrapper";
 import { PostData } from "@/Declarations/DBTypes";
 import { Post } from "@/Declarations/PostTypes";
 import { User } from "@/Declarations/UserTypes";
-import DataImporter from "@/Utilities/dataimporter";
+import DataInitialiser from "@/Utilities/dataiinitialiser";
 import { postToPostData, postdataToPost } from "@/Utilities/datatools/dataitools";
 import { useContext, useEffect, useReducer } from "react";
 
@@ -90,7 +90,7 @@ export default function usePostFetch(){
     const arrUsers: User[] = useContext(userContext).value;
     const [convertedData, dispachConvertedData] = useReducer(reducerChanger, {
         type: '',
-        value: [DataImporter.initialPost]
+        value: [DataInitialiser.initialPost]
     });
 
     // Fetching the Posts from api/posts

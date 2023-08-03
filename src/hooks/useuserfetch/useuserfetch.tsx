@@ -1,11 +1,11 @@
 import { UserData } from "@/Declarations/DBTypes";
 import { User } from "@/Declarations/UserTypes";
-import DataImporter from "@/Utilities/dataimporter";
+import DataInitialiser from "@/Utilities/dataiinitialiser";
 import { userdataToUser } from "@/Utilities/datatools/dataitools";
 import { useEffect, useState } from "react";
 
 export function useUserFetch(){
-    const [contexState, setContexState] = useState([DataImporter.initialUser]);
+    const [contexState, setContexState] = useState([DataInitialiser.initialUser]);
 
     // Fetching the data from api
     useEffect(()=>{

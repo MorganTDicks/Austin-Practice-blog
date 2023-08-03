@@ -185,10 +185,23 @@ added Posts/edit-Post for editing a post.
 created auth function fetchUserLevel to fetch user level from the db via API
 investigate why fetcUserLevel is returning blank. 
 
+### Sprint 3 - Commit 21 (feature/apiconnection)
+Added dynamic post api to return only a single post. 
+Spent ages bugfixing, but eventually decided on duplicating the dummydata for the above API. 
+renamed dataimporter to datainitialiser 
+moved dataimporter functionality to datainitialiser, meaning it is only 1 file now. 
+added initialisePostData() to datainitialiser. unused, for now. 
+changed dynamic post API to to dynamic User API. Was only testing the posts. Now actually needed to get user auth level. 
+Works, except the fetchuserlevel function is not waiting for the key to be generated, resulting in an infinite number of awaits. 
+Will investigate the above on the next commit. 
+
 
 ## Currently working on: 
 Implimenting Mock authentication where required.
  
+--
+Fixing the timing of the fetchUserLevel function and its references
+
 --
 impliment links to edit posts if authorised
 suggest post ID must be calculated when visiting 

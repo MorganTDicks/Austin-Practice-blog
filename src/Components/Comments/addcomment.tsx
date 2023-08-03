@@ -3,13 +3,13 @@
 import { FormEvent, useContext, useEffect, useState } from "react";
 import GenericInput from "../generic/genericinput";
 import { Comments } from "@/Declarations/PostTypes";
-import DataImporter from "@/Utilities/dataimporter";
+import DataInitialiser from "@/Utilities/dataiinitialiser";
 import commentsContext from "@/Context/datawrappers/commentswrapper";
 import { calcDateString } from "@/Utilities/datatools/dataitools";
 
 export default function AddComment(props: any){
     const commentContex = useContext(commentsContext);
-    const [commentState, setCommentState] = useState<Comments>(DataImporter.initialComment);
+    const [commentState, setCommentState] = useState<Comments>(DataInitialiser.initialComment);
 
     function formSubmitHandler(event: FormEvent<HTMLFormElement>){
         event.preventDefault();
@@ -17,7 +17,7 @@ export default function AddComment(props: any){
         commentContex.changer(commentState);
         console.log('added post: ', commentState);
 
-        setCommentState(DataImporter.initialComment);
+        setCommentState(DataInitialiser.initialComment);
     }
 
     useEffect(() => {
