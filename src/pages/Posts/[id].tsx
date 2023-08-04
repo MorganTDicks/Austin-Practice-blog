@@ -59,7 +59,7 @@ export default function Posting(){
             {myData.suggester && <p> Suggested by {myData.suggester.username} </p>}
             <br/>
             <p> {myData.body} </p>
-            <p> <Link href="/Posts/edit-Post"> {postLevelString()} </Link> </p>
+            <p> <Link href={`/Posts/edit-Post/${id}`}> {postLevelString()} </Link> </p>
             <br/>
             <PrevNext prevPost = {prevPost} nextPost = {nextPost} />
             <br/>

@@ -204,20 +204,30 @@ Removed userLevel from token.
 getUserID now retrieves the token as a parameter, then validates the token before returning the ID. 
 updated dynamic posts page to reflect the above changes. 
 
+### Sprint 3 - Commit 23 (feature/apiconnection)
+Moved addpost logic to newly created PostChanger component, acting as a dynamic way to add or edit posts. 
+fixed bug in navbar directing to old newpost page when not logged in.
+Post drafts are no longer a feature planned for this sprint. There will still be approved and pending statuses. 
+Note: 
+Post status: Drafts can only be seen by the uploader. both edits and suggestions can be drafts. 
+  pending: if a suggestion or a level 2 submits a post, it must be approved by a level 3 before it is finalized. 
+Moved edit post & add post logic into hook: usePostChange, called in postChanger.
+created function getNameStatusStarter to generate relevant fields based on level & whether the user is adding or editing a post.  
+Updated usePostChange to work with editing a post as well. 
+implimented links to edit posts if authorised
+fixed a bug in searchfilter causing it to appear blank when editing a post. 
+
 
 ## Currently working on: 
 Implimenting Mock authentication where required.
  
 --
+Change auth into an API & store/ log every request
+
+--
 Fixing the timing of the fetchUserLevel function and its references
 
---
-impliment links to edit posts if authorised
-suggest post ID must be calculated when visiting 
 
---
-Change auth into an API & store/ log every request
-improve the efficiency of fetchUserLevel in auth. It currently fetches the entire db, instead of just the user levels based on the ID. 
 
 --
 Complete edit post functionality

@@ -5,22 +5,24 @@ import { getUserID } from "@/Utilities/auth/auth";
 import { useRouter } from "next/router";
 import { useContext, useEffect } from "react";
 
-export default function NewPost(){
-    
+export default function EditPost(){
+    const router = useRouter();
+    let { postID } = router.query;
+    // let actualPostID: string = postID? (Array.isArray(postID)? postID[0] : postID) : '';
+
     // If not logged in, redirect back to login page.
     const loggedinID = getUserID(useContext(loginContext).value);
-    const rout = useRouter();
     let refContex = useContext(refContext);
     useEffect(()=>{
         if (loggedinID.length < 1){
-            refContex.changer('/Posts/new-Post');
-            rout.push('/User/login');
+            refContex.changer(`/Posts/edit-Post/${postID}`);
+            router.push('/User/login');
         }
     }, [])  
 
     return (
         <>
-            <PostChanger addType='add'/>
+            <PostChanger postID={postID} addType="replace"/>
         </>
     )
 }

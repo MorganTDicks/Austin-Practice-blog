@@ -12,8 +12,8 @@ export default function SearchFilter(props: any){
     let showOrder: boolean = props.order;
     
     let [stateStuff, setStateStuff] = useState({
-        theme: allThemes[0],
-        searchkey: '',
+        theme: props.inpTheme || allThemes[0],
+        searchkey: props.inpSearchKey || '',
         orderby: ''
     })
     
